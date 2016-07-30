@@ -1,0 +1,10 @@
+<nav myFullHeight class="menu--primary-container">
+  <a class="logo" href="/">
+    <img src="{{ logoUrl }}" alt="">
+  </a>
+  <ul myMiddleSidebar class="menu--primary">
+    <li class="menu__item" *ngFor="let navItem of navItems">
+        <a href="">{{ navItem }}</a>
+    </li>
+  </ul>
+</nav>

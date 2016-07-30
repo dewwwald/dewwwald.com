@@ -1,7 +1,10 @@
 {
   "name": "dewwwald",
-  "description": "",
+  "description": "My personal profile project",
   "main": "",
+  "authors": [
+    "Dewald Laubscher"
+  ],
   "license": "MIT",
   "homepage": "",
   "private": true,
@@ -9,15 +12,9 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "src/js/vendor",
+    "public_html/assets/vendors",
     "test",
     "tests"
   ],
-  "dependencies": {
-    "backbone": "^1.3.3",
-    "jquery": "^3.0.0"
-  },
-  "devDependencies": {
-    "underscore": "^1.8.3"
-  }
+  "devDependencies": {}
 }
