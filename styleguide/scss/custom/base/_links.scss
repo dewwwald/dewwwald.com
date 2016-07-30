@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    $LINKS
+\*------------------------------------*/
+%link--transition {
+  transition: all 150ms ease-in-out;
+
+  &:active { transition: none;}
+}
+
+a {
+  @extend %link--transition;
+  @extend %fc--primary;
+  text-decoration: none;
+
+  &,
+  &:hover { outline: 0;}
+
+  &:visited {}
+}

@@ -1,0 +1,6 @@
+sidebar {
+  @extend %grid__item;
+  width: 300px;
+  background-color: $clr-base;
+  color: white;
+}

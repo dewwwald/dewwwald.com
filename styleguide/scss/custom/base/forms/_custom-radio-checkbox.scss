@@ -1,0 +1,49 @@
+/*------------------------------------*\
+    $CUSTOM RADIOS & CHECKBOXES
+\*------------------------------------*/
+@if $use-icons == true {
+/**
+ * $use-icons must be set to true to use custom radios and checkboxes
+ *
+ * custom checkbox and radio icons should be added to typography/_icons.scss
+ * which these styles will reference
+
+  input[type=[radio|checkbox].visuallyhidden
+  label
+    i.radio--icon
+    | my custom radio's label text
+
+ */
+%custom-radio-base {
+  @extend %icon;
+  vertical-align: sub;
+
+  &:before {
+    position: relative;
+    line-height: 1;
+    z-index: 10;
+  }
+}
+
+.radio--icon,
+.checkbox--icon { @extend %custom-radio-base;}
+
+.checkbox--icon {
+  &:before { @extend %icon-checkbox-false:before;}
+}
+
+.radio--icon {
+  &:before { @extend %icon-radio-false:before;}
+}
+
+input:checked + label {
+  & > .radio--icon {
+    &:before { @extend %icon-radio-true:before;}
+  }
+
+  & > .checkbox--icon {
+    &:before { @extend %icon-checkbox-true:before;}
+  }
+}
+
+} // endif

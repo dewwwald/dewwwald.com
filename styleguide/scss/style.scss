@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/*
+Theme Name: Theme_Name
+Theme URI: theme_url
+Description: theme_description
+Author: author_name
+Author URI: author_url
+Version: theme_version
+.
+Any general information, license statements, plugin requirements, or any other information you
+might want to share.
+.
+*/
+
+/**
+ * Config
+ *
+ * Config is defined before defaults so that variables override their !default
+ * counterparts
+ */
+@import "custom/config";
+@import "core/config-defaults";
+
+
+
+
+
+/**
+ * Import the rest of the framework, followed by custom styles
+ */
+@import "core/imports";
+@import "custom/imports";
+
+
+
+
+
+/**
+ * import print styles
+ */
+@import "core/utilities/print";

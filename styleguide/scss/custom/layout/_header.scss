@@ -1,0 +1,10 @@
+/*------------------------------------*\
+    $HEADER
+\*------------------------------------*/
+.area-header {}
+
+.logo
+{
+  @include px-and-rem(padding, 0 2);
+  display: block;
+}

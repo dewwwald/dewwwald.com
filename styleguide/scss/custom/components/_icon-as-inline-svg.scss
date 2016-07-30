@@ -1,0 +1,9 @@
+@if $use-icon-as-inline-svg {
+/*------------------------------------*\
+    $ICONS
+\*------------------------------------*/
+.icon { @extend %inline-svg-icon;}
+
+  .icon__inner { @extend %inline-svg-icon__inner;}
+
+}//endif

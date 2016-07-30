@@ -1,0 +1,89 @@
+/*------------------------------------*\
+    $FONTS
+\*------------------------------------*/
+
+
+
+
+
+/*------------------------------------*\
+    $ICON FONT
+\*------------------------------------*/
+@include font-face(
+  $font-icon,
+  $font-icon-filename,
+  $font-icon-path,
+  $weight: normal,
+  $style: normal
+);
+
+
+
+
+
+/*------------------------------------*\
+    $BASE FONT
+\*------------------------------------*/
+@include font-face(
+  $font-base,
+  $font-base-filename,
+  $font-base-path,
+  $weight: normal,
+  $style: normal
+);
+
+  @include font-face(
+    $font-base,
+    $font-base-filename-i,
+    $font-base-path,
+    $weight: normal,
+    $style: italic
+  );
+
+  @include font-face(
+    $font-base,
+    $font-base-filename-b,
+    $font-base-path,
+    $weight: bold,
+    $style: normal
+  );
+
+  @include font-face(
+    $font-base,
+    $font-base-filename-l,
+    $font-base-path,
+    $weight: lighter,
+    $style: normal
+  );
+
+  @include font-face(
+    $font-base,
+    $font-base-filename-bi,
+    $font-base-path,
+    $weight: bold,
+    $style: italic
+  );
+
+
+
+
+
+/*------------------------------------*\
+    $HEADER FONT
+\*------------------------------------*/
+@include font-face(
+  $font-header,
+  $font-header-filename,
+  $font-header-path,
+  $weight: normal,
+  $style: normal
+);
+
+  @include font-face(
+    $font-header,
+    $font-header-filename-b,
+    $font-header-path,
+    $weight: bold,
+    $style: normal
+  );
+

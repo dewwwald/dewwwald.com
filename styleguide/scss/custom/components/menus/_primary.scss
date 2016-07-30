@@ -1,0 +1,22 @@
+/*------------------------------------*\
+    $PRIMARY MENU
+\*------------------------------------*/
+.menu--primary-container {
+  position: relative;
+  @extend %menu-container;
+}
+
+  .menu--primary {
+    &[myMiddleSidebar] {
+      position: absolute;
+      right: 0;
+    }
+
+    @extend %menu;
+
+    & %menu__item {
+      letter-spacing: .15em;
+    }
+  }
+
+

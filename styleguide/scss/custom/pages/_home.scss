@@ -1,0 +1,42 @@
+.persona
+{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.persona__main
+{
+  margin-bottom: 0px;
+}
+
+
+
+.persona__img
+{
+  margin: 0 auto;
+  display: block;
+  width: 220px;
+  @include px-and-rem(margin-bottom, 1.66);
+}
+
+.persona__name {
+  position: relative;
+  font-family: $font-header-stack;
+  font-size: 1.2em; // 48px from 40px
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    color: inherit;
+    border-bottom: 3px solid;
+    top: 76%;
+    left: .03em;
+    right: .03em;
+  }
+}
