@@ -32,6 +32,7 @@ $use-flex-video:         false;
 $use-flyout:             false;
 $use-greybox:            false;
 $use-grids:              true;
+$grid-use-fractions:     true;
 $use-icon-text:          false;
 $use-link-complex:       false;
 $use-lozenges:           false;
@@ -56,7 +57,7 @@ $use-icon-as-font:       false;
 $use-icon-as-inline-svg: false;
 $use-print:              false;
 $use-progress-bars:      false;
-$use-ratio-object:       false;
+$use-ratio-object:       true;
 $use-vertical-center:    false;
 $use-tinymce:            false;
 
@@ -72,7 +73,7 @@ $use-tinymce:            false;
  */
 $fs-giga:  96px!default; // .fs--giga
 $fs-mega:  72px!default; // .fs--mega
-$fs-kilo:  48px!default; // .fs--kilo
+$fs-kilo:  48px; // .fs--kilo
 
 $fs-h1:    40px; // .fs--alpha
 $fs-h2:    24px; // .fs--beta

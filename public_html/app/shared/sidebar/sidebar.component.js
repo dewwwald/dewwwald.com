@@ -9,9 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var sidebar_service_1 = require('./sidebar.service');
-var full_height_directive_1 = require('../../shared/grow-sections/full-height.directive');
-var full_page_directive_1 = require('../../shared/grow-sections/full-page.directive');
+var full_height_directive_1 = require('../directives/full-height.directive');
+var full_page_directive_1 = require('../directives/full-page.directive');
 var middle_sidebar_directive_1 = require('./middle-sidebar.directive');
 var SidebarComponent = (function () {
     function SidebarComponent(sidebarService) {
@@ -34,7 +35,8 @@ var SidebarComponent = (function () {
             directives: [
                 full_height_directive_1.FullHeightDirective,
                 full_page_directive_1.FullPageDirective,
-                middle_sidebar_directive_1.MiddleSidebarDirective
+                middle_sidebar_directive_1.MiddleSidebarDirective,
+                router_1.ROUTER_DIRECTIVES
             ],
             providers: [sidebar_service_1.SidebarService]
         }), 

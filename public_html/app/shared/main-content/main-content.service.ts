@@ -58,11 +58,11 @@ export class MainContentService
   getAspects()
   {
     return [
-      [{value: 'Who am I?', type: 'text'}],
-      [{value: 'Why pick me?', type: 'text'}],
-      [{value: 'What I have done?', type: 'text'}],
-      [{value: 'Where can you find me?', type: 'text'}],
-      [{value: 'When can you have my experties?', type: 'text'}]
+      [{value: 'Nice to meet you!', type: 'text'}],
+      [{value: 'Lorem ipsum dolor sit amet', type: 'text'}],
+      [{value: 'Lorem ipsum dolor sit amet', type: 'text'}],
+      [{value: 'Lorem ipsum dolor sit amet', type: 'text'}],
+      [{value: 'Lorem ipsum dolor sit amet', type: 'text'}]
     ];
   }
 }

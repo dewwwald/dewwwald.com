@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { SidebarService } from './sidebar.service';
-import { FullHeightDirective } from '../../shared/grow-sections/full-height.directive';
-import { FullPageDirective } from '../../shared/grow-sections/full-page.directive';
+import { FullHeightDirective } from '../directives/full-height.directive';
+import { FullPageDirective } from '../directives/full-page.directive';
 import { MiddleSidebarDirective } from './middle-sidebar.directive';
 
 @Component({
@@ -12,7 +13,8 @@ import { MiddleSidebarDirective } from './middle-sidebar.directive';
   directives: [
     FullHeightDirective,
     FullPageDirective,
-    MiddleSidebarDirective
+    MiddleSidebarDirective,
+    ROUTER_DIRECTIVES
   ],
   providers: [SidebarService]
 })

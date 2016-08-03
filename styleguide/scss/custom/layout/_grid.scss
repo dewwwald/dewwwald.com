@@ -6,3 +6,13 @@
  */
 
 .gw--no-guts { @extend %gw--no-guts;}
+
+%grid--auto {
+  @extend %grid__item;
+
+  @if $use-legacy-grid {
+      .oldie & { display: table-cell;}
+  }
+
+  @if $use-flexbox-grid { flex: 1;}
+}

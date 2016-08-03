@@ -17,11 +17,11 @@ var SidebarService = (function () {
     };
     SidebarService.prototype.getNavItems = function () {
         return [
-            'Who',
-            'Why',
-            'What',
-            'Where',
-            'When'
+            { title: 'Who', link: '/who' },
+            { title: 'What', link: '/what' },
+            { title: 'Why', link: '/why' },
+            { title: 'When', link: '/when' },
+            { title: 'Where', link: '/where' }
         ];
     };
     SidebarService = __decorate([

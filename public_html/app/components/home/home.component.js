@@ -9,18 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var router_1 = require('@angular/router');
+var sidebar_component_1 = require('../../shared/sidebar/sidebar.component');
+var main_content_component_1 = require('../../shared/main-content/main-content.component');
+var full_height_directive_1 = require('../../shared/directives/full-height.directive');
+var full_page_directive_1 = require('../../shared/directives/full-page.directive');
+var window_service_1 = require('../../shared/services/window.service');
+var HomeComponent = (function () {
+    function HomeComponent() {
     }
-    AppComponent = __decorate([
+    HomeComponent = __decorate([
         core_1.Component({
-            selector: 'home',
-            templateUrl: 'app/app.component.html',
-            directives: []
+            selector: 'landing',
+            templateUrl: 'app/components/home/home.component.html',
+            providers: [
+                window_service_1.WindowService
+            ],
+            directives: [
+                router_1.ROUTER_DIRECTIVES,
+                full_height_directive_1.FullHeightDirective,
+                full_page_directive_1.FullPageDirective,
+                sidebar_component_1.SidebarComponent,
+                main_content_component_1.MainContentComponent
+            ]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], HomeComponent);
+    return HomeComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

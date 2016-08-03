@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, Renderer, AfterViewChecked } from '@angular/core';
-import { WindowService } from '../../services/window.service';
+import { WindowService } from '../services/window.service';
 
 @Directive({
   selector: '[myMiddleSidebar]',

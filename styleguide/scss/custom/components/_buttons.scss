@@ -6,7 +6,9 @@ button { @extend %link--transition;}
 %btn {
   @extend %btn !optional;
   @extend %link--transition;
-  color: $clr-ntrl-min;
+  border: 1px solid;
+  text-transform: uppercase;
+  @include px-and-rem(padding, .5 2);
 
   &[disabled],
   &:disabled {
@@ -20,12 +22,16 @@ button { @extend %link--transition;}
   }
 }
 
-.btn--primary {
+.btn--base {
   @extend %btn;
-  background-color: $clr-primary;
+  color: $clr-base;
 
   &:hover,
-  &:focus { background-color: $clr-primary-lt;}
+  &:focus {
+    color: $clr-base-lt;
+  }
 
-  &:active { background-color: $clr-primary-dk;}
+  &:active {
+    color: $clr-base-dk;
+  }
 }

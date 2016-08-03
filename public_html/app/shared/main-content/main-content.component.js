@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var main_content_service_1 = require('./main-content.service');
 var main_content_directive_1 = require('./main-content.directive');
-var full_height_directive_1 = require('../grow-sections/full-height.directive');
-var full_page_directive_1 = require('../grow-sections/full-page.directive');
+var full_height_directive_1 = require('../directives/full-height.directive');
+var full_page_directive_1 = require('../directives/full-page.directive');
 var MainContentComponent = (function () {
     function MainContentComponent(mainContentService) {
         this.mainContentService = mainContentService;
@@ -20,7 +20,7 @@ var MainContentComponent = (function () {
     MainContentComponent.prototype.ngOnInit = function () { };
     MainContentComponent = __decorate([
         core_1.Component({
-            selector: 'mainContent',
+            selector: 'persona',
             templateUrl: 'app/shared/main-content/main-content.component.html',
             directives: [
                 full_height_directive_1.FullHeightDirective,

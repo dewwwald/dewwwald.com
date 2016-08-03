@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, AfterViewChecked } from '@angular/core';
-import { WindowService } from '../../services/window.service';
+import { WindowService } from '../services/window.service';
 import { MainContentService } from './main-content.service';
 
 @Directive({
@@ -19,6 +19,7 @@ export class AspectsDirective implements AfterViewChecked
   private html;
   private nextAspect;
   private currentHtml;
+  private keystrokes;
 
   stepOutText (attribute, current, i = undefined)
   {
@@ -32,7 +33,7 @@ export class AspectsDirective implements AfterViewChecked
         _this.el.childNodes[current].data = newText;
         _this.stepOutText(attribute, current, i-1);
         clearTimeout(timer);
-      }, 175);
+      }, this.keystrokes);
     }
     else
     {
@@ -40,24 +41,71 @@ export class AspectsDirective implements AfterViewChecked
     }
   }
 
-  htmlElement (attribute, current, i = undefined)
+  stepInText (attribute, current, i = undefined)
   {
-    if (typeof i == 'undefined') i = attribute.parse.length;
+    if (typeof i == 'undefined') i = 0;
     var _this = this;
-    if (i >= 0)
+    if (i <= attribute.value.length)
     {
-      this.stepOutText(this.currentHtml[i], i);
       var timer = setTimeout(function ()
       {
         var newText = attribute.value.substring(0, i);
         _this.el.childNodes[current].data = newText;
-        _this.stepOutText(attribute, current, 'localCb');
+        _this.stepInText(attribute, current, i+1);
         clearTimeout(timer);
-      }, 175);
+      }, this.keystrokes);
+    }
+    else
+    {
+      return this.showText(current - 1);
+    }
+  }
+
+  stepOutParseText (attribute, current, parseIndex, attrIndex = undefined)
+  {
+    if (typeof attrIndex == 'undefined') attrIndex = attribute.value.length;
+    var _this = this;
+    if (attrIndex >= 0)
+    {
+      var timer = setTimeout(function ()
+      {
+        var newText = attribute.value.substring(0, attrIndex);
+        _this.el.childNodes[current].childNodes[parseIndex].data = newText;
+        _this.stepOutParseText(attribute, current, parseIndex, attrIndex-1);
+        clearTimeout(timer);
+      }, this.keystrokes);
+    }
+    else
+    {
+      return this.htmlElement(attribute, current, parseIndex - 1);
+    }
+  }
+
+  htmlElement (attribute, current, parseIndex = undefined)
+  {
+    if (typeof parseIndex == 'undefined') parseIndex = attribute.parse.length - 1;
+    var _this = this;
+    if (parseIndex >= 0)
+    {
+      this.stepOutParseText(attribute.parse[parseIndex], current, parseIndex);
     }
     else
     {
       return this.hideText(current - 1);
+    }
+  }
+
+  showText (i = undefined)
+  {
+    if (typeof i == 'undefined') i = this.nextAspect.length - 1;
+
+    if (i >= 0)
+    {
+      this.stepInText(this.nextAspect[i], i);
+    }
+    else
+    {
+      this.loop(3000, 'textOutIn');
     }
   }
 
@@ -67,7 +115,6 @@ export class AspectsDirective implements AfterViewChecked
 
     if (i >= 0)
     {
-      console.log(this.currentHtml[i].type == 'text');
       if (this.currentHtml[i].type == 'text')
       {
         this.stepOutText(this.currentHtml[i], i);
@@ -79,8 +126,7 @@ export class AspectsDirective implements AfterViewChecked
     }
     else
     {
-      // call step in then in step in call ->
-      // this.loop(4250*0, 'textOutIn');
+      this.showText();
     }
   }
 
@@ -88,6 +134,7 @@ export class AspectsDirective implements AfterViewChecked
   {
     this.nextAspect = this.mainContentService.nextAspect();
     this.currentHtml = this.mainContentService.parseHtmlText(this.el.childNodes);
+    this.el.className = this.el.className + ' typing';
     this.hideText();
   }
 
@@ -110,7 +157,7 @@ export class AspectsDirective implements AfterViewChecked
     if (!this.checked)
     { //call this only once
       this.checked = !this.checked;
-      this.loop(4250*0, 'textOutIn');
+      this.loop(3000, 'textOutIn');
     }
   }
 
@@ -120,5 +167,6 @@ export class AspectsDirective implements AfterViewChecked
     this.window = window.nativeWindow;
     this.mainContentService = mainContentService;
     this.el = el.nativeElement;
+    this.keystrokes = 75;
   }
 }

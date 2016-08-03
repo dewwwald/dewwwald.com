@@ -1,0 +1,18 @@
+<section class="gw--no-guts">
+  <article *ngFor="let item of portfolio" class="g g-1/2">
+    <div slideHover class="portfolio-item">
+      <div class="portfolio-item__inner">
+        <img class="portfolio-item__image" src="{{ item.img.url }}" alt="{{ item.img.alt }}">
+        <div class="portfolio-item__over">
+          <h2 class="portfolio-item__title">{{ item.title }}</h2>
+          <p class="portfolio-item__short">
+            {{ item.description }}
+          </p>
+          <a class="btn btn--base btn--center" href="">
+          explore<span class="visuallyhidden"> website in embedded window</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

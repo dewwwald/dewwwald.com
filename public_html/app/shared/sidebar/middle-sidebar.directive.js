@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var window_service_1 = require('../../services/window.service');
+var window_service_1 = require('../services/window.service');
 var MiddleSidebarDirective = (function () {
     function MiddleSidebarDirective(el, window, renderer) {
         var _this = this;
