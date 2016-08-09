@@ -2,9 +2,19 @@
   <a class="logo" routerLink="/who">
     <img src="{{ logoUrl }}" alt="">
   </a>
-  <ul myMiddleSidebar class="menu--primary">
-    <li class="menu__item" *ngFor="let navItem of navItems">
-        <a routerLink="{{ navItem.link }}">{{ navItem.title }}</a>
+  <ul appMenu class="menu--primary">
+    <li routerLinkActive="menu__item--current" class="menu__item" *ngFor="let navItem of navItems">
+        <a *ngIf="navItem.hash == undefined" routerLink="{{navItem.link}}">{{ navItem.title }}</a>
+        <a *ngIf="navItem.hash != undefined"
+          pageScroll [pageScrollDuration]="400"
+          routerLink="{{navItem.link}}"
+          href="#{{navItem.hash}}"
+        >{{ navItem.title }}</a>
     </li>
   </ul>
+  <div class="social">
+    <svg iconDirr [icon]="github" [cssClass]=""></svg>
+    <svg iconDirr [icon]="linkedin" [cssClass]=""></svg>
+    <svg iconDirr [icon]="twitter" [cssClass]=""></svg>
+  </div>
 </nav>

@@ -1,19 +1,36 @@
 /*------------------------------------*\
     $FORMS
 \*------------------------------------*/
-label { cursor: pointer;}
+label {
+  cursor: pointer;
+  display: block;
+  @include px-and-rem(margin-bottom, .4);
+}
 
-textarea { resize: vertical;}
+textarea {
+  resize: none;
+  @include px-and-rem(max-height, 6.6666666667);
+}
 
-button, input, select, textarea { vertical-align: baseline;}
+button, input, select, textarea {
+  vertical-align: baseline;
+}
 
 input, input[type='search'], textarea { border-radius: 0;}
 
 input, textarea {
-  border: 1px solid;
+  border: 0px solid;
   height: auto;         // don't apply heights set to inputs
   line-height: normal;  // all browsers must use FF's UA !important for consistency
   padding: .5em;
+}
+
+input, textarea, select {
+  @include px-and-rem(margin-bottom, .4);
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  outline: none;
 }
 
 input[type="radio"],
@@ -21,3 +38,9 @@ input[type="checkbox"] { width: auto;}
 
 input[type="password"] { letter-spacing: .3em;} // space password to match actual text
 input[type="password"]::placeholder { letter-spacing: 0;}
+
+fieldset {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}

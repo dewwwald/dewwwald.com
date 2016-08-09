@@ -32,3 +32,5 @@
 %flush--left         { @include flush--left;}
 %flush--ends         { @include flush--ends;}
 %flush--sides        { @include flush--sides;}
+
+.flush--bottom { @extend %flush--bottom;}

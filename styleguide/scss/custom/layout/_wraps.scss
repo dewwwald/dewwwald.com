@@ -3,8 +3,8 @@
 \*------------------------------------*/
 $wrap-widths: (
   large: 1200px,
-  base: 960px,
-  small: 720px,
+  base: 1280px,
+  small: 960px,
 );
 
 %wrap-base {
@@ -39,4 +39,9 @@ $wrap-widths: (
     }
     .wrap--#{$wrap-name} { @extend %wrap--#{$wrap-name};}
   }
+}
+
+.content--left {
+  @extend %wrap-width--small;
+  margin-left: 0px;
 }

@@ -33,6 +33,7 @@ $use-flyout:             false;
 $use-greybox:            false;
 $use-grids:              true;
 $grid-use-fractions:     true;
+$responsive-extra:       true;
 $use-icon-text:          false;
 $use-link-complex:       false;
 $use-lozenges:           false;
@@ -75,16 +76,21 @@ $fs-giga:  96px!default; // .fs--giga
 $fs-mega:  72px!default; // .fs--mega
 $fs-kilo:  48px; // .fs--kilo
 
-$fs-h1:    40px; // .fs--alpha
-$fs-h2:    24px; // .fs--beta
-$fs-h3:    18px; // .fs--gamma
-$fs-h4:    20px; // .fs--delta
-$fs-h5:    16px!default; // .fs--epsilon
-$fs-h6:    14px!default; // .fs--zeta
+$fs-h1:    48px; // .fs--alpha
+$fs-h2:    40px; // .fs--beta
+$fs-h3:    36px; // .fs--gamma
+$fs-h4:    24px; // .fs--delta
+$fs-h5:    18px; // .fs--epsilon
+$fs-h6:    16px; // .fs--zeta
 
-$fs-milli: 12px!default; // .fs--milli
-$fs-micro: 10px!default; // .fs--micro
-$fs-nano:   8px!default; // .fs--nano
+$fs-milli: 14px; // .fs--milli
+$fs-micro: 10px; // .fs--micro
+$fs-nano:   8px; // .fs--nano
+
+$lap-start:     481px;
+$desk-start:    920px;
+$desk-wide-start:   1440px;
+
 
 
 
@@ -97,10 +103,10 @@ $fs-nano:   8px!default; // .fs--nano
  * Place any of your own variables that sit on top of core _defaults.scss here.
  */
 $fs-base: 18px;
-// $base-line-height:  24px;
-// $base-spacing-unit: 1.5;
+$base-line-height:  22px;
+$base-spacing-unit: 1.5;
 
-// $grid-gutter: 1.5;
+$grid-gutter: 2;
 
 $base-ui-color: #404040;
 $brand-color: #acded5;
@@ -174,16 +180,16 @@ $font-header-filename-b  : "rokkitt-bold-webfont"; // bold
  * The base color for text, borders, etc.
  */
 $clr-base      : $base-ui-color;
-$clr-base-lt   : #1a1a1a;
-$clr-base-ltr  : lighten($clr-base, 35%);
-$clr-base-ltst : lighten($clr-base, 40%);
+$clr-base-lt   : #a1a1a1;
+$clr-base-ltr  : #e6e6e6;
+$clr-base-ltst : #f5f5f5;
 $clr-base-dk   : darken($clr-base, 10%);
 
 /**
  * The primary non-base color
  */
 $clr-primary      : $brand-color;
-$clr-primary-lt   : lighten($clr-primary, 20%);
+$clr-primary-lt   : lighten($clr-primary, 10%);
 $clr-primary-ltr  : lighten($clr-primary, 35%);
 $clr-primary-ltst : lighten($clr-primary, 40%);
 $clr-primary-dk   : darken($clr-primary, 10%);
@@ -191,7 +197,7 @@ $clr-primary-dk   : darken($clr-primary, 10%);
 /**
  * The secondary non-base color
  */
-$clr-secondary      : #ffdd15;
+$clr-secondary      : #edd54f;
 $clr-secondary-lt   : #ffe12f;
 $clr-secondary-ltr  : lighten($clr-secondary, 35%);
 $clr-secondary-ltst : lighten($clr-secondary, 40%);
@@ -200,7 +206,7 @@ $clr-secondary-dk   : darken($clr-secondary, 10%);
 /**
  * The tertiary non-base color
  */
-$clr-tertiary      : #f27762;
+$clr-tertiary      : #f5795f;
 $clr-tertiary-lt   : #f49f8f;
 $clr-tertiary-ltr  : lighten($clr-tertiary, 35%);
 $clr-tertiary-ltst : lighten($clr-tertiary, 40%);

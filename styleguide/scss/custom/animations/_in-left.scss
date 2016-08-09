@@ -1,0 +1,14 @@
+@keyframes in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+%anim-in-left { animation-name: in-left;}
+.anim-in-left { @extend %anim-in-left;}
+

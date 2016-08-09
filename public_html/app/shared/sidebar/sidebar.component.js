@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var ng2_page_scroll_1 = require('ng2-page-scroll');
 var sidebar_service_1 = require('./sidebar.service');
 var full_height_directive_1 = require('../directives/full-height.directive');
 var full_page_directive_1 = require('../directives/full-page.directive');
 var middle_sidebar_directive_1 = require('./middle-sidebar.directive');
+var svg_icon_system_directive_1 = require('../directives/svg-icon-system.directive');
 var SidebarComponent = (function () {
     function SidebarComponent(sidebarService) {
         this.sidebarService = sidebarService;
@@ -35,8 +37,10 @@ var SidebarComponent = (function () {
             directives: [
                 full_height_directive_1.FullHeightDirective,
                 full_page_directive_1.FullPageDirective,
-                middle_sidebar_directive_1.MiddleSidebarDirective,
-                router_1.ROUTER_DIRECTIVES
+                middle_sidebar_directive_1.AppMenuDirective,
+                router_1.ROUTER_DIRECTIVES,
+                ng2_page_scroll_1.PageScroll,
+                svg_icon_system_directive_1.SvgIconDirective,
             ],
             providers: [sidebar_service_1.SidebarService]
         }), 

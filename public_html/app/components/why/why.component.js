@@ -14,26 +14,39 @@ var sidebar_component_1 = require('../../shared/sidebar/sidebar.component');
 var main_content_component_1 = require('../../shared/main-content/main-content.component');
 var full_height_directive_1 = require('../../shared/directives/full-height.directive');
 var full_page_directive_1 = require('../../shared/directives/full-page.directive');
+var since_directive_1 = require('../../shared/directives/since.directive');
+var chart_directive_1 = require('../../shared/directives/chart.directive');
 var window_service_1 = require('../../shared/services/window.service');
+var why_service_1 = require('./why.service');
 var WhyComponent = (function () {
-    function WhyComponent() {
+    function WhyComponent(whyService) {
+        this.whyService = whyService;
     }
+    WhyComponent.prototype.ngOnInit = function () {
+        this.setSkills();
+    };
+    WhyComponent.prototype.setSkills = function () {
+        this.skills = this.whyService.getSkills();
+    };
     WhyComponent = __decorate([
         core_1.Component({
             selector: 'main',
             templateUrl: 'app/components/why/why.component.html',
             providers: [
-                window_service_1.WindowService
+                window_service_1.WindowService,
+                why_service_1.WhyService
             ],
             directives: [
                 router_1.ROUTER_DIRECTIVES,
                 full_height_directive_1.FullHeightDirective,
                 full_page_directive_1.FullPageDirective,
                 sidebar_component_1.SidebarComponent,
-                main_content_component_1.MainContentComponent
+                since_directive_1.SinceDirective,
+                main_content_component_1.MainContentComponent,
+                chart_directive_1.BarChartDirective
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [why_service_1.WhyService])
     ], WhyComponent);
     return WhyComponent;
 }());

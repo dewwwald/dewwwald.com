@@ -1,21 +1,27 @@
-import { Directive, ElementRef, Input } from '@angular/core';
-import { WindowService } from '../services/window.service';
+import { Directive, ElementRef, Input, HostListener } from '@angular/core';
+import { DocumentService } from '../services/document.service';
 
 @Directive({
   selector: '[myFullHeight]',
   providers: [
-    WindowService
+    DocumentService
   ]
 })
 export class FullHeightDirective
 {
   private el;
-  private window;
+  private doc;
 
-  constructor (el: ElementRef, window: WindowService)
+  @HostListener('window:resize', ['$event'])
+  private _resizeEventListiner()
   {
-    this.window = window.nativeWindow;
+    this.el.style.height = this.doc.innerHeight;
+  }
+
+  constructor (el: ElementRef, doc: DocumentService)
+  {
+    this.doc = doc.nativeDocument;
     this.el = el.nativeElement;
-    this.el.style.height = this.window.innerHeight;
+    this.el.style.height = this.doc.innerHeight;
   }
 }

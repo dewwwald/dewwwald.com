@@ -3,25 +3,23 @@
 \*------------------------------------*/
 %menu-container {
   @include px-and-rem(padding, 1.66 0);
-  @include media-query(portable) { overflow: hidden;}
 }
 
   %menu {
     @extend %list--reset;
     display: block;
     @include px-and-rem(padding, 1.66 0);
-    @include media-query(portable) { display: block;}
   }
 
     %menu__item {
       position: relative;
       display: block;
+      text-align: right;
 
       & > a {
+        position: relative;
         font-family: $font-header-stack;
-        text-align: right;
-        display: block;
-        @extend %fs--h2;
+        display: inline-block;
         color: white;
         text-transform: uppercase;
         line-height: 2.5;
@@ -29,22 +27,27 @@
         @include px-and-rem(padding-left, 2);
         @include px-and-rem(padding-right, 2);
 
+        @extend %fs--h4;
+
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 63%;
+          @include px-and-rem(left, 2);
+          @include px-and-rem(right, 2);
+          border-bottom: 1px solid;
+          color: inherit;
+          opacity: 0;
+        }
+
         &:hover,
-        &:focus {}
+        &:focus {
+          color: $clr-primary-lt;
+        }
 
-        &:active {}
-
-        @include media-query(portable) {
-          // collapse all links on portable
-          // @include menu-anchor-collapse();
-
-          // only show items when grandparent has .is-open-menu
-          // .is-open-menu & {
-          //   max-height: 8em;
-          //   opacity: 1;
-          //   padding-top: .5em;
-          //   padding-bottom: .5em;
-          // }
+        &:active {
+          color: $clr-primary;
         }
       }
 
@@ -57,7 +60,26 @@
         &,
         &:hover,
         &:focus,
-        &:active { cursor: default;}
+        &:active {
+          cursor: default;
+          color: $clr-primary;
+          &:before { opacity: 1;}
+        }
+
+        &[pageScroll] {
+          cursor: cursor;
+          color: white;
+          &:before { opacity: 0;}
+
+          &:hover,
+          &:focus {
+            color: $clr-primary-lt;
+          }
+
+          &:active {
+            color: $clr-primary;
+          }
+        }
       }
     }
     .menu__item--current,
@@ -82,14 +104,6 @@
           min-width: 225px;
           white-space: nowrap;
 
-          // collapse menu__sub links
-          @include menu-anchor-collapse();
-
-          @include media-query(portable) {
-            white-space: normal;
-            min-width: none;
-            padding: 0 1.5em;
-          }
         }
 
         // uncollapse menu__sub links when grandparents are hovered
@@ -100,24 +114,10 @@
           padding-bottom: 1em;
           opacity: 1;
         }
-
-        @include media-query(portable) {
-          display: block;
-          position: relative;
-          margin-left: 1.5em;
-          border: 0;
-          opacity: 1;
-          z-index: 0;
-        }
       }
       .menu__sub { @extend %menu__sub;}
 
         %menu__sub %menu__sub {
           top: 0;
           left: 100%;
-
-          @include media-query(portable) {
-            top: auto;
-            left: auto;
-          }
         }

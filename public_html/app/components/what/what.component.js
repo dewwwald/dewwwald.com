@@ -14,6 +14,10 @@ var sidebar_component_1 = require('../../shared/sidebar/sidebar.component');
 var main_content_component_1 = require('../../shared/main-content/main-content.component');
 var full_height_directive_1 = require('../../shared/directives/full-height.directive');
 var full_page_directive_1 = require('../../shared/directives/full-page.directive');
+var half_page_directive_1 = require('../../shared/directives/half-page.directive');
+var bgc_modifier_directive_1 = require('../../shared/directives/bgc-modifier.directive');
+var slide_hover_directive_1 = require('../../shared/directives/slide-hover.directive');
+var image_cover_directive_1 = require('../../shared/directives/image-cover.directive');
 var window_service_1 = require('../../shared/services/window.service');
 var what_service_1 = require('./what.service');
 var WhatComponent = (function () {
@@ -25,7 +29,6 @@ var WhatComponent = (function () {
     };
     WhatComponent.prototype.setPortfolio = function () {
         this.portfolio = this.whatService.getPortfolioItems();
-        console.log(this.portfolio);
     };
     WhatComponent = __decorate([
         core_1.Component({
@@ -39,8 +42,12 @@ var WhatComponent = (function () {
                 router_1.ROUTER_DIRECTIVES,
                 full_height_directive_1.FullHeightDirective,
                 full_page_directive_1.FullPageDirective,
+                half_page_directive_1.HalfPageDirective,
                 sidebar_component_1.SidebarComponent,
-                main_content_component_1.MainContentComponent
+                main_content_component_1.MainContentComponent,
+                bgc_modifier_directive_1.BgcModifierDirective,
+                image_cover_directive_1.ImageCoverDirective,
+                slide_hover_directive_1.SlideHoverDirective
             ]
         }), 
         __metadata('design:paramtypes', [what_service_1.WhatService])

@@ -1,0 +1,18 @@
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+%anim-flash { animation-name: flash;}
+.anim-flash { @extend %anim-flash;}
+

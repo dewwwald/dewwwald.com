@@ -14,8 +14,26 @@ var FullPageDirective = (function () {
     function FullPageDirective(el, window) {
         this.window = window.nativeWindow;
         this.el = el.nativeElement;
-        this.el.style.height = this.window.innerHeight;
+        this.setHeight();
     }
+    FullPageDirective.prototype._resizeEventListiner = function () {
+        this.setHeight();
+    };
+    FullPageDirective.prototype.setHeight = function () {
+        this.el.style.height = 'auto';
+        if (this.el.offsetHeight < this.window.innerHeight) {
+            this.el.style.height = this.window.innerHeight;
+        }
+        else {
+            this.el.style.minHeight = this.window.innerHeight;
+        }
+    };
+    __decorate([
+        core_1.HostListener('window:resize', ['$event']), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], FullPageDirective.prototype, "_resizeEventListiner", null);
     FullPageDirective = __decorate([
         core_1.Directive({
             selector: '[myFullPage]',

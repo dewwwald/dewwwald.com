@@ -11,12 +11,16 @@
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'symbol-observable':          'node_modules/symbol-observable',
     'rxjs':                       'node_modules/rxjs',
+    'angular2-google-maps/core':  'node_modules/angular2-google-maps/core',
+    'ng2-page-scroll':            'node_modules/ng2-page-scroll',
+    'ng2-charts':                 'node_modules/ng2-charts/',
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
-    // 'components':                 { defaultExtension: 'js' },
-    // 'shared':                     { defaultExtension: 'js' },
+    "ng2-charts":                 { main: "ng2-charts.js", defaultExtension: 'js'},
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
+    'angular2-google-maps/core':  { main: 'index.js',  defaultExtension: 'js' },
+    'ng2-page-scroll':            { main: 'ng2-page-scroll.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'symbol-observable':          { main: 'index.js', defaultExtension: 'js' }

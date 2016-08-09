@@ -20,8 +20,8 @@ var SidebarService = (function () {
             { title: 'Who', link: '/who' },
             { title: 'What', link: '/what' },
             { title: 'Why', link: '/why' },
-            { title: 'When', link: '/when' },
-            { title: 'Where', link: '/where' }
+            { title: 'When', link: '/when-where', hash: 'when' },
+            { title: 'Where', link: '/when-where', hash: 'where' },
         ];
     };
     SidebarService = __decorate([

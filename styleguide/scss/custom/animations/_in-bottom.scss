@@ -1,0 +1,14 @@
+@keyframes in-bottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+%anim-in-bottom { animation-name: in-bottom;}
+.anim-in-bottom { @extend %anim-in-bottom;}
+

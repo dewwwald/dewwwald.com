@@ -8,7 +8,7 @@ import { FullPageDirective } from '../../shared/directives/full-page.directive';
 import { WindowService } from '../../shared/services/window.service';
 
 @Component({
-  selector: 'landing',
+  selector: 'main',
   templateUrl: 'app/components/home/home.component.html',
   providers: [
     WindowService

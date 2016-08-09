@@ -20,7 +20,7 @@ var HomeComponent = (function () {
     }
     HomeComponent = __decorate([
         core_1.Component({
-            selector: 'landing',
+            selector: 'main',
             templateUrl: 'app/components/home/home.component.html',
             providers: [
                 window_service_1.WindowService

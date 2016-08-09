@@ -30,7 +30,7 @@ var LayoutComponent = (function () {
                 full_height_directive_1.FullHeightDirective,
                 full_page_directive_1.FullPageDirective,
                 sidebar_component_1.SidebarComponent,
-                main_content_component_1.MainContentComponent
+                main_content_component_1.MainContentComponent,
             ]
         }), 
         __metadata('design:paramtypes', [])

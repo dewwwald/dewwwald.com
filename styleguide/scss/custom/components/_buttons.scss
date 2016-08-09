@@ -4,11 +4,14 @@
 button { @extend %link--transition;}
 
 %btn {
-  @extend %btn !optional;
-  @extend %link--transition;
   border: 1px solid;
   text-transform: uppercase;
+  font-weight: bold;
   @include px-and-rem(padding, .5 2);
+
+  @extend %btn;
+  @extend %link--transition;
+  @extend %fs--milli;
 
   &[disabled],
   &:disabled {
@@ -24,11 +27,11 @@ button { @extend %link--transition;}
 
 .btn--base {
   @extend %btn;
-  color: $clr-base;
+  color: $clr-base-dk;
 
   &:hover,
   &:focus {
-    color: $clr-base-lt;
+    color: $clr-ntrl-min;
   }
 
   &:active {

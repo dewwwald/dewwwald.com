@@ -9,21 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var window_service_1 = require('../services/window.service');
+var document_service_1 = require('../services/document.service');
 var FullHeightDirective = (function () {
-    function FullHeightDirective(el, window) {
-        this.window = window.nativeWindow;
+    function FullHeightDirective(el, doc) {
+        this.doc = doc.nativeDocument;
         this.el = el.nativeElement;
-        this.el.style.height = this.window.innerHeight;
+        this.el.style.height = this.doc.innerHeight;
     }
+    FullHeightDirective.prototype._resizeEventListiner = function () {
+        this.el.style.height = this.doc.innerHeight;
+    };
+    __decorate([
+        core_1.HostListener('window:resize', ['$event']), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], FullHeightDirective.prototype, "_resizeEventListiner", null);
     FullHeightDirective = __decorate([
         core_1.Directive({
             selector: '[myFullHeight]',
             providers: [
-                window_service_1.WindowService
+                document_service_1.DocumentService
             ]
         }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, window_service_1.WindowService])
+        __metadata('design:paramtypes', [core_1.ElementRef, document_service_1.DocumentService])
     ], FullHeightDirective);
     return FullHeightDirective;
 }());

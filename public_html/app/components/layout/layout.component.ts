@@ -18,7 +18,7 @@ import { WindowService } from '../../shared/services/window.service';
     FullHeightDirective,
     FullPageDirective,
     SidebarComponent,
-    MainContentComponent
+    MainContentComponent,
   ]
 })
 

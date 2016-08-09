@@ -1,41 +1,40 @@
-import { Directive, ElementRef, Input, Renderer, AfterViewChecked } from '@angular/core';
+import { Directive, ElementRef, AfterViewChecked, HostListener } from '@angular/core';
 import { WindowService } from '../services/window.service';
 
 @Directive({
-  selector: '[myMiddleSidebar]',
+  selector: '[appMenu]',
   providers: [
     WindowService,
   ]
 })
-export class MiddleSidebarDirective implements AfterViewChecked
+export class AppMenuDirective implements AfterViewChecked
 {
   private el;
   private window;
-  private renderer;
   private viewChecked;
+
+  @HostListener('window:resize', ['$event'])
+  private _resizeEventListiner()
+  {
+    if (this.window.innerWidth > 481)
+    {
+      this.el.style.top = (this.window.scrollY + this.window.innerHeight/2 - this.el.offsetHeight/2) + "px";
+    }
+  }
 
   ngAfterViewChecked ()
   {
-    if (!this.viewChecked)
+    if (!this.viewChecked && this.window.innerWidth > 481)
     {
       this.viewChecked = true;
       this.el.style.top = (this.window.scrollY + this.window.innerHeight/2 - this.el.offsetHeight/2) + "px";
     }
   }
 
-  constructor (el: ElementRef, window: WindowService, renderer: Renderer)
+  constructor (el: ElementRef, window: WindowService)
   {
-    this.renderer = renderer;
     this.window = window.nativeWindow;
     this.el = el.nativeElement;
     this.viewChecked = false;
-
-    this.renderer.listenGlobal('window', 'scroll', (evt) => {
-      /**
-       * todo, clear call to listenGlobal
-       * by calling the return function - unsubscribe
-       */
-      this.el.style.top = (this.window.scrollY + this.window.innerHeight/2 - this.el.offsetHeight/2) + "px";
-    });
   }
 }

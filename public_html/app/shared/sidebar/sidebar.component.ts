@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
+import { PageScroll } from 'ng2-page-scroll';
 
 import { SidebarService } from './sidebar.service';
 import { FullHeightDirective } from '../directives/full-height.directive';
 import { FullPageDirective } from '../directives/full-page.directive';
-import { MiddleSidebarDirective } from './middle-sidebar.directive';
+import { AppMenuDirective } from './middle-sidebar.directive';
+import { SvgIconDirective } from '../directives/svg-icon-system.directive';
+
+
 
 @Component({
   selector: 'sidebar',
@@ -13,8 +16,10 @@ import { MiddleSidebarDirective } from './middle-sidebar.directive';
   directives: [
     FullHeightDirective,
     FullPageDirective,
-    MiddleSidebarDirective,
-    ROUTER_DIRECTIVES
+    AppMenuDirective,
+    ROUTER_DIRECTIVES,
+    PageScroll,
+    SvgIconDirective,
   ],
   providers: [SidebarService]
 })
