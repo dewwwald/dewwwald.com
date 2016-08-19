@@ -1,4 +1,4 @@
-import { Directive, Input, OnInit, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { SvgIconsSystemService } from '../services/svg-icon-system.service';
 
 @Directive({
@@ -12,18 +12,21 @@ export class SvgIconDirective {
   private el;
   private svgSystem;
 
-  @Input('icon') icon;
-  @Input('cssClass') cssClass;
-
-  ngOnInit()
-  {
-    console.log(this.icon);
-    this.iconDef = this.svgSystem.getIcon('github')
-    this.el.innerHTML = '<g><path d="' + this.iconDef + '"></path></g>'
-  }
+  @Input('iconName') iconName;
 
   constructor (el: ElementRef, svgSystem: SvgIconsSystemService) {
     this.el = el.nativeElement;
     this.svgSystem = svgSystem;
   }
+
+  icons()
+  {
+    console.log(this.iconName);
+    this.iconDef = this.svgSystem.getIcon('github')
+    this.el.innerHTML = '<g><path d="' + this.iconDef + '"></path></g>'
+  }
+  ngOnInit()
+  {
+  }
+
 }

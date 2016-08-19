@@ -15,19 +15,17 @@ var SvgIconDirective = (function () {
         this.el = el.nativeElement;
         this.svgSystem = svgSystem;
     }
-    SvgIconDirective.prototype.ngOnInit = function () {
-        console.log(this.icon);
+    SvgIconDirective.prototype.icons = function () {
+        console.log(this.iconName);
         this.iconDef = this.svgSystem.getIcon('github');
         this.el.innerHTML = '<g><path d="' + this.iconDef + '"></path></g>';
     };
+    SvgIconDirective.prototype.ngOnInit = function () {
+    };
     __decorate([
-        core_1.Input('icon'), 
+        core_1.Input('iconName'), 
         __metadata('design:type', Object)
-    ], SvgIconDirective.prototype, "icon", void 0);
-    __decorate([
-        core_1.Input('cssClass'), 
-        __metadata('design:type', Object)
-    ], SvgIconDirective.prototype, "cssClass", void 0);
+    ], SvgIconDirective.prototype, "iconName", void 0);
     SvgIconDirective = __decorate([
         core_1.Directive({
             selector: '[iconDirr]',
