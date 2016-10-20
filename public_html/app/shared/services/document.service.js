@@ -9,13 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var browser_1 = require('@angular/platform-browser/src/facade/browser');
+var platform_browser_1 = require('@angular/platform-browser');
 var DocumentService = (function () {
     function DocumentService() {
     }
     Object.defineProperty(DocumentService.prototype, "nativeDocument", {
         get: function () {
-            return browser_1.document;
+            return platform_browser_1.DOCUMENT;
         },
         enumerable: true,
         configurable: true

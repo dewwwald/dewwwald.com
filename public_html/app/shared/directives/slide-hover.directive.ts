@@ -33,7 +33,6 @@ export class SlideHoverDirective
     var closerToRight = rightDiff < leftDiff && rightDiff < bottomDiff && rightDiff < topDiff;
     var closerToLeft =  leftDiff < bottomDiff && leftDiff < rightDiff && leftDiff < topDiff;
 
-    // Test the side of triangle and act accodingly
     if (closerToBottom)
     {
       this.el.className += ' portfolio-item-in-bottom';
@@ -46,7 +45,7 @@ export class SlideHoverDirective
     {
       this.el.className += ' portfolio-item-in-left';
     }
-    else // implied -> (closerToTop)
+    else
     {
       this.el.className += ' portfolio-item-in-top';
     }
@@ -72,7 +71,6 @@ export class SlideHoverDirective
     var closerToRight = rightDiff < leftDiff && rightDiff < bottomDiff && rightDiff < topDiff;
     var closerToLeft =  leftDiff < bottomDiff && leftDiff < rightDiff && leftDiff < topDiff;
 
-    // Test the side of triangle and act accodingly
     if (closerToBottom)
     {
       this.el.className = this.el.className.replace('portfolio-item-hold', '') + ' portfolio-item-out-bottom';
@@ -85,7 +83,7 @@ export class SlideHoverDirective
     {
       this.el.className = this.el.className.replace('portfolio-item-hold', '') + ' portfolio-item-out-left';
     }
-    else // implied -> (closerToTop)
+    else
     {
       this.el.className = this.el.className.replace('portfolio-item-hold', '') + ' portfolio-item-out-top';
     }

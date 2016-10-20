@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core'
-import { document } from '@angular/platform-browser/src/facade/browser';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Injectable()
 export class DocumentService
 {
     constructor(){}
 
-    get nativeDocument() : Document
+    get nativeDocument()
     {
-        return document;
+        return DOCUMENT;
     }
 }

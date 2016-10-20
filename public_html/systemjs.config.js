@@ -1,57 +1,41 @@
 /**
- * System configuration for Angular 2 samples
+ * System configuration for Angular samples
  * Adjust as necessary for your application needs.
  */
-(function(global) {
-  // map tells the System loader where to look for things
-  var map = {
-    'app':                        'app', // 'dist',
-    '@angular':                   'node_modules/@angular',
-    '@angular/router':            'node_modules/@angular/router',
-    'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-    'symbol-observable':          'node_modules/symbol-observable',
-    'rxjs':                       'node_modules/rxjs',
-    'angular2-google-maps/core':  'node_modules/angular2-google-maps/core',
-    'ng2-page-scroll':            'node_modules/ng2-page-scroll',
-    'ng2-charts':                 'node_modules/ng2-charts/',
-  };
-  // packages tells the System loader how to load when no filename and/or no extension
-  var packages = {
-    "ng2-charts":                 { main: "ng2-charts.js", defaultExtension: 'js'},
-    'app':                        { main: 'main.js',  defaultExtension: 'js' },
-    'angular2-google-maps/core':  { main: 'index.js',  defaultExtension: 'js' },
-    'ng2-page-scroll':            { main: 'ng2-page-scroll.js',  defaultExtension: 'js' },
-    'rxjs':                       { defaultExtension: 'js' },
-    'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
-    'symbol-observable':          { main: 'index.js', defaultExtension: 'js' }
-  };
-  var ngPackageNames = [
-    'common',
-    'compiler',
-    'core',
-    'forms',
-    'http',
-    'platform-browser',
-    'platform-browser-dynamic',
-    'router',
-    'router-deprecated',
-    'upgrade',
-  ];
-  // Individual files (~300 requests):
-  function packIndex(pkgName) {
-    packages['@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
-  }
-  // Bundled (~40 requests):
-  function packUmd(pkgName) {
-    packages['@angular/'+pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
-  }
-  // Most environments should use UMD; some (Karma) need the individual index files
-  var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
-  // Add package entries for angular packages
-  ngPackageNames.forEach(setPackageConfig);
-  var config = {
-    map: map,
-    packages: packages
-  };
-  System.config(config);
+(function (global) {
+  System.config({
+    paths: {
+      'npm:': 'node_modules/'
+    },
+    map: {
+      app: 'app',
+      '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+      '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+      '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+      '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+      '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+      '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
+      '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      'rxjs':                      'npm:rxjs',
+      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'ng2-page-scroll':            'npm:ng2-page-scroll',
+      'ng2-charts':                 'npm:ng2-charts/',
+    },
+    packages: {
+      app: {
+        main: './main.js',
+        defaultExtension: 'js'
+      },
+      rxjs: {
+        defaultExtension: 'js'
+      },
+      'angular-in-memory-web-api': {
+        main: './index.js',
+        defaultExtension: 'js'
+      },
+      'ng2-charts':                 { main: "ng2-charts.js", defaultExtension: 'js'},
+      'ng2-page-scroll':            { main: 'ng2-page-scroll.js',  defaultExtension: 'js' },
+    }
+  });
 })(this);

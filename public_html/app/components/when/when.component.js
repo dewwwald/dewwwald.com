@@ -9,11 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var core_2 = require('angular2-google-maps/core');
-var sidebar_component_1 = require('../../shared/sidebar/sidebar.component');
-var main_content_component_1 = require('../../shared/main-content/main-content.component');
-var full_page_directive_1 = require('../../shared/directives/full-page.directive');
 var window_service_1 = require('../../shared/services/window.service');
 var WhenComponent = (function () {
     function WhenComponent() {
@@ -29,22 +24,7 @@ var WhenComponent = (function () {
             templateUrl: 'app/components/when/when.component.html',
             providers: [
                 window_service_1.WindowService,
-                core_2.GOOGLE_MAPS_PROVIDERS,
-                core_2.GoogleMapsAPIWrapper,
-                core_2.CircleManager,
-                core_2.provideLazyMapsAPILoaderConfig({
-                    apiKey: 'AIzaSyAOtb8zwoH5NoGfsPBCLpW9pByUnWSGHVw'
-                })
             ],
-            directives: [
-                core_2.GOOGLE_MAPS_DIRECTIVES,
-                core_2.SebmGoogleMap,
-                core_2.SebmGoogleMapCircle,
-                router_1.ROUTER_DIRECTIVES,
-                full_page_directive_1.FullPageDirective,
-                sidebar_component_1.SidebarComponent,
-                main_content_component_1.MainContentComponent
-            ]
         }), 
         __metadata('design:paramtypes', [])
     ], WhenComponent);

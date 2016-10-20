@@ -28,7 +28,6 @@ var SlideHoverDirective = (function () {
         var closerToBottom = bottomDiff < leftDiff && bottomDiff < rightDiff && bottomDiff < topDiff;
         var closerToRight = rightDiff < leftDiff && rightDiff < bottomDiff && rightDiff < topDiff;
         var closerToLeft = leftDiff < bottomDiff && leftDiff < rightDiff && leftDiff < topDiff;
-        // Test the side of triangle and act accodingly
         if (closerToBottom) {
             this.el.className += ' portfolio-item-in-bottom';
         }
@@ -56,7 +55,6 @@ var SlideHoverDirective = (function () {
         var closerToBottom = bottomDiff < leftDiff && bottomDiff < rightDiff && bottomDiff < topDiff;
         var closerToRight = rightDiff < leftDiff && rightDiff < bottomDiff && rightDiff < topDiff;
         var closerToLeft = leftDiff < bottomDiff && leftDiff < rightDiff && leftDiff < topDiff;
-        // Test the side of triangle and act accodingly
         if (closerToBottom) {
             this.el.className = this.el.className.replace('portfolio-item-hold', '') + ' portfolio-item-out-bottom';
         }

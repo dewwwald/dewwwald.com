@@ -9,13 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var browser_1 = require('@angular/platform-browser/src/facade/browser');
 var WindowService = (function () {
     function WindowService() {
     }
     Object.defineProperty(WindowService.prototype, "nativeWindow", {
         get: function () {
-            return browser_1.window;
+            return window;
         },
         enumerable: true,
         configurable: true

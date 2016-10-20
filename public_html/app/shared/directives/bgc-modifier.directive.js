@@ -9,10 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-/**
- * #TODO
- * - Find a way to implement colors for both sass and js
- */
 var BgcModifierDirective = (function () {
     function BgcModifierDirective(el) {
         this.el = el.nativeElement;
@@ -46,7 +42,6 @@ var BgcModifierDirective = (function () {
         });
     };
     BgcModifierDirective.prototype.setColors = function () {
-        // no service yet
         this.colors = [
             { class: 'bgc--secondary', hex: '#edd54f' },
             { class: 'bgc--primary', hex: '#acded5' },

@@ -9,13 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var sidebar_component_1 = require('../../shared/sidebar/sidebar.component');
-var main_content_component_1 = require('../../shared/main-content/main-content.component');
-var full_height_directive_1 = require('../../shared/directives/full-height.directive');
-var full_page_directive_1 = require('../../shared/directives/full-page.directive');
-var since_directive_1 = require('../../shared/directives/since.directive');
-var chart_directive_1 = require('../../shared/directives/chart.directive');
+var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
 var window_service_1 = require('../../shared/services/window.service');
 var why_service_1 = require('./why.service');
 var WhyComponent = (function () {
@@ -33,18 +28,11 @@ var WhyComponent = (function () {
             selector: 'main',
             templateUrl: 'app/components/why/why.component.html',
             providers: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
                 window_service_1.WindowService,
                 why_service_1.WhyService
             ],
-            directives: [
-                router_1.ROUTER_DIRECTIVES,
-                full_height_directive_1.FullHeightDirective,
-                full_page_directive_1.FullPageDirective,
-                sidebar_component_1.SidebarComponent,
-                since_directive_1.SinceDirective,
-                main_content_component_1.MainContentComponent,
-                chart_directive_1.BarChartDirective
-            ]
         }), 
         __metadata('design:paramtypes', [why_service_1.WhyService])
     ], WhyComponent);

@@ -1,10 +1,5 @@
 import { Directive, OnInit, ElementRef, Input } from '@angular/core';
 
-/**
- * #TODO
- * - Find a way to implement colors for both sass and js
- */
-
 @Directive({
   selector: '[bgcModifier]'
 })
@@ -55,7 +50,6 @@ export class BgcModifierDirective
 
   setColors ()
   {
-    // no service yet
     this.colors = [
       {class: 'bgc--secondary', hex: '#edd54f'},
       {class: 'bgc--primary', hex: '#acded5'},

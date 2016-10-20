@@ -10,25 +10,7 @@
 </section>
 <section class="bgc--base-ltr soft--large">
   <div class="content--left">
-    <form action="" class="gw">
-      <fieldset class="g g-1/2">
-        <div>
-          <label for="">Name</label>
-          <input type="text">
-        </div>
-        <div>
-          <label for="">Email</label>
-          <input type="text">
-        </div>
-      </fieldset>
-      <fieldset class="g g-1/2">
-        <label for="">Message</label>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-      </fieldset>
-      <fieldset class="g g-1/1 text--right soft--top">
-        <button type="submit">SEND ME</button>
-      </fieldset>
-    </form>
+    <form-contact></form-contact>
   </div>
 </section>
 <section id="where" myFullPage class="google-map-wrapper">
@@ -36,7 +18,7 @@
     <h1>where_ <small>am I located?</small></h1>
     <p class="flush--bottom">I am currently living in Johannesburg, South Africa. But that’s the cool thing about what I do, I can literally do it from anywhere in the world. Awesome, right?</p>
   </div>
-  <sebm-google-map [disableDefaultUI]="true" [scrollwheel]='false' [zoom]="10" [latitude]="lat" [longitude]="lng" [styles]="mapStyles">
+  <!--<sebm-google-map [disableDefaultUI]="true" [scrollwheel]='false' [zoom]="10" [latitude]="lat" [longitude]="lng" [styles]="mapStyles">
 
     <sebm-google-map-circle [latitude]="lat - 0.1" [longitude]="lng - 0.05"
         [radius]="15000"
@@ -45,5 +27,5 @@
         [editable]="false">
     </sebm-google-map-circle>
 
-  </sebm-google-map>
+  </sebm-google-map>-->
 </section>

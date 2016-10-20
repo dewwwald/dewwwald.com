@@ -6,7 +6,6 @@
     <li routerLinkActive="menu__item--current" class="menu__item" *ngFor="let navItem of navItems">
         <a *ngIf="navItem.hash == undefined" routerLink="{{navItem.link}}">{{ navItem.title }}</a>
         <a *ngIf="navItem.hash != undefined"
-          pageScroll [pageScrollDuration]="400"
           routerLink="{{navItem.link}}"
           href="#{{navItem.hash}}"
         >{{ navItem.title }}</a>
@@ -18,3 +17,4 @@
     <a iconDirr [iconName]="twitter"></a>
   </div>
 </nav>
+          <!-- pageScroll [pageScrollDuration]="400" -->
