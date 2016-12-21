@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
 var DocumentService = (function () {
     function DocumentService() {
     }
@@ -20,11 +20,11 @@ var DocumentService = (function () {
         enumerable: true,
         configurable: true
     });
-    DocumentService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], DocumentService);
     return DocumentService;
 }());
+DocumentService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], DocumentService);
 exports.DocumentService = DocumentService;
 //# sourceMappingURL=document.service.js.map

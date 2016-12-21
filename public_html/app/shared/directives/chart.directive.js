@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var window_service_1 = require('../services/window.service');
-var bar_service_1 = require('../services/bar.service');
+var core_1 = require("@angular/core");
+var window_service_1 = require("../services/window.service");
+var bar_service_1 = require("../services/bar.service");
 var BarChartDirective = (function () {
     function BarChartDirective(el, window, graphService) {
         this.window = window.nativeWindow;
@@ -62,24 +62,24 @@ var BarChartDirective = (function () {
         this.setupGraph();
         this.drawBars();
     };
-    __decorate([
-        core_1.Input('heightRatio'), 
-        __metadata('design:type', Object)
-    ], BarChartDirective.prototype, "heightRatio", void 0);
-    __decorate([
-        core_1.Input('lengths'), 
-        __metadata('design:type', Object)
-    ], BarChartDirective.prototype, "lengths", void 0);
-    BarChartDirective = __decorate([
-        core_1.Directive({
-            selector: '[barChart]',
-            providers: [
-                bar_service_1.GraphService
-            ]
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, window_service_1.WindowService, bar_service_1.GraphService])
-    ], BarChartDirective);
     return BarChartDirective;
 }());
+__decorate([
+    core_1.Input('heightRatio'),
+    __metadata("design:type", Object)
+], BarChartDirective.prototype, "heightRatio", void 0);
+__decorate([
+    core_1.Input('lengths'),
+    __metadata("design:type", Object)
+], BarChartDirective.prototype, "lengths", void 0);
+BarChartDirective = __decorate([
+    core_1.Directive({
+        selector: '[barChart]',
+        providers: [
+            bar_service_1.GraphService
+        ]
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef, window_service_1.WindowService, bar_service_1.GraphService])
+], BarChartDirective);
 exports.BarChartDirective = BarChartDirective;
 //# sourceMappingURL=chart.directive.js.map

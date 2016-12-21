@@ -19,9 +19,7 @@ button { @extend %link--transition;}
     &,
     &:hover,
     &:focus,
-    &:active {
-
-    }
+    &:active {}
   }
 }
 
@@ -32,9 +30,12 @@ button { @extend %link--transition;}
   &:hover,
   &:focus {
     color: $clr-ntrl-min;
+    background-color: $clr-base-dk;
+    border-color: $clr-base-dk;
   }
 
   &:active {
+    background-color: transparent;
     color: $clr-base-dk;
   }
 }

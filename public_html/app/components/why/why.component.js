@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var window_service_1 = require('../../shared/services/window.service');
-var why_service_1 = require('./why.service');
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
+var window_service_1 = require("../../shared/services/window.service");
+var why_service_1 = require("./why.service");
 var WhyComponent = (function () {
     function WhyComponent(whyService) {
         this.whyService = whyService;
@@ -23,20 +23,20 @@ var WhyComponent = (function () {
     WhyComponent.prototype.setSkills = function () {
         this.skills = this.whyService.getSkills();
     };
-    WhyComponent = __decorate([
-        core_1.Component({
-            selector: 'main',
-            templateUrl: 'app/components/why/why.component.html',
-            providers: [
-                platform_browser_1.BrowserModule,
-                forms_1.FormsModule,
-                window_service_1.WindowService,
-                why_service_1.WhyService
-            ],
-        }), 
-        __metadata('design:paramtypes', [why_service_1.WhyService])
-    ], WhyComponent);
     return WhyComponent;
 }());
+WhyComponent = __decorate([
+    core_1.Component({
+        selector: 'main',
+        templateUrl: 'app/components/why/why.component.html',
+        providers: [
+            platform_browser_1.BrowserModule,
+            forms_1.FormsModule,
+            window_service_1.WindowService,
+            why_service_1.WhyService
+        ],
+    }),
+    __metadata("design:paramtypes", [why_service_1.WhyService])
+], WhyComponent);
 exports.WhyComponent = WhyComponent;
 //# sourceMappingURL=why.component.js.map

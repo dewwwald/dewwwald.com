@@ -1,22 +1,21 @@
-{{diagnostic}}
-<div  [hidden]="submitted">
+<div [hidden]="submitted">
   <form *ngIf="active" (ngSubmit)="onSubmit()" #loginForm="ngForm" class="gw">
     <fieldset class="g g-1/2">
       <div>
         <label for="name">Name</label>
-        <input required id="name" [(ngModel)]="model.name" (ngModelChange)="model.name = $event" name="name" type="text">
+        <input required id="name" placeholder="your name" [(ngModel)]="model.name" (ngModelChange)="model.name = $event" name="name" type="text">
       </div>
       <div>
         <label for="email">Email</label>
-        <input required id="email" [(ngModel)]="model.email" (ngModelChange)="model.email = $event" name="email" type="text">
+        <input required id="email" placeholder="your.email@domain.com" [(ngModel)]="model.email" (ngModelChange)="model.email = $event" name="email" type="text">
       </div>
     </fieldset>
     <fieldset class="g g-1/2">
       <label for="">Message</label>
-      <textarea required id="message" [(ngModel)]="model.message" (ngModelChange)="model.message = $event" name="message" cols="30" rows="10"></textarea>
+      <textarea required id="message" placeholder="your message" [(ngModel)]="model.message" (ngModelChange)="model.message = $event" name="message" cols="30" rows="10"></textarea>
     </fieldset>
     <fieldset class="g g-1/1 text--left soft--top">
-      <button [disabled]="!loginForm.form.valid" class="btn--primary" type="submit">SEND ME</button>
+      <button [disabled]="!loginForm.form.valid" class="btn--base" type="submit">SEND ME</button>
     </fieldset>
   </form>
 </div>
@@ -38,7 +37,7 @@
       <div>{{ model.message }}</div>
     </fieldset>
     <fieldset class="g g-1/1 text--left soft--top">
-      <button class="btn btn-default" (click)="submitted=false">Edit</button>
+      <button class="btn btn--base" (click)="submitted=false">Edit</button>
     </fieldset>
   </div>
 </div>

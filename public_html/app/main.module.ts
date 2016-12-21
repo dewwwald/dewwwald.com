@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { RouterModule }   from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
 
 // import { Ng2PageScrollModule } from 'ng2-page-scroll';
 
@@ -34,6 +35,7 @@ import { AppMenuDirective } from './shared/sidebar/middle-sidebar.directive';
     // Ng2PageScrollModule,
     RouterModule.forRoot(routes),
     FormsModule,
+    HttpModule,
   ],
   declarations: [
     LayoutComponent,

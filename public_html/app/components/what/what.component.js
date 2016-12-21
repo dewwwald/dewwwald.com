@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var window_service_1 = require('../../shared/services/window.service');
-var what_service_1 = require('./what.service');
+var core_1 = require("@angular/core");
+var window_service_1 = require("../../shared/services/window.service");
+var what_service_1 = require("./what.service");
 var WhatComponent = (function () {
     function WhatComponent(whatService) {
         this.whatService = whatService;
@@ -22,18 +22,18 @@ var WhatComponent = (function () {
         this.portfolio = this.whatService.getPortfolioItems();
         console.log(this.portfolio);
     };
-    WhatComponent = __decorate([
-        core_1.Component({
-            selector: 'main',
-            templateUrl: 'app/components/what/what.component.html',
-            providers: [
-                window_service_1.WindowService,
-                what_service_1.WhatService
-            ]
-        }), 
-        __metadata('design:paramtypes', [what_service_1.WhatService])
-    ], WhatComponent);
     return WhatComponent;
 }());
+WhatComponent = __decorate([
+    core_1.Component({
+        selector: 'main',
+        templateUrl: 'app/components/what/what.component.html',
+        providers: [
+            window_service_1.WindowService,
+            what_service_1.WhatService
+        ]
+    }),
+    __metadata("design:paramtypes", [what_service_1.WhatService])
+], WhatComponent);
 exports.WhatComponent = WhatComponent;
 //# sourceMappingURL=what.component.js.map

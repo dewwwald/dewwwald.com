@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var BgcModifierDirective = (function () {
     function BgcModifierDirective(el) {
         this.el = el.nativeElement;
@@ -48,17 +48,17 @@ var BgcModifierDirective = (function () {
             { class: 'bgc--tertiary', hex: '#f5795f' }
         ];
     };
-    __decorate([
-        core_1.Input('bgcModifier'), 
-        __metadata('design:type', Object)
-    ], BgcModifierDirective.prototype, "colorPar", void 0);
-    BgcModifierDirective = __decorate([
-        core_1.Directive({
-            selector: '[bgcModifier]'
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
-    ], BgcModifierDirective);
     return BgcModifierDirective;
 }());
+__decorate([
+    core_1.Input('bgcModifier'),
+    __metadata("design:type", Object)
+], BgcModifierDirective.prototype, "colorPar", void 0);
+BgcModifierDirective = __decorate([
+    core_1.Directive({
+        selector: '[bgcModifier]'
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef])
+], BgcModifierDirective);
 exports.BgcModifierDirective = BgcModifierDirective;
 //# sourceMappingURL=bgc-modifier.directive.js.map

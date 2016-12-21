@@ -1,4 +1,4 @@
-export class LoginForm {
+export class ContactForm {
   constructor(
     public name: string,
     public email: string,

@@ -9,26 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var SidebarService = (function () {
-    function SidebarService() {
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/toPromise");
+var MailableService = (function () {
+    function MailableService(http) {
+        this.http = http;
     }
-    SidebarService.prototype.getLogoUrl = function () {
-        return '/assets/img/web-engineer-dewwwald-02.svg';
+    MailableService.prototype.sendMail = function (postLink, message) {
+        return this.http.post(postLink, message)
+            .toPromise()
+            .then(function (response) { return console.log(response.json().data); });
+        // .catch(this.handleError);
     };
-    SidebarService.prototype.getNavItems = function () {
-        return [
-            { title: 'Who', link: '/who' },
-            { title: 'What', link: '/what' },
-            { title: 'Why', link: '/why' },
-            { title: 'When', link: '/when-where', hash: 'when' },
-            { title: 'Where', link: '/when-where', hash: 'where' },
-        ];
-    };
-    return SidebarService;
+    return MailableService;
 }());
-SidebarService = __decorate([
+MailableService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
-], SidebarService);
-exports.SidebarService = SidebarService;
-//# sourceMappingURL=sidebar.service.js.map
+    __metadata("design:paramtypes", [http_1.Http])
+], MailableService);
+exports.MailableService = MailableService;
+//# sourceMappingURL=mailable.service.js.map

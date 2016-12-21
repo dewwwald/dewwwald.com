@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var sidebar_service_1 = require('./sidebar.service');
+var core_1 = require("@angular/core");
+var sidebar_service_1 = require("./sidebar.service");
 var SidebarComponent = (function () {
     function SidebarComponent(sidebarService) {
         this.sidebarService = sidebarService;
@@ -24,15 +24,15 @@ var SidebarComponent = (function () {
     SidebarComponent.prototype.getNavItems = function () {
         this.navItems = this.sidebarService.getNavItems();
     };
-    SidebarComponent = __decorate([
-        core_1.Component({
-            selector: 'sidebar',
-            templateUrl: 'app/shared/sidebar/sidebar.component.html',
-            providers: [sidebar_service_1.SidebarService]
-        }), 
-        __metadata('design:paramtypes', [sidebar_service_1.SidebarService])
-    ], SidebarComponent);
     return SidebarComponent;
 }());
+SidebarComponent = __decorate([
+    core_1.Component({
+        selector: 'sidebar',
+        templateUrl: 'app/shared/sidebar/sidebar.component.html',
+        providers: [sidebar_service_1.SidebarService]
+    }),
+    __metadata("design:paramtypes", [sidebar_service_1.SidebarService])
+], SidebarComponent);
 exports.SidebarComponent = SidebarComponent;
 //# sourceMappingURL=sidebar.component.js.map

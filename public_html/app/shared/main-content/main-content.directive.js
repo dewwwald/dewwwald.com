@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var window_service_1 = require('../services/window.service');
-var main_content_service_1 = require('./main-content.service');
+var core_1 = require("@angular/core");
+var window_service_1 = require("../services/window.service");
+var main_content_service_1 = require("./main-content.service");
 var AspectsDirective = (function () {
     function AspectsDirective(el, window, mainContentService) {
         this.checked = false;
@@ -130,17 +130,17 @@ var AspectsDirective = (function () {
             this.loop(3000, 'textOutIn');
         }
     };
-    AspectsDirective = __decorate([
-        core_1.Directive({
-            selector: '[aspects]',
-            providers: [
-                window_service_1.WindowService,
-                main_content_service_1.MainContentService
-            ]
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, window_service_1.WindowService, main_content_service_1.MainContentService])
-    ], AspectsDirective);
     return AspectsDirective;
 }());
+AspectsDirective = __decorate([
+    core_1.Directive({
+        selector: '[aspects]',
+        providers: [
+            window_service_1.WindowService,
+            main_content_service_1.MainContentService
+        ]
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef, window_service_1.WindowService, main_content_service_1.MainContentService])
+], AspectsDirective);
 exports.AspectsDirective = AspectsDirective;
 //# sourceMappingURL=main-content.directive.js.map

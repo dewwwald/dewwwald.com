@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var GraphService = (function () {
     function GraphService() {
         this.bars = [
@@ -29,11 +29,11 @@ var GraphService = (function () {
     GraphService.prototype.getBar = function () {
         return this.bars;
     };
-    GraphService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], GraphService);
     return GraphService;
 }());
+GraphService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], GraphService);
 exports.GraphService = GraphService;
 //# sourceMappingURL=bar.service.js.map

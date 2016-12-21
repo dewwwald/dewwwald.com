@@ -8,22 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var main_content_service_1 = require('./main-content.service');
+var core_1 = require("@angular/core");
+var main_content_service_1 = require("./main-content.service");
 var MainContentComponent = (function () {
     function MainContentComponent(mainContentService) {
         this.mainContentService = mainContentService;
     }
     MainContentComponent.prototype.ngOnInit = function () { };
-    MainContentComponent = __decorate([
-        core_1.Component({
-            selector: 'persona',
-            templateUrl: 'app/shared/main-content/main-content.component.html',
-            providers: [main_content_service_1.MainContentService]
-        }), 
-        __metadata('design:paramtypes', [main_content_service_1.MainContentService])
-    ], MainContentComponent);
     return MainContentComponent;
 }());
+MainContentComponent = __decorate([
+    core_1.Component({
+        selector: 'persona',
+        templateUrl: 'app/shared/main-content/main-content.component.html',
+        providers: [main_content_service_1.MainContentService]
+    }),
+    __metadata("design:paramtypes", [main_content_service_1.MainContentService])
+], MainContentComponent);
 exports.MainContentComponent = MainContentComponent;
 //# sourceMappingURL=main-content.component.js.map

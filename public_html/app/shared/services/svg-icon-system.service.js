@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var SvgIconsSystemService = (function () {
     function SvgIconsSystemService() {
         this.icons = {
@@ -20,11 +20,11 @@ var SvgIconsSystemService = (function () {
     SvgIconsSystemService.prototype.getIcon = function ($icon) {
         return this.icons[$icon];
     };
-    SvgIconsSystemService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], SvgIconsSystemService);
     return SvgIconsSystemService;
 }());
+SvgIconsSystemService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], SvgIconsSystemService);
 exports.SvgIconsSystemService = SvgIconsSystemService;
 //# sourceMappingURL=svg-icon-system.service.js.map

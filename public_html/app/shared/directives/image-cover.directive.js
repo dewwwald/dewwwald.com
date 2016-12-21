@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var window_service_1 = require('../services/window.service');
+var core_1 = require("@angular/core");
+var window_service_1 = require("../services/window.service");
 var ImageCoverDirective = (function () {
     function ImageCoverDirective(el, window) {
         this.window = window.nativeWindow;
@@ -35,26 +35,26 @@ var ImageCoverDirective = (function () {
         this.el.style.zIndex = this.zIndex;
         this.imageCover();
     };
-    __decorate([
-        core_1.Input('zIndex'), 
-        __metadata('design:type', Number)
-    ], ImageCoverDirective.prototype, "zIndex", void 0);
-    __decorate([
-        core_1.HostListener('window:resize', ['$event']), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], ImageCoverDirective.prototype, "_resizeEventListiner", null);
-    ImageCoverDirective = __decorate([
-        core_1.Directive({
-            selector: '[imageCover]',
-            providers: [
-                window_service_1.WindowService
-            ]
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef, window_service_1.WindowService])
-    ], ImageCoverDirective);
     return ImageCoverDirective;
 }());
+__decorate([
+    core_1.Input('zIndex'),
+    __metadata("design:type", Number)
+], ImageCoverDirective.prototype, "zIndex", void 0);
+__decorate([
+    core_1.HostListener('window:resize', ['$event']),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ImageCoverDirective.prototype, "_resizeEventListiner", null);
+ImageCoverDirective = __decorate([
+    core_1.Directive({
+        selector: '[imageCover]',
+        providers: [
+            window_service_1.WindowService
+        ]
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef, window_service_1.WindowService])
+], ImageCoverDirective);
 exports.ImageCoverDirective = ImageCoverDirective;
 //# sourceMappingURL=image-cover.directive.js.map

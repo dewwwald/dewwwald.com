@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var MainContentService = (function () {
     function MainContentService() {
         this.index = 0;
@@ -56,11 +56,11 @@ var MainContentService = (function () {
             [{ value: 'Lorem ipsum dolor sit amet', type: 'text' }]
         ];
     };
-    MainContentService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], MainContentService);
     return MainContentService;
 }());
+MainContentService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], MainContentService);
 exports.MainContentService = MainContentService;
 //# sourceMappingURL=main-content.service.js.map

@@ -1,29 +1,40 @@
 import { Component, Inject } from '@angular/core';
 
-import { LoginForm }    from '../../model/login-form.model';
+import { ContactForm } from '../../model/contact-form.model';
 
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { MailableService } from '../services/mailable.service';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'form-contact',
+  providers: [
+    MailableService,
+  ],
   templateUrl: 'app/shared/form-content/form-content.component.html',
 })
 export class FormContactComponent
 {
-  model = new LoginForm('Your name', 'Your email address', 'Your message');
+  model = new ContactForm('Your name', 'Your email address', 'Your message');
   submitted = false;
   active = true;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() {
+    this.submitted = true;
+    var emailMessage = 'contacted from website<br>'+
+      '   name: '+this.model.name+'<br>'+
+      '  email: '+this.model.email+'<br>'+
+      'message: '+this.model.message+'<br>';
+    this.mailable.sendMail('/api/mail/contact', {message: emailMessage});
+  }
 
-  newHero() {
-    this.model = new LoginForm('', '', '');
+  newContact() {
+    this.model = new ContactForm('', '', '');
     this.active = false;
     setTimeout(() => this.active = true, 0);
   }
 
-  constructor () {}
-
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
+  constructor (private mailable: MailableService) {
+    this.newContact();
+  }
 }

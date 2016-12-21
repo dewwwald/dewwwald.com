@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var window_service_1 = require('../services/window.service');
+var core_1 = require("@angular/core");
+var window_service_1 = require("../services/window.service");
 var SinceDirective = (function () {
     function SinceDirective(el) {
         this.el = el.nativeElement;
@@ -49,16 +49,16 @@ var SinceDirective = (function () {
         }
         this.el.innerHTML = value;
     };
-    SinceDirective = __decorate([
-        core_1.Directive({
-            selector: '[since]',
-            providers: [
-                window_service_1.WindowService
-            ]
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
-    ], SinceDirective);
     return SinceDirective;
 }());
+SinceDirective = __decorate([
+    core_1.Directive({
+        selector: '[since]',
+        providers: [
+            window_service_1.WindowService
+        ]
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef])
+], SinceDirective);
 exports.SinceDirective = SinceDirective;
 //# sourceMappingURL=since.directive.js.map
