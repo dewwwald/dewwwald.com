@@ -12,6 +12,9 @@ export class ImageCoverDirective
   private el;
   private window;
   private orientation;
+  private imageRatio;
+  private container;
+  private containerRatio;
 
   imageCover()
   {
@@ -41,7 +44,10 @@ export class ImageCoverDirective
   {
     this.window = window.nativeWindow;
     this.el = el.nativeElement;
-    console.log(this.el.innerWidth)
+    this.container = this.el.parentElement;
+    this.imageRatio = this.el.innerWidth / this.el.innerHeight;
+    this.containerRatio = this.container.innerWidth / this.container.innerHeight;
+
     if (this.el.innerWidth >= this.el.innerHeight)
     {
       this.orientation = 'horizontal'

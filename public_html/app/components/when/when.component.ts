@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AgmCoreModule } from 'angular2-google-maps/core';
 import { SidebarComponent } from '../../shared/sidebar/sidebar.component';
 import { MainContentComponent } from '../../shared/main-content/main-content.component';
 import { FullPageDirective } from '../../shared/directives/full-page.directive';
 import { WindowService } from '../../shared/services/window.service';
 
+
+
 @Component({
   selector: 'main',
   templateUrl: 'app/components/when/when.component.html',
   providers: [
+    AgmCoreModule,
     WindowService,
   ],
 })

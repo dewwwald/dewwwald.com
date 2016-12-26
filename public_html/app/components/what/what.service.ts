@@ -10,50 +10,50 @@ export class WhatService
     return [
       {
         img: {
-          url: 'http://placekitten.com/500/500',
-          alt: 'placekitten'
+          url: 'http://dewwwald.com/assets/img/HS-shopfitter.jpg',
+          alt: 'dewwwald web development - hs-shopfitters website screenshot'
         },
-        title: 'Lorem ipsum',
+        title: 'H.S. Shopfitters',
+        description: "A website built on ProcessWire, uses the scroll animation library called Skrollr to implement a curtain."
+      },
+      {
+        img: {
+          url: 'http://dewwwald.com/assets/img/cafe-cazengo.jpg',
+          alt: 'dewwwald web development - Cafe Cazengo website screenshot'
+        },
+        title: 'Cafe Cazengo',
         description: description
       },
       {
         img: {
-          url: 'http://placekitten.com/500/500',
-          alt: 'placekitten'
+          url: 'http://dewwwald.com/assets/img/the-alter-native.jpg',
+          alt: 'dewwwald web development - The alter native website screenshot'
         },
-        title: 'Lorem ipsum',
+        title: 'The Alter Native',
         description: description
       },
       {
         img: {
-          url: 'http://placekitten.com/500/500',
-          alt: 'placekitten'
+          url: 'http://dewwwald.com/assets/img/dare-to-explore.jpg',
+          alt: 'dewwwald web development - Dare to explore website screenshot'
         },
-        title: 'Lorem ipsum',
+        title: 'Dare To Explore',
         description: description
       },
       {
         img: {
-          url: 'http://placekitten.com/500/500',
-          alt: 'placekitten'
+          url: 'http://dewwwald.com/assets/img/monarchandco.jpg',
+          alt: 'dewwwald web development - Monarch and co website screenshot'
         },
-        title: 'Lorem ipsum',
+        title: 'Monarch & Co',
         description: description
       },
       {
         img: {
-          url: 'http://placekitten.com/500/500',
-          alt: 'placekitten'
+          url: 'http://dewwwald.com/assets/img/click-to-drive.jpg',
+          alt: 'dewwwald web development - Click to drive website screenshot'
         },
-        title: 'Lorem ipsum',
-        description: description
-      },
-      {
-        img: {
-          url: 'http://placekitten.com/500/500',
-          alt: 'placekitten'
-        },
-        title: 'Lorem ipsum',
+        title: 'Click To Drive',
         description: description
       },
     ];

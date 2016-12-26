@@ -49,11 +49,13 @@ var MainContentService = (function () {
     };
     MainContentService.prototype.getAspects = function () {
         return [
+            // [{value: 'Hello, I am ', type: 'text'}, {value: 'Dewald.', type: 'text'}],
+            // [{value: 'Hello, I am Dewald.', type: 'text'}],
             [{ value: 'Nice to meet you!', type: 'text' }],
-            [{ value: 'Lorem ipsum dolor sit amet', type: 'text' }],
-            [{ value: 'Lorem ipsum dolor sit amet', type: 'text' }],
-            [{ value: 'Lorem ipsum dolor sit amet', type: 'text' }],
-            [{ value: 'Lorem ipsum dolor sit amet', type: 'text' }]
+            [{ value: 'I am a freelancer', type: 'text' }],
+            [{ value: 'I do full stack web development ', type: 'text' }],
+            [{ value: 'I like beatifull, interactive and meaningfull interfaces', type: 'text' }],
+            [{ value: 'I take pride in what I do and like doing it.', type: 'text' }]
         ];
     };
     return MainContentService;

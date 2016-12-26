@@ -20,24 +20,26 @@
   </form>
 </div>
 <div [hidden]="!submitted">
-  <h2>You submitted the following:</h2>
+  <h2>Thank you for contacting us! I'll get back to you soon.</h2>
   <div class="gw">
     <fieldset class="g g-1/2">
-      <div>
-        <label for="name">Name</label>
+      <div class="push--bottom">
+        <label for="name">Name:</label>
         <div>{{ model.name }}</div>
       </div>
-      <div>
-        <label for="email">Email</label>
-        <div>{{ model.alterEgo }}</div>
+      <div class="push--bottom">
+        <label for="email">Email:</label>
+        <div>{{ model.email }}</div>
       </div>
     </fieldset>
     <fieldset class="g g-1/2">
-      <label for="message">Message</label>
-      <div>{{ model.message }}</div>
+      <div class="push--bottom">
+        <label for="message">Message:</label>
+        <div>{{ model.message }}</div>
+      </div>
     </fieldset>
     <fieldset class="g g-1/1 text--left soft--top">
-      <button class="btn btn--base" (click)="submitted=false">Edit</button>
+      <button class="btn btn--base" (click)="submitted=false">Resend</button>
     </fieldset>
   </div>
 </div>

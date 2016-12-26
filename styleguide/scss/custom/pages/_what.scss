@@ -96,3 +96,10 @@
     margin-bottom: 0px;
     @extend %push--large--bottom;
   }
+
+[imageCover] {
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+}

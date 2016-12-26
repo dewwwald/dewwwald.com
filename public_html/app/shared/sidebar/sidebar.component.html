@@ -7,6 +7,8 @@
         <a *ngIf="navItem.hash == undefined" routerLink="{{navItem.link}}">{{ navItem.title }}</a>
         <a *ngIf="navItem.hash != undefined"
           routerLink="{{navItem.link}}"
+          pageScroll
+          [pageScrollDuration]="250"
           href="#{{navItem.hash}}"
         >{{ navItem.title }}</a>
     </li>

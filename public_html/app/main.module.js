@@ -13,7 +13,8 @@ var router_1 = require("@angular/router");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
-// import { Ng2PageScrollModule } from 'ng2-page-scroll';
+var ng2_page_scroll_1 = require("ng2-page-scroll");
+var core_2 = require("angular2-google-maps/core");
 var layout_component_1 = require("./components/layout/layout.component");
 var sidebar_component_1 = require("./shared/sidebar/sidebar.component");
 var main_content_component_1 = require("./shared/main-content/main-content.component");
@@ -43,7 +44,10 @@ MainModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
-            // Ng2PageScrollModule,
+            ng2_page_scroll_1.Ng2PageScrollModule,
+            core_2.AgmCoreModule.forRoot({
+                apiKey: 'AIzaSyDsbCn79qvF5YoevoJJ3ix2zaNmId4DvNI'
+            }),
             router_1.RouterModule.forRoot(app_routes_1.routes),
             forms_1.FormsModule,
             http_1.HttpModule,

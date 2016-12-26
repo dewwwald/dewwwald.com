@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-// import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -32,7 +33,10 @@ import { AppMenuDirective } from './shared/sidebar/middle-sidebar.directive';
 @NgModule({
   imports:      [
     BrowserModule,
-    // Ng2PageScrollModule,
+    Ng2PageScrollModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDsbCn79qvF5YoevoJJ3ix2zaNmId4DvNI'
+    }),
     RouterModule.forRoot(routes),
     FormsModule,
     HttpModule,
