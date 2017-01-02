@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
 import { WindowService } from '../../shared/services/window.service';
+import { UniqueNg2ChartComponent } from '../../shared/ng2-chart/ng2-chart.component';
 import { WhyService } from './why.service';
 
 @Component({

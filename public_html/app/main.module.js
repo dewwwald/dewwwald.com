@@ -15,6 +15,7 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var ng2_page_scroll_1 = require("ng2-page-scroll");
 var core_2 = require("angular2-google-maps/core");
+var ng2_charts_1 = require("ng2-charts/ng2-charts");
 var layout_component_1 = require("./components/layout/layout.component");
 var sidebar_component_1 = require("./shared/sidebar/sidebar.component");
 var main_content_component_1 = require("./shared/main-content/main-content.component");
@@ -23,6 +24,7 @@ var why_component_1 = require("./components/why/why.component");
 var what_component_1 = require("./components/what/what.component");
 var when_component_1 = require("./components/when/when.component");
 var form_content_component_1 = require("./shared/form-content/form-content.component");
+var ng2_chart_component_1 = require("./shared/ng2-chart/ng2-chart.component");
 var app_routes_1 = require("./config/app.routes");
 var full_height_directive_1 = require("./shared/directives/full-height.directive");
 var full_page_directive_1 = require("./shared/directives/full-page.directive");
@@ -51,6 +53,7 @@ MainModule = __decorate([
             router_1.RouterModule.forRoot(app_routes_1.routes),
             forms_1.FormsModule,
             http_1.HttpModule,
+            ng2_charts_1.ChartsModule,
         ],
         declarations: [
             layout_component_1.LayoutComponent,
@@ -60,8 +63,9 @@ MainModule = __decorate([
             why_component_1.WhyComponent,
             what_component_1.WhatComponent,
             when_component_1.WhenComponent,
-            middle_sidebar_directive_1.AppMenuDirective,
             form_content_component_1.FormContactComponent,
+            ng2_chart_component_1.UniqueNg2ChartComponent,
+            middle_sidebar_directive_1.AppMenuDirective,
             full_height_directive_1.FullHeightDirective,
             full_page_directive_1.FullPageDirective,
             svg_icon_system_directive_1.SvgIconDirective,

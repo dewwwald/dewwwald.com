@@ -20,7 +20,7 @@
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       'ng2-page-scroll':            'npm:ng2-page-scroll/bundles',
-      'ng2-charts':                 'npm:ng2-charts/',
+      'ng2-charts':                 'npm:ng2-charts',
       'angular2-google-maps/core':  'npm:angular2-google-maps/core'
     },
     packages: {
@@ -38,6 +38,7 @@
       'ng2-charts':                 { main: "ng2-charts.js", defaultExtension: 'js'},
       'ng2-page-scroll':            { main: 'ng2-page-scroll.umd.js',  defaultExtension: 'js' },
       'angular2-google-maps/core':  { main: 'core-module.js',  defaultExtension: 'js' },
+      'ng2-charts':      { main: 'ng2-charts.js',  defaultExtension: 'js' },
     }
   });
 })(this);

@@ -13,7 +13,6 @@ var WhatService = (function () {
     function WhatService() {
     }
     WhatService.prototype.getPortfolioItems = function () {
-        var description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta maxime similique quia praesentium, blanditiis optio neque pariatur, laboriosam modi, ab doloremque a eaque earum. Dolorem quas hic autem ab. Reiciendis?';
         return [
             {
                 img: {
@@ -21,7 +20,8 @@ var WhatService = (function () {
                     alt: 'dewwwald web development - hs-shopfitters website screenshot'
                 },
                 title: 'H.S. Shopfitters',
-                description: "A website built on ProcessWire, uses the scroll animation library called Skrollr to implement a curtain."
+                description: "A website built on ProcessWire, uses the scroll animation library called Skrollr to implement a curtain. Designed by Fixate designers and done in my time at the company.",
+                link: "http://hsshopfitters.co.za/"
             },
             {
                 img: {
@@ -29,7 +29,8 @@ var WhatService = (function () {
                     alt: 'dewwwald web development - Cafe Cazengo website screenshot'
                 },
                 title: 'Cafe Cazengo',
-                description: description
+                description: "A website built on ProcessWire, was my first introduction to svg and how to modify them with css I also had to do multilingual support. Designed by Fixate designers and done in my time at the company.",
+                link: "http://cafecazengo.com/"
             },
             {
                 img: {
@@ -37,7 +38,8 @@ var WhatService = (function () {
                     alt: 'dewwwald web development - The alter native website screenshot'
                 },
                 title: 'The Alter Native',
-                description: description
+                description: "The first website that I built, uses ProcessWire as a CMS. Mostly under the guidance of a Fixate senoir. Designed by Fixate designers and done in my time at the company.",
+                link: "http://zanelemodiba.com/"
             },
             {
                 img: {
@@ -45,7 +47,8 @@ var WhatService = (function () {
                     alt: 'dewwwald web development - Dare to explore website screenshot'
                 },
                 title: 'Dare To Explore',
-                description: description
+                description: "A website built on ProcessWire. One of the favourites I worked on. Was the first web forms I worked on that stretched me. Designed by Fixate designers and done in my time at the company.",
+                link: "http://daretoexplore.co.za/"
             },
             {
                 img: {
@@ -53,7 +56,8 @@ var WhatService = (function () {
                     alt: 'dewwwald web development - Monarch and co website screenshot'
                 },
                 title: 'Monarch & Co',
-                description: description
+                description: "A project built on ProcessWire. I had to migrate allot of data from Wordpress and create a multi site, however that feature was never deployed. Designed by Fixate designers and done in my time at the company.",
+                link: "http://monarchandco.com/"
             },
             {
                 img: {
@@ -61,7 +65,8 @@ var WhatService = (function () {
                     alt: 'dewwwald web development - Click to drive website screenshot'
                 },
                 title: 'Click To Drive',
-                description: description
+                description: "The first website where I had to work in a team doing end to end front end development alongside a backend that had more experience than I. Designed by Cubezoo designers and done in my time at the company.",
+                link: "http://clicktodrive.co.za/"
             },
         ];
     };

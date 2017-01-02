@@ -6,6 +6,7 @@ import { HttpModule }    from '@angular/http';
 
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -15,6 +16,7 @@ import { WhyComponent } from './components/why/why.component';
 import { WhatComponent } from './components/what/what.component';
 import { WhenComponent } from './components/when/when.component';
 import { FormContactComponent } from './shared/form-content/form-content.component';
+import { UniqueNg2ChartComponent } from './shared/ng2-chart/ng2-chart.component'
 
 import { routes } from './config/app.routes';
 
@@ -30,6 +32,7 @@ import { BarChartDirective } from './shared/directives/chart.directive';
 import { AspectsDirective } from './shared/main-content/main-content.directive';
 import { AppMenuDirective } from './shared/sidebar/middle-sidebar.directive';
 
+
 @NgModule({
   imports:      [
     BrowserModule,
@@ -40,6 +43,7 @@ import { AppMenuDirective } from './shared/sidebar/middle-sidebar.directive';
     RouterModule.forRoot(routes),
     FormsModule,
     HttpModule,
+    ChartsModule,
   ],
   declarations: [
     LayoutComponent,
@@ -49,8 +53,9 @@ import { AppMenuDirective } from './shared/sidebar/middle-sidebar.directive';
     WhyComponent,
     WhatComponent,
     WhenComponent,
-    AppMenuDirective,
     FormContactComponent,
+    UniqueNg2ChartComponent,
+    AppMenuDirective,
     FullHeightDirective,
     FullPageDirective,
     SvgIconDirective,

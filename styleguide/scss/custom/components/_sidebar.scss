@@ -1,5 +1,10 @@
 sidebar {
-  @extend %grid__item;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: block;
+  // @extend %grid__item;
   width: 260px;
   background-color: $clr-base;
   color: white;
