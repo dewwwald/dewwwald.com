@@ -19,7 +19,6 @@ var MailableService = (function () {
         return this.http.post(postLink, message)
             .toPromise()
             .then(function (response) { return console.log(response.json().data); });
-        // .catch(this.handleError);
     };
     return MailableService;
 }());

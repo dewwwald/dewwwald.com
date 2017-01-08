@@ -16,6 +16,5 @@ export class MailableService
     return this.http.post(postLink, message)
       .toPromise()
       .then(response => console.log(response.json().data));
-      // .catch(this.handleError);
   }
 }
