@@ -23,7 +23,6 @@ export class WhatComponent implements OnInit
   setPortfolio ()
   {
     this.portfolio = this.whatService.getPortfolioItems();
-    console.log(this.portfolio);
   }
 
   constructor (private whatService: WhatService) {}

@@ -18,7 +18,6 @@ export class AppMenuDirective implements AfterViewChecked
   {
     if (this.window.innerWidth > 481)
     {
-      this.el.style.top = (this.window.scrollY + this.window.innerHeight/2 - this.el.offsetHeight/2) + "px";
     }
   }
 
@@ -27,7 +26,6 @@ export class AppMenuDirective implements AfterViewChecked
     if (!this.viewChecked && this.window.innerWidth > 481)
     {
       this.viewChecked = true;
-      this.el.style.top = (this.window.scrollY + this.window.innerHeight/2 - this.el.offsetHeight/2) + "px";
     }
   }
 

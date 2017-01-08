@@ -12,42 +12,115 @@
   }
 
     %menu__item {
-      position: relative;
       display: block;
       text-align: right;
 
       & > a {
         position: relative;
         font-family: $font-header-stack;
-        display: inline-block;
-        color: white;
+        display: block;
         text-transform: uppercase;
-        line-height: 2.5;
         outline: 0;
-        @include px-and-rem(padding-left, 2);
-        @include px-and-rem(padding-right, 2);
+        @include px-and-rem(padding-left, .35);
+        @include px-and-rem(padding-right, .25);
+        @include px-and-rem(padding-top, .55);
+        @include px-and-rem(padding-bottom, .4);
+        line-height: normal;
+        vertical-align: middle;
+        margin-left: .15rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: 1.95rem;
+        color: transparent;
+        opacity: .75;
+        transition:
+          background-color 175ms ease-in-out,
+          width 175ms ease-in-out,
+          font-size 175ms ease-in-out,
+          color 175ms ease-in-out,
+          background-color 175ms ease-in-out,
+          border-radius 175ms ease-in-out,
+          margin 0ms ease-in-out,
+          padding 0ms ease-in-out;
 
-        @extend %fs--h4;
+        & span:first-letter {
+          color: white;
+          @include font-size($fs-h4, 0);
+          transition: all 175ms ease-in-out;
+        }
 
-        &:before {
+        & span {
+          font-size: 0px;
+          display: inline-block;
+          position: relative;
+          transition: all 175ms ease-in-out;
+          .sidebar--in & {
+            @include font-size($fs-h4, 0);
+          }
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 63%;
+            left: 0;
+            right: 0;
+            border-bottom: 1px solid;
+            color: inherit;
+            opacity: 0;
+          }
+        }
+
+
+        &:after {
           content: "";
           display: block;
+          background-color: $clr-base;
+          transition: all 175ms ease-in-out;
+          height: 2rem;
+          border-radius: 100%;
+          width: 2rem;
           position: absolute;
-          top: 63%;
-          @include px-and-rem(left, 2);
-          @include px-and-rem(right, 2);
-          border-bottom: 1px solid;
-          color: inherit;
-          opacity: 0;
+          z-index: -1;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          .sidebar--in & {
+            width: 50vw;
+            height: 50vw;
+          }
         }
 
-        &:hover,
-        &:focus {
-          color: $clr-primary-lt;
-        }
 
-        &:active {
-          color: $clr-primary;
+        .sidebar--in & {
+          width: px-to-rem(260px);
+          width: auto;
+          line-height: 2.5;
+          color: white;
+          opacity: 1;
+          @include px-and-rem(padding-left, 2);
+          @include px-and-rem(padding-right, 2);
+          border-radius: 0%;
+          margin: 0;
+          transition:
+            background-color 175ms ease-in-out 75ms,
+            width 175ms ease-in-out,
+            font-size 175ms ease-in-out,
+            color 175ms ease-in-out,
+            background-color 175ms ease-in-out,
+            border-radius 175ms ease-in-out,
+            margin 0ms ease-in-out,
+            padding 0ms ease-in-out;
+
+          &:hover,
+          &:focus {
+            color: $clr-primary-dk;
+          }
+
+          &:active {
+            color: $clr-primary;
+          }
         }
       }
 
@@ -62,14 +135,16 @@
         &:focus,
         &:active {
           cursor: default;
-          color: $clr-primary;
-          &:before { opacity: 1;}
+          & span:before { opacity: 1;}
+          color: transparent;
+          & span:first-letter { color: $clr-primary;}
+          .sidebar--in & { color: $clr-primary;}
         }
 
         &[pageScroll] {
           cursor: cursor;
           color: white;
-          &:before { opacity: 0;}
+          & span:before { opacity: 0;}
 
           &:hover,
           &:focus {

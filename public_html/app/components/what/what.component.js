@@ -20,7 +20,6 @@ var WhatComponent = (function () {
     };
     WhatComponent.prototype.setPortfolio = function () {
         this.portfolio = this.whatService.getPortfolioItems();
-        console.log(this.portfolio);
     };
     return WhatComponent;
 }());

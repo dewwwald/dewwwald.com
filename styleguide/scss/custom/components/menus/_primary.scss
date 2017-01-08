@@ -2,34 +2,29 @@
     $PRIMARY MENU
 \*------------------------------------*/
 .menu--primary-container {
-  position: relative;
   @extend %menu-container;
 }
 
   .menu--primary {
-    &[AppMenu] {
-      position: fixed;
-      width: 260px;
-      left: 0;
-      transition: all 0ms linear;
-      transform: translateZ(0);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    transition: all 0ms linear;
+    transform: translateZ(0) translateY(-50%) translateX(-10%);
 
-      @include media-query (palm) {
-        right: 0;
-        width: 100%;
-        bottom: 0;
-        white-space: nowrap;
-      }
+    .sidebar--in & {
+      transform: translateZ(0) translateY(-50%) translateX(0%);
     }
+
+    @include media-query (lap) {
+    }
+
 
     @extend %menu;
 
     & %menu__item {
       letter-spacing: .15em;
-
-      @include media-query (palm) {
-        display: inline-block;
-      }
     }
   }
 

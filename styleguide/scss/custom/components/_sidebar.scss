@@ -4,8 +4,32 @@ sidebar {
   left: 0;
   bottom: 0;
   display: block;
-  // @extend %grid__item;
+  color: white;
+  z-index: 20;
+  width: 40px;
+  transition: all 175ms ease-in-out;
+  overflow: hidden;
+}
+
+.sidebar--in {
   width: 260px;
   background-color: $clr-base;
-  color: white;
+}
+
+.logo
+{
+  position: relative;
+  @include px-and-rem(padding, 0 2);
+  display: block;
+  width: 260px;
+  transform: translateX(-100%);
+  transition: all 175ms ease-in-out 0ms;
+  opacity: 0;
+  z-index: 10;
+
+  .sidebar--in & {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 175ms ease-in-out 80ms;
+  }
 }

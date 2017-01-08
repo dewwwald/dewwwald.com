@@ -11,18 +11,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var sidebar_service_1 = require("./sidebar.service");
 var SidebarComponent = (function () {
-    function SidebarComponent(sidebarService) {
+    function SidebarComponent(sidebarService, element, renderer) {
+        this.element = element.nativeElement;
+        this.renderer = renderer;
         this.sidebarService = sidebarService;
     }
     SidebarComponent.prototype.ngOnInit = function () {
-        this.getNavItems();
-        this.getLogoUrl();
-    };
-    SidebarComponent.prototype.getLogoUrl = function () {
-        this.logoUrl = this.sidebarService.getLogoUrl();
-    };
-    SidebarComponent.prototype.getNavItems = function () {
         this.navItems = this.sidebarService.getNavItems();
+        this.logoUrl = this.sidebarService.getLogoUrl();
+        this.listenForExit();
+    };
+    SidebarComponent.prototype.toggleNavigationIn = function () {
+        if (this.element.className.indexOf('sidebar--in') == -1) {
+            this.element.className = this.element.className + ' sidebar--in';
+        }
+    };
+    SidebarComponent.prototype.toggleNavigationOut = function () {
+        this.element.className = this.element.className.replace('sidebar--in', '').trim();
+    };
+    SidebarComponent.prototype.listenForExit = function () {
+        var _this = this;
+        this.renderer.listen(this.element, 'mouseleave', function () {
+            return _this.toggleNavigationOut();
+        });
     };
     return SidebarComponent;
 }());
@@ -32,7 +43,7 @@ SidebarComponent = __decorate([
         templateUrl: 'app/shared/sidebar/sidebar.component.html',
         providers: [sidebar_service_1.SidebarService]
     }),
-    __metadata("design:paramtypes", [sidebar_service_1.SidebarService])
+    __metadata("design:paramtypes", [sidebar_service_1.SidebarService, core_1.ElementRef, core_1.Renderer])
 ], SidebarComponent);
 exports.SidebarComponent = SidebarComponent;
 //# sourceMappingURL=sidebar.component.js.map

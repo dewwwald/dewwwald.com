@@ -4,13 +4,17 @@
   </a>
   <ul appMenu class="menu--primary">
     <li routerLinkActive="menu__item--current" class="menu__item" *ngFor="let navItem of navItems">
-        <a *ngIf="navItem.hash == undefined" routerLink="{{navItem.link}}">{{ navItem.title }}</a>
+        <a *ngIf="navItem.hash == undefined"
+          routerLink="{{navItem.link}}"
+          (mouseover)="toggleNavigationIn()"
+        ><span>{{ navItem.title }}</span></a>
         <a *ngIf="navItem.hash != undefined"
           routerLink="{{navItem.link}}"
           pageScroll
+          (mouseover)="toggleNavigationIn()"
           [pageScrollDuration]="250"
           href="#{{navItem.hash}}"
-        >{{ navItem.title }}</a>
+        ><span>{{ navItem.title }}</span></a>
     </li>
   </ul>
   <div class="social">
@@ -19,4 +23,3 @@
     <a iconDirr [iconName]="twitter"></a>
   </div>
 </nav>
-          <!-- pageScroll [pageScrollDuration]="400" -->

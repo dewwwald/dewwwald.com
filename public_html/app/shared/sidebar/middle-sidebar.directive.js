@@ -18,13 +18,11 @@ var AppMenuDirective = (function () {
     }
     AppMenuDirective.prototype._resizeEventListiner = function () {
         if (this.window.innerWidth > 481) {
-            this.el.style.top = (this.window.scrollY + this.window.innerHeight / 2 - this.el.offsetHeight / 2) + "px";
         }
     };
     AppMenuDirective.prototype.ngAfterViewChecked = function () {
         if (!this.viewChecked && this.window.innerWidth > 481) {
             this.viewChecked = true;
-            this.el.style.top = (this.window.scrollY + this.window.innerHeight / 2 - this.el.offsetHeight / 2) + "px";
         }
     };
     return AppMenuDirective;
