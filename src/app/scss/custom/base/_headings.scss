@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    $HEADINGS
+\*------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  line-height: 1;
+}
+
+@include headings(1, 4) {
+  font-family: $font-header-stack;
+  line-height: .8;
+  vertical-align: middle;
+  font-weight: 700;
+}

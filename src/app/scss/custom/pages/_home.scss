@@ -1,0 +1,71 @@
+.persona-main {
+  display: block;
+  position: relative;
+  background-color: $clr-primary;
+}
+
+.persona {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.persona__main
+{
+  height: 40px;
+  margin-bottom: 0px;
+  line-height: 1;
+  font-family: $font-base-stack;
+  font-weight: 300;
+  @include font-size($fs-h2, 0);
+
+  @include media-query(palm) {
+    @include font-size($fs-h4, 0);
+  }
+
+  & span {
+    line-height: .83;
+    position: relative;
+    font-family: $font-header-stack;
+    font-size: 1.2em; // 48px from 40px
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      color: inherit;
+      border-bottom: 3px solid;
+      top: 76%;
+      left: .03em;
+      right: .03em;
+    }
+  }
+  &.typing:after {
+    content: "";
+    display: inline-block;
+    color: inherit;
+    border-right: 2px solid;
+    height: 100%;
+    vertical-align: middle;
+    @extend %anim-flash;
+    animation-timing-function: ease-in-out;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+}
+
+.persona__img {
+  margin: 0 auto;
+  display: block;
+  width: 220px;
+  @include px-and-rem(margin-bottom, 1.66);
+
+  @include media-query(palm) {
+    width: 140px;
+  }
+}
+

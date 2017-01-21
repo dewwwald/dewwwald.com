@@ -1,0 +1,23 @@
+.social {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+svg-icon { display: inline-block;}
+
+.social__icon {
+  transform: all 175ms ease-in-out;
+  fill: rgba($clr-base, .75);
+  width: 36px;
+  height: 36px;
+  @include px-and-rem(margin-bottom, .25);
+
+  .sidebar--in & {
+    fill: white;
+    @include px-and-rem(margin, 0 .5 .25);
+  }
+}

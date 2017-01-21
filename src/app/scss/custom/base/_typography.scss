@@ -1,0 +1,34 @@
+/*------------------------------------*\
+    $BASE
+\*------------------------------------*/
+i { font-style: normal;}
+
+blockquote {
+  font-style: italic;
+  @include font-size($fs-h3);
+  @include soft;
+}
+
+kbd {
+  border: 1px solid $clr-ntrl-10;
+  border-radius: 2px;
+  font-size: 85%;
+  padding: .25em .5em;
+  vertical-align: middle;
+}
+
+hr {
+  border: 1px solid;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+h1 {
+
+  & small {
+    display: block;
+    @extend %fs--h2;
+    font-weight: 300;
+  }
+}
