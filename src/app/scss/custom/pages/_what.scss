@@ -75,7 +75,7 @@
     right: auto;
     width: 100%;
     transform: translate(-50%, -50%);
-    @include px-and-rem(padding, 2);
+    @include px-and-rem(padding, 3);
   }
 
   .portfolio-item__title {

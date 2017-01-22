@@ -1,26 +1,32 @@
 import { NgModule } from '@angular/core';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { WhyRoutingModule } from './why.routing';
+import { CommonModule } from '@angular/common';
 
 import { SinceDirective } from '../../shared/directives/since.directive';
+import { SvgChartAnimateBarDirective } from '../../shared/svg-chart/svg-chart-animate-bar.directive';
 
-import { UniqueNg2ChartComponent } from '../../shared/ng2-chart/ng2-chart.component';
 import { WhyComponent } from './why.component';
+import { SvgChartComponent } from '../../shared/svg-chart/svg-chart.component';
+import { SvgDynamicComponent } from '../../shared/svg-chart/svg-injector.component';
+import { SvgHoldingComponet } from '../../shared/svg-chart/svg-holding.component';
 
-import { Ng2ChartService } from '../../shared/ng2-chart/ng2-chart.service';
+import { ChartService } from '../../shared/services/chart.service';
 
 @NgModule({
   imports: [
     WhyRoutingModule,
-    ChartsModule,
+    CommonModule,
   ],
   declarations: [
     WhyComponent,
+    SvgChartComponent,
+    SvgDynamicComponent,
+    SvgHoldingComponet,
     SinceDirective,
-    UniqueNg2ChartComponent,
+    SvgChartAnimateBarDirective,
   ],
   providers: [
-    Ng2ChartService
+    ChartService
   ]
 })
 export class WhyModule {}

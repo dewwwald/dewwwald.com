@@ -1,0 +1,28 @@
+<svg [attr.viewBox]="viewBox">
+  <rect
+    *ngFor="let bar of graphBars;"
+    [attr.height]="canvasHeight"
+    [attr.y]="0"
+    [attr.width]="bar.barWidth"
+    [attr.x]="bar.positionX"
+    [attr.fill]="'#e6e6e6'"
+  />
+  <rect
+    *ngFor="let bar of graphBars;"
+    svgChartAnimateBar
+    [finalHeight]="bar.finalHeight"
+    [startHeight]="0"
+    [color]="bar.color"
+    [startOffsetY]="bar.positionY"
+    [offsetY]="bar.offsetY"
+    [attr.width]="bar.barWidth"
+    [attr.x]="bar.positionX"
+  />
+  <text
+    *ngFor="let bar of graphBars;"
+    [attr.y]="canvasHeight + 5"
+    [attr.x]="bar.positionX + bar.barWidth / 2 + 3"
+    [attr.transform]="'rotate(45, ' + (bar.positionX + bar.barWidth / 2) + ', ' + canvasHeight + ')'"
+    class="graph-text-labels"
+  >{{bar.label}}</text>
+</svg>

@@ -36,3 +36,9 @@
 .soft--large { @extend %soft--large;}
 .soft--large--top { @extend %soft--large--top;}
 .soft--top { @extend %soft--top;}
+%section--padding {
+  @extend %soft--large--ends;
+  @include px-and-rem(padding-left, 3);
+  @include px-and-rem(padding-right, 3);
+}
+.section--padding { @extend %section--padding;}
