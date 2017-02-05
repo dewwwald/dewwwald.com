@@ -13,9 +13,10 @@ export class SidebarComponent implements OnInit {
   private navInOut: string;
   private element;
   private renderer;
-
+  private barOne;
+  private barTwo;
+  private barThree;
   private navToggled: boolean;
-  private navTogglerIcon: string;
   private togglerElement;
 
   public navToggler$;
@@ -24,7 +25,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.navToggled = false;
-    this.navTogglerIcon = "burger";
     this.navItems = this.sidebarService.getNavItems();
     this.logoUrl = this.sidebarService.getLogoUrl();
     this.listenForExit();
@@ -33,22 +33,38 @@ export class SidebarComponent implements OnInit {
     this.navToggler$.map(evt => { return evt; });
   }
 
+  setupElements() {
+    this.barOne = document.getElementById('burger-bar-one');
+    this.barTwo = document.getElementById('burger-bar-two');
+    this.barThree = document.getElementById('burger-bar-three');
+  }
+
   toggleNav() {
-    this.navToggled ? this.toggleNavigationOut() : this.toggleNavigationIn();
+    if (!this.navToggled) {
+      this.toggleNavigationIn();
+    } else {
+      this.toggleNavigationOut();
+    }
   }
 
   toggleNavigationIn() {
+    this.setupElements();
     this.navToggled = true;
-    this.navTogglerIcon = "close";
-    if (this.element.className.indexOf('sidebar--in') == -1) {
-      this.element.className = this.element.className + ' sidebar--in';
+    TweenLite.to(this.barOne, .5, { strokeDashoffset: -1076} );
+    TweenLite.to(this.barTwo, .5, { strokeDashoffset: -1250} );
+    TweenLite.to(this.barThree, .5, { opacity: 0, x: -1000 });
+    if (this.element.className.indexOf('sidebar--in') === -1) {
+      this.element.className += ' sidebar--in';
     }
   }
 
   toggleNavigationOut() {
+    this.setupElements();
     this.navToggled = false;
-    this.navTogglerIcon = "burger";
-    this.element.className = this.element.className.replace('sidebar--in', '').trim();
+    TweenLite.to(this.barOne, .5, { strokeDashoffset: 0} );
+    TweenLite.to(this.barTwo, .5, { strokeDashoffset: 0} );
+    TweenLite.to(this.barThree, .5, { opacity: 1, x: 0 });
+    this.element.className = this.element.className.replace(' sidebar--in', '');
   }
 
   listenForExit() {
@@ -57,6 +73,12 @@ export class SidebarComponent implements OnInit {
     );
   }
 
+  navigationClick() {
+    let delay = setTimeout(() => {
+      this.toggleNavigationOut();
+      clearTimeout(delay);
+    }, 250);
+  }
 
   constructor(sidebarService: SidebarService, element: ElementRef, renderer: Renderer) {
     this.element = element.nativeElement;

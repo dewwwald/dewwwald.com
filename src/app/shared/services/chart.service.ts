@@ -22,9 +22,9 @@ export class ChartService
         label: 'Javascript'
       },
       {
-        percentage: 85,
+        percentage: 89,
         color: '#edd54f',
-        label: 'Angular'
+        label: 'Animations'
       },
       {
         percentage: 80,

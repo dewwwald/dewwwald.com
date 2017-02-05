@@ -11,14 +11,41 @@
   border: none;
   border-radius: 100%;
   outline: none;
-  z-index: -1;
-  display: none;
+  z-index: 25;
+  display: inline-block;
+  top: 25px;
   @include px-and-rem(margin, .25);
+  stroke: white;
+  fill: none;
 
-  @include media-query (palm) {
-    z-index: 20;
-    display: inline-block;
+  &:hover,
+  &:focus {
+    stroke: $clr-primary;
   }
+  &:active {
+    stroke: white;
+  }
+}
+
+#burger-bar-one {
+  opacity: 1;
+  stroke-dasharray: 412px 1500px;
+}
+#burger-bar-two {
+  opacity: 1;
+  stroke-dasharray: 412px 1500px;
+}
+#burger-bar-three {
+  opacity: 1;
+}
+
+.burger-path {
+  fill: transparent;
+  stroke-width: 67px;
+  stroke: #000000;
+  stroke-linecap: round;
+  opacity: 0;
+  stroke: inherit;
 }
 
 .toggle__icon {
@@ -26,21 +53,13 @@
   fill: white;
 
   & > svg {
+    overflow: visible;
     vertical-align: middle;
   }
 }
 
 .menu--primary-container {
   @extend %menu-container;
-
-  @include media-query (palm) {
-    transform: translateX(-40px);
-    transition: all 175ms ease-in-out;
-
-    .sidebar--in & {
-      transform: translateX(0px);
-    }
-  }
 }
 
   .menu--primary {
@@ -54,10 +73,6 @@
     .sidebar--in & {
       transform: translateZ(0) translateY(-50%) translateX(0%);
     }
-
-    @include media-query (lap) {
-    }
-
 
     @extend %menu;
 

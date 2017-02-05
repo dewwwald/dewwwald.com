@@ -1,7 +1,7 @@
 <button class="menu-toggler" #togglerable (click)="toggleNav()">
   <svg-icon
-    class="toggle__icon" [iconNameObserver]="navToggler$"
-    [iconName]="navTogglerIcon">
+    class="toggle__icon"
+    [iconName]="'burger'">
   </svg-icon>
 </button>
 <nav myFullPage class="menu--primary-container">
@@ -10,22 +10,21 @@
   </a>
   <ul class="menu--primary">
     <li routerLinkActive="menu__item--current" class="menu__item" *ngFor="let navItem of navItems">
-        <a *ngIf="navItem.hash == undefined"
+        <a (click)="navigationClick()" *ngIf="navItem.hash == undefined"
           routerLink="{{navItem.link}}"
           (mouseover)="toggleNavigationIn()"
-        ><span>{{ navItem.title }}</span></a>
-        <a *ngIf="navItem.hash != undefined"
+        ><span class="menu__item-text">{{ navItem.title }}</span></a>
+        <a (click)="navigationClick()" *ngIf="navItem.hash != undefined"
           routerLink="{{navItem.link}}"
-          pageScroll
           (mouseover)="toggleNavigationIn()"
-          [pageScrollDuration]="250"
-          href="#{{navItem.hash}}"
-        ><span>{{ navItem.title }}</span></a>
+          scrollNavigation
+          [dataHref]="navItem.hash"
+        ><span class="menu__item-text">{{ navItem.title }}</span></a>
     </li>
   </ul>
   <div class="social">
-    <a target="_blank" href="http://github.com/dewwwald"><svg-icon class="social__icon" [iconName]="'github'"></svg-icon></a>
     <a target="_blank" href="https://za.linkedin.com/in/dewald-laubscher-15342b102"><svg-icon class="social__icon" [iconName]="'linkedin'"></svg-icon></a>
     <a target="_blank" href="https://twitter.com/dewwwald"><svg-icon class="social__icon" [iconName]="'twitter'"></svg-icon></a>
+    <a target="_blank" href="http://github.com/dewwwald"><svg-icon class="social__icon" [iconName]="'github'"></svg-icon></a>
   </div>
 </nav>

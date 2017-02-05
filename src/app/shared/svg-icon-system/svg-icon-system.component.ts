@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { SvgIconsSystemService } from '../services/svg-icon-system.service';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'svg-icon',
-  template: ''
+  template: '',
+  encapsulation: ViewEncapsulation.None
 })
 export class SvgIconComponent implements OnInit {
   public iconDef;

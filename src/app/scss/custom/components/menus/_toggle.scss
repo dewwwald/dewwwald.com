@@ -3,7 +3,6 @@
 \*------------------------------------*/
 %menu-toggle {
   display: none;
-
   &:focus { outline:none;}
 
   @include media-query(portable) { display: inline-block;}
