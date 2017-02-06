@@ -3,8 +3,8 @@
 \*------------------------------------*/
 .menu-toggler {
   position: fixed;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   background-color: $clr-base;
   color: white;
   -webkit-appearance: none;
@@ -13,14 +13,21 @@
   outline: none;
   z-index: 25;
   display: inline-block;
-  top: 25px;
-  @include px-and-rem(margin, .25);
+  @include px-and-rem(margin, .75);
+  @include px-and-rem(padding, 8px);
   stroke: white;
   fill: none;
+  transition: all 175ms ease-in-out;
+  opacity: .75;
+  transform: translateZ(0);
 
-  &:hover,
-  &:focus {
-    stroke: $clr-primary;
+  &:hover {
+    stroke: white;
+    opacity: 1;
+
+    .sidebar--in & {
+      background-color: $clr-base-extra;
+    }
   }
   &:active {
     stroke: white;

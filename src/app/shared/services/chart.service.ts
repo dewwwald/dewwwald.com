@@ -8,27 +8,27 @@ export class ChartService
     "dataPoints": [
       {
         percentage: 90,
-        color: '#ffe12f',
+        color: '#acded5',
         label: 'HTML'
       },
       {
         percentage: 95,
-        color: '#edd54f',
+        color: '#d0ede7',
         label: 'CSS'
       },
       {
         percentage: 92,
-        color: '#ffe12f',
+        color: '#acded5',
         label: 'Javascript'
       },
       {
         percentage: 89,
-        color: '#edd54f',
+        color: '#d0ede7',
         label: 'Animations'
       },
       {
         percentage: 80,
-        color: '#ffe12f',
+        color: '#acded5',
         label: 'UI/UX'
       },
       {
@@ -44,7 +44,7 @@ export class ChartService
       {
         percentage: 85,
         color: '#f5795f',
-        label: 'Web frameworks'
+        label: 'Frameworks'
       },
       {
         percentage: 75,
@@ -54,7 +54,7 @@ export class ChartService
       {
         percentage: 75,
         color: '#f5795f',
-        label: 'Operating Systems'
+        label: 'OS'
       },
     ]
   };

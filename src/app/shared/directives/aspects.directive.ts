@@ -16,42 +16,17 @@ export class AspectsDirective implements AfterViewChecked
   private currentHtml;
   private keystrokes;
 
-  stepOutText (attribute, current, i = undefined)
-  {
-    if (typeof i == 'undefined') i = attribute.value.length;
-    var _this = this;
-    if (i >= 0)
-    {
-      var timer = setTimeout(function ()
-      {
-        var newText = attribute.value.substring(0, i);
-        _this.el.childNodes[current].data = newText;
-        _this.stepOutText(attribute, current, i-1);
-        clearTimeout(timer);
-      }, this.keystrokes);
-    }
-    else
-    {
-      return this.hideText(current - 1);
-    }
-  }
-
-  stepInText (attribute, current, i = undefined)
-  {
+  stepInText (attribute, current, i = undefined) {
     if (typeof i == 'undefined') i = 0;
     var _this = this;
-    if (i <= attribute.value.length)
-    {
-      var timer = setTimeout(function ()
-      {
+    if (i <= attribute.value.length) {
+      var timer = setTimeout(function () {
         var newText = attribute.value.substring(0, i);
-        _this.el.childNodes[current].data = newText;
+        _this.el.innerHTML = newText;
         _this.stepInText(attribute, current, i+1);
         clearTimeout(timer);
       }, this.keystrokes);
-    }
-    else
-    {
+    } else {
       return this.showText(current - 1);
     }
   }
@@ -80,57 +55,59 @@ export class AspectsDirective implements AfterViewChecked
   {
     if (typeof parseIndex == 'undefined') parseIndex = attribute.parse.length - 1;
     var _this = this;
-    if (parseIndex >= 0)
-    {
+    if (parseIndex >= 0) {
       this.stepOutParseText(attribute.parse[parseIndex], current, parseIndex);
-    }
-    else
-    {
+    } else {
       return this.hideText(current - 1);
     }
   }
 
-  showText (i = undefined)
-  {
+  showText (i = undefined) {
     if (typeof i == 'undefined') i = this.nextAspect.length - 1;
 
-    if (i >= 0)
-    {
+    if (i >= 0) {
       this.stepInText(this.nextAspect[i], i);
-    }
-    else
-    {
-      this.loop(3000, 'textOutIn');
+    } else {
+      this.loop(2500, 'textOutIn');
     }
   }
 
-  hideText (i = undefined)
-  {
-    if (typeof i == 'undefined') i = this.currentHtml.length - 1;
-
-    if (i >= 0)
-    {
-      if (this.currentHtml[i].type == 'text')
-      {
-        this.stepOutText(this.currentHtml[i], i);
-      }
-      else
-      {
-        this.htmlElement(this.currentHtml[i], i)
-      }
-    }
-    else
-    {
+  deleteInnerText() {
+      this.el.innerHTML = '';
+      this.removeHighlightClass();
       this.showText();
+  }
+
+  hideText (i = 0) {
+    var _this = this;
+    _this.addHighlightClass();
+    var timer = setTimeout(function () {
+      _this.deleteInnerText();
+      clearTimeout(timer);
+    }, _this.keystrokes * 12);
+  }
+
+  addHighlightClass() {
+    if (this.el.className.indexOf('highlight') === -1) {
+      this.el.className = this.el.className + ' highlight';
     }
   }
 
-  textOutIn ()
-  {
+  removeHighlightClass() {
+    this.el.className = this.el.className.replace(' highlight', '');
+  }
+
+  textOutIn () {
     this.nextAspect = this.aspectsService.nextAspect();
     this.currentHtml = this.aspectsService.parseHtmlText(this.el.childNodes);
-    this.el.className = this.el.className + ' typing';
+    this.addTypingClass();
     this.hideText();
+  }
+
+  addTypingClass() {
+    if (this.el.className.indexOf('typing') === -1) {
+      this.el.className = this.el.className + ' typing';
+    }
   }
 
   loop (delay, localCb)
@@ -152,7 +129,7 @@ export class AspectsDirective implements AfterViewChecked
     if (!this.checked)
     { //call this only once
       this.checked = !this.checked;
-      this.loop(3000, 'textOutIn');
+      this.loop(2500, 'textOutIn');
     }
   }
 

@@ -15,14 +15,14 @@ export class SvgChartComponent extends AbstractSvgChartComponent implements OnIn
   @Input('ratioWidth') ratioWidth: string;
   @Input('ratioHeight') ratioHeight: string;
   @Input('dataKey') dataKey: any;
-  @Input('gutterWidth') gutterWidth: number = 9;
+  @Input('gutterWidth') gutterWidth: number = 60;
   @Input('barColor') barColor: 'rgb(255, 255, 255)';
 
   // listen to window width changes
-  get padding () { return this.gutterWidth; }
+  get padding () { return this.gutterWidth / (+this.data.length) * this.inputRatioWidth; }
   get barHeights () { return this.data; }
-  get inputRatioWidth () { return this.ratioWidth; }
-  get inputRatioHeight () { return this.ratioHeight; }
+  get inputRatioWidth () { return +this.ratioWidth; }
+  get inputRatioHeight () { return +this.ratioHeight; }
 
   constructor(elm: ElementRef, chartService: ChartService) {
     super(elm.nativeElement);

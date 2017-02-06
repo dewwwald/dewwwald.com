@@ -2,15 +2,13 @@
   position: absolute;
   top: auto;
   bottom: 0;
-  left: px-to-rem(270px);
+  left: 0;
   right: auto;
   width: 100%;
-  text-align: center;
   transition: all 175ms ease-in-out;
-
-  .sidebar--in & {
-    left: -0%;
-  }
+  padding-right: 2rem;
+  text-align: right;
+  @include px-and-rem(padding-bottom, 3);
 }
 
 svg-icon { display: inline-block;}
@@ -20,10 +18,20 @@ svg-icon { display: inline-block;}
   fill: rgba($clr-base-lt, .75);
   width: 36px;
   height: 36px;
-  @include px-and-rem(margin-bottom, .25);
-  @include px-and-rem(margin, 0 .5 .25);
-
+  border-radius: 100%;
+  transform: translateZ(0);
+  @include px-and-rem(margin-left, 1);
   .sidebar--in & {
     fill: white;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: white;
+    fill: white;
+    fill: $clr-base-extra;
+  }
+  &:active {
+    background-color: transparent;
   }
 }

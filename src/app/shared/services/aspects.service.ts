@@ -59,7 +59,6 @@ export class AspectsService
   {
     return [
       // [{value: 'Hello, I am ', type: 'text'}, {value: 'Dewald.', type: 'text'}],
-      // [{value: 'Hello, I am Dewald.', type: 'text'}],
       [{value: 'Nice to meet you!', type: 'text'}],
       [{value: 'I am currently a freelancer.', type: 'text'}],
       [{value: 'I specialise in full stack web development.', type: 'text'}],
@@ -67,6 +66,7 @@ export class AspectsService
       [{value: 'I take pride in what I do & enjoy doing it.', type: 'text'}],
       [{value: 'Have fun browsing.', type: 'text'}],
       [{value: 'Drop me a line here if you want to get in touch.', type: 'text'}],
+      [{value: 'Hello, I am Dewald.', type: 'text'}],
     ];
   }
 }

@@ -18,7 +18,8 @@
           routerLink="{{navItem.link}}"
           (mouseover)="toggleNavigationIn()"
           scrollNavigation
-          [dataHref]="navItem.hash"
+          [dataHash]="navItem.hash"
+          [dataLink]="navItem.link"
         ><span class="menu__item-text">{{ navItem.title }}</span></a>
     </li>
   </ul>

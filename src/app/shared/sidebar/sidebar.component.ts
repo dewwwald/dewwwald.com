@@ -50,8 +50,8 @@ export class SidebarComponent implements OnInit {
   toggleNavigationIn() {
     this.setupElements();
     this.navToggled = true;
-    TweenLite.to(this.barOne, .5, { strokeDashoffset: -1076} );
-    TweenLite.to(this.barTwo, .5, { strokeDashoffset: -1250} );
+    TweenLite.to(this.barOne, .5, { strokeDashoffset: -1042 } );
+    TweenLite.to(this.barTwo, .5, { strokeDashoffset: -1216 } );
     TweenLite.to(this.barThree, .5, { opacity: 0, x: -1000 });
     if (this.element.className.indexOf('sidebar--in') === -1) {
       this.element.className += ' sidebar--in';

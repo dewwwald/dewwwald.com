@@ -14,7 +14,8 @@ export class ScrollNavigationDirective implements OnInit {
   private targetElementEndOffset;
   private avoidRegetOfElements: string = 'check';
 
-  @Input('dataHref') dataHref;
+  @Input('dataHash') dataHash;
+  @Input('dataLink') dataLink;
 
   constructor(
     private scrollNavigationService: ScrollNavigationService,
@@ -24,7 +25,7 @@ export class ScrollNavigationDirective implements OnInit {
   ) {
     this.elm = elm.nativeElement;
     this.elm.addEventListener('click', (evt) => {
-      this.scrollNavigationService.href = this.dataHref;
+      this.scrollNavigationService.href = this.dataHash;
       this.navigateOnSamePage();
     });
     window.addEventListener('scroll', () => {
@@ -32,7 +33,7 @@ export class ScrollNavigationDirective implements OnInit {
       this.applyNavigationClass();
     });
     router.events.subscribe((val) => {
-      if (val instanceof NavigationEnd && this.elm.attributes.getNamedItem('ng-reflect-href').value !== val.url) {
+      if (val instanceof NavigationEnd && this.dataLink !== val.url) {
         this.elm.parentNode.className = this.elm.parentNode.className.replace(' scroll-nav-item--current', '');
       } else {
         this.getTargetElementOnce();
@@ -52,7 +53,7 @@ export class ScrollNavigationDirective implements OnInit {
 
   getTargetElementOnce() {
     if (this.avoidRegetOfElements === 'check') {
-      this.targetElement = document.getElementById(this.dataHref);
+      this.targetElement = document.getElementById(this.dataHash);
       this.avoidRegetOfElements = 'wait';
     } else if (this.avoidRegetOfElements === 'wait') {
       let t = setTimeout(() => {
@@ -90,10 +91,10 @@ export class ScrollNavigationDirective implements OnInit {
 
   setupScrollNavigate() {
     if (
-      window.location.pathname === this.elm.attributes.getNamedItem('ng-reflect-href').value &&
+      window.location.pathname === this.dataLink &&
       this.isCurrentHref()
     ) {
-      this.scrollNavigationService.setupFirstOccurance(this.dataHref);
+      this.scrollNavigationService.setupFirstOccurance(this.dataHash);
       this.setActiveClass();
     } else {
       this.elm.parentNode.className = this.elm.parentNode.className.replace(' scroll-nav-item--current', '');

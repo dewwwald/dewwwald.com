@@ -1,3 +1,12 @@
 .graph-text-labels {
-  font-size: 3px;
+  font-size: 6px;
+
+  @include media-query (palm) {
+    font-size: 10px;
+  }
+}
+
+svg-chart rect {
+  --webkit--backface-visibility: visible;
+  backface-visibility: visible;
 }

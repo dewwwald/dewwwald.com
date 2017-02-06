@@ -20,8 +20,8 @@
   />
   <text
     *ngFor="let bar of graphBars;"
-    [attr.y]="canvasHeight + 5"
-    [attr.x]="bar.positionX + bar.barWidth / 2 + 3"
+    [attr.y]="canvasHeight + 10"
+    [attr.x]="bar.positionX + bar.barWidth / 2 + 2"
     [attr.transform]="'rotate(45, ' + (bar.positionX + bar.barWidth / 2) + ', ' + canvasHeight + ')'"
     class="graph-text-labels"
   >{{bar.label}}</text>

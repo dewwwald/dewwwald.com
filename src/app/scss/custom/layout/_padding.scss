@@ -38,7 +38,13 @@
 .soft--top { @extend %soft--top;}
 %section--padding {
   @extend %soft--large--ends;
-  @include px-and-rem(padding-left, 3);
-  @include px-and-rem(padding-right, 3);
+  @include px-and-rem(padding-left, 4);
+  @include px-and-rem(padding-right, 4);
+
+  @include media-query(palm) {
+    @include px-and-rem(padding-left, 3);
+    @include px-and-rem(padding-right, 3);
+  }
+
 }
 .section--padding { @extend %section--padding;}

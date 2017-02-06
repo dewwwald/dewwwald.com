@@ -7,7 +7,6 @@ import { SvgChartAnimateBarDirective } from '../../shared/svg-chart/svg-chart-an
 
 import { WhyComponent } from './why.component';
 import { SvgChartComponent } from '../../shared/svg-chart/svg-chart.component';
-import { SvgDynamicComponent } from '../../shared/svg-chart/svg-injector.component';
 import { SvgHoldingComponet } from '../../shared/svg-chart/svg-holding.component';
 
 import { ChartService } from '../../shared/services/chart.service';
@@ -20,7 +19,6 @@ import { ChartService } from '../../shared/services/chart.service';
   declarations: [
     WhyComponent,
     SvgChartComponent,
-    SvgDynamicComponent,
     SvgHoldingComponet,
     SinceDirective,
     SvgChartAnimateBarDirective,

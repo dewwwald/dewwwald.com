@@ -1,6 +1,6 @@
 <div [hidden]="submitted">
   <form *ngIf="active" (ngSubmit)="onSubmit()" #loginForm="ngForm" class="gw">
-    <fieldset class="g g-1/2 g-palm-1/1">
+    <fieldset class="g g-2/5 g-palm-1/1">
       <div>
         <label for="name">Name</label>
         <input required id="name" placeholder="your name" [(ngModel)]="model.name" (ngModelChange)="model.name = $event" name="name" type="text">
@@ -10,7 +10,7 @@
         <input required id="email" placeholder="your.email@domain.com" [(ngModel)]="model.email" (ngModelChange)="model.email = $event" name="email" type="text">
       </div>
     </fieldset>
-    <fieldset class="g g-1/2 g-palm-1/1">
+    <fieldset class="g g-3/5 g-palm-1/1">
       <label for="">Message</label>
       <textarea required id="message" placeholder="your message" [(ngModel)]="model.message" (ngModelChange)="model.message = $event" name="message" cols="30" rows="10"></textarea>
     </fieldset>
