@@ -68,7 +68,7 @@ export class AspectsDirective implements AfterViewChecked
     if (i >= 0) {
       this.stepInText(this.nextAspect[i], i);
     } else {
-      this.loop(2500, 'textOutIn');
+      this.loop(2000, 'textOutIn');
     }
   }
 
@@ -129,7 +129,7 @@ export class AspectsDirective implements AfterViewChecked
     if (!this.checked)
     { //call this only once
       this.checked = !this.checked;
-      this.loop(2500, 'textOutIn');
+      this.loop(3000, 'textOutIn');
     }
   }
 
@@ -138,6 +138,6 @@ export class AspectsDirective implements AfterViewChecked
     this.checked = false;
     this.aspectsService = aspectsService;
     this.el = el.nativeElement;
-    this.keystrokes = 75;
+    this.keystrokes = 45;
   }
 }
