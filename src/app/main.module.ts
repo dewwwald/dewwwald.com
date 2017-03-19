@@ -10,8 +10,6 @@ import { routes } from './config/app.routes';
 
 import { UtilsModule } from './shared/modules/utils.module';
 import { ScrollNavigationModule } from './shared/modules/scroll-navigation/scroll-navigation.module';
-import { SvgIconComponent } from './shared/svg-icon-system/svg-icon-system.component';
-import { SvgIconsSystemService } from './shared/services/svg-icon-system.service';
 
 import { SidebarService } from './shared/sidebar/sidebar.service';
 import { WindowService } from './shared/services/window.service';
@@ -28,13 +26,11 @@ import { DocumentService } from './shared/services/document.service';
   declarations: [
     LayoutComponent,
     SidebarComponent,
-    SvgIconComponent,
   ],
   providers: [
     SidebarService,
     WindowService,
     DocumentService,
-    SvgIconsSystemService,
   ],
   exports:      [ LayoutComponent ],
   bootstrap:    [ LayoutComponent ],

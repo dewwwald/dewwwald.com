@@ -12,6 +12,32 @@
     margin-bottom: 0px;
   }
 
+  .portfolio-item__touch {
+    display: none;
+    position: absolute;
+    left: auto;
+    right: 10px;
+    bottom: 10px;
+    top: auto;
+    width: 60px;
+    z-index: -1;
+    fill: white;
+
+    @include media-query (portable) {
+      display: block;
+      z-index: 10;
+      opacity: 1;
+      transition: all 250ms ease-in-out;
+
+      .portfolio-item-in-left &,
+      .portfolio-item-in-top &,
+      .portfolio-item-in-right &,
+      .portfolio-item-in-bottom & {
+        opacity: 0;
+      }
+    }
+  }
+
   .portfolio-item__over {
     position: absolute;
     top: 0;
@@ -35,35 +61,55 @@
     }
     .portfolio-item-in-left & {
       @extend %anim-in-left;
+      @extend %anim--portable--none;
     }
     .portfolio-item-in-top & {
       @extend %anim-in-top;
+      @extend %anim--portable--none;
     }
     .portfolio-item-in-right & {
       @extend %anim-in-right;
+      @extend %anim--portable--none;
     }
     .portfolio-item-in-bottom & {
       @extend %anim-in-bottom;
+      @extend %anim--portable--none;
     }
     .portfolio-item-out-left & {
       @extend %anim-in-right;
+      @extend %anim--portable--none;
       animation-direction: reverse;
       animation-fill-mode: backwards;
     }
     .portfolio-item-out-top & {
       @extend %anim-in-bottom;
+      @extend %anim--portable--none;
       animation-direction: reverse;
       animation-fill-mode: backwards;
     }
     .portfolio-item-out-right & {
       @extend %anim-in-left;
+      @extend %anim--portable--none;
       animation-direction: reverse;
       animation-fill-mode: backwards;
     }
     .portfolio-item-out-bottom & {
       @extend %anim-in-top;
+      @extend %anim--portable--none;
       animation-direction: reverse;
       animation-fill-mode: backwards;
+    }
+
+    @include media-query (portable) {
+      transform: translateX(112%) rotate(45deg) translateY(88%);
+      transition: all 250ms ease-in-out;
+
+      .portfolio-item-in-left &,
+      .portfolio-item-in-top &,
+      .portfolio-item-in-right &,
+      .portfolio-item-in-bottom & {
+        transform: translateX(0%) rotate(0deg) translateY(0%);
+      }
     }
   }
 
@@ -76,6 +122,20 @@
     width: 100%;
     transform: translate(-50%, -50%);
     @include px-and-rem(padding, 3);
+
+    @include media-query (portable) {
+      transition: all 250ms ease-in-out;
+      opacity: 0;
+      @include px-and-rem(padding, 1.5);
+      @include font-size($fs-h6, 0);
+
+      .portfolio-item-in-left &,
+      .portfolio-item-in-top &,
+      .portfolio-item-in-right &,
+      .portfolio-item-in-bottom & {
+        opacity: 1;
+      }
+    }
   }
 
   .portfolio-item__title {
@@ -86,15 +146,24 @@
     vertical-align: middle;
     line-height: .8;
 
-    @extend %fs--kilo;
-    @extend %push--large--bottom;
+    @include font-size($fs-kilo, 0);
+    @include push--large--bottom;
+
+    @include media-query (portable) {
+      @include font-size($fs-h3, 0);
+      @include push--small--bottom;
+    }
   }
 
   .portfolio-item__short {
     color: $clr-base;
     text-align: center;
     margin-bottom: 0px;
-    @extend %push--large--bottom;
+    @include push--large--bottom;
+
+    @include media-query (portable) {
+      @include push--small--bottom;
+    }
   }
 
 [imageCover] {

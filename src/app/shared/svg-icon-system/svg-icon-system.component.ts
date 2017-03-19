@@ -15,6 +15,7 @@ export class SvgIconComponent implements OnInit {
 
   @Input('iconName') iconName;
   @Input('iconNameObserver') iconNameObserver: Observable<any>;
+  @Input('viewBox') viewBox: string = '0 0 512 512';
 
   constructor (el: ElementRef, svgSystem: SvgIconsSystemService) {
     this.el = el.nativeElement;
@@ -22,7 +23,7 @@ export class SvgIconComponent implements OnInit {
   }
 
   svgWrapper(svgInner) {
-    return `<svg viewBox="0 0 512 512">${svgInner}</svg>`;
+    return `<svg viewBox="${this.viewBox}">${svgInner}</svg>`;
   }
 
   renderIcon() {

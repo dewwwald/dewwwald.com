@@ -7,12 +7,14 @@
           <div class="portfolio-item__center">
             <h2 class="portfolio-item__title">{{ item.title }}</h2>
             <p class="portfolio-item__short" [innerHTML]="item.description"></p>
-            <a class="btn btn--base" target="_black" href="{{ item.link }}">
+            <a *ngIf="item.link" class="btn btn--base" target="_black" href="{{ item.link }}">
             explore<span class="visuallyhidden"> website in embedded window</span>
             </a>
+            <span *ngIf="!item.link" class="btn btn--base" disabled>unavailable</span>
           </div>
         </div>
       </div>
+      <svg-icon class="portfolio-item__touch" [iconName]="'touch'"></svg-icon>
     </div>
   </article>
 </section>

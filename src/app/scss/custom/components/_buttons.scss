@@ -38,4 +38,10 @@ button { @extend %link--transition;}
     background-color: transparent;
     color: $clr-base-dk;
   }
+  &[disabled],
+  &:disabled {
+    color: $clr-ntrl-min;
+    background-color: $clr-base;
+    border-color: $clr-base;
+  }
 }

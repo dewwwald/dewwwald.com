@@ -8,3 +8,9 @@
 @import 'in-right';
 @import 'in-bottom';
 @import 'in-top';
+
+%anim--portable--none {
+  @include media-query (portable) {
+    animation-name: none;
+  }
+}

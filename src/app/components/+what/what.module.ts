@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule }   from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UtilsModule } from '../../shared/modules/utils.module';
 
 import { WhatComponent } from './what.component';
 import { WhatRoutingModule } from './what.routing';
@@ -16,6 +17,7 @@ import { BgcModifierDirective } from '../../shared/directives/bgc-modifier.direc
     WhatRoutingModule,
     CommonModule,
     WhatRoutingModule,
+    UtilsModule,
   ],
   declarations: [
     WhatComponent,
