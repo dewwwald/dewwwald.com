@@ -60,6 +60,10 @@
             color: $clr-primary;
           }
         }
+
+        @include media-query (palm) {
+          line-height: 1.5;
+        }
       }
 
       &.scroll-nav-item.scroll-nav-item--current > a {
@@ -94,6 +98,10 @@
         border-bottom: 1px solid;
         color: inherit;
         opacity: 0;
+      }
+
+      @include media-query (palm) {
+        @include font-size($fs-h5, 0);
       }
     }
 

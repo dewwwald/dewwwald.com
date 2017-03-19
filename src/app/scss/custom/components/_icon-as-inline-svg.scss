@@ -9,6 +9,10 @@
   padding-right: 2rem;
   text-align: right;
   @include px-and-rem(padding-bottom, 3);
+
+  @include media-query (palm) {
+    @include px-and-rem(padding-bottom, 1.5);
+  }
 }
 
 svg-icon { display: inline-block;}
