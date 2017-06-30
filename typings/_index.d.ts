@@ -6,6 +6,8 @@
 // JavaScript Docs http://api.greensock.com/js/
 // Version 1.15.1 (TypeScript 1.4)
 
+declare let ga: Function;
+
 interface IDispatcher {
     addEventListener(type:string, callback:Function, scope?:Object, useParam?:boolean, priority?:number):void;
     removeEventListener(type:string, callback:Function):void;
