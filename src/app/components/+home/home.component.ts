@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
     this.leftEye = document.getElementById('left-eye');
     this.rightEye = document.getElementById('right-eye');
     this.waitForGsap();
+    ga('set', 'page', '/who');
+    ga('send', 'pageview');
   }
 
   waitForGsap() {

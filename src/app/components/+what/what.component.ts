@@ -16,5 +16,8 @@ export class WhatComponent implements OnInit {
     this.portfolio = this.whatService.getPortfolioItems();
   }
 
-  constructor (private whatService: WhatService) {}
+  constructor (private whatService: WhatService) {
+    ga('set', 'page', '/what');
+    ga('send', 'pageview');
+  }
 }

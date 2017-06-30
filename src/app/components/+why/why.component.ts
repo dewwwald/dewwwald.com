@@ -5,5 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './why.component.html',
 })
 export class WhyComponent {
-  constructor () {}
+  constructor () {
+    ga('set', 'page', '/why');
+    ga('send', 'pageview');
+  }
 }

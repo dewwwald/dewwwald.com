@@ -12,7 +12,10 @@ export class WhenComponent implements OnInit {
   location: Location;
   constructor(
     private scrollNavigationAnimationService: ScrollNavigationAnimationService
-  ) {}
+  ) {
+    ga('set',  'page', '/when-where');
+    ga('send', 'pageview');
+  }
 
   lat: number = -26.1;
   lng: number = 28.1;
