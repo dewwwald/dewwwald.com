@@ -8,7 +8,7 @@ export class WhatService
     return [
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/bigteam.jpg',
+          url: 'https://dewwwald.com/assets/img/bigteam.jpg',
           alt: 'dewwwald web development - bigteam.co feedback platform'
         },
         title: 'BigTeam',
@@ -17,7 +17,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/delvvio-website.jpg',
+          url: 'https://dewwwald.com/assets/img/delvvio-website.jpg',
           alt: 'dewwwald web development - delvv.io website'
         },
         title: 'delvv.io website',
@@ -26,7 +26,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/jules-platform.jpg',
+          url: 'https://dewwwald.com/assets/img/jules-platform.jpg',
           alt: 'dewwwald web development - delvv.io Jules platform'
         },
         title: 'delvv.io Jules platform',
@@ -35,7 +35,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/HS-shopfitter.jpg',
+          url: 'https://dewwwald.com/assets/img/HS-shopfitter.jpg',
           alt: 'dewwwald web development - hs-shopfitters website screenshot'
         },
         title: 'H.S. Shopfitters',
@@ -44,7 +44,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/cafe-cazengo.jpg',
+          url: 'https://dewwwald.com/assets/img/cafe-cazengo.jpg',
           alt: 'dewwwald web development - Cafe Cazengo website screenshot'
         },
         title: 'Cafe Cazengo',
@@ -53,7 +53,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/the-alter-native.jpg',
+          url: 'https://dewwwald.com/assets/img/the-alter-native.jpg',
           alt: 'dewwwald web development - The alter native website screenshot'
         },
         title: 'The Alter Native',
@@ -62,7 +62,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/dare-to-explore.jpg',
+          url: 'https://dewwwald.com/assets/img/dare-to-explore.jpg',
           alt: 'dewwwald web development - Dare to explore website screenshot'
         },
         title: 'Dare To Explore',
@@ -71,7 +71,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/monarchandco.jpg',
+          url: 'https://dewwwald.com/assets/img/monarchandco.jpg',
           alt: 'dewwwald web development - Monarch and co website screenshot'
         },
         title: 'Monarch & Co',
@@ -80,7 +80,7 @@ export class WhatService
       },
       {
         img: {
-          url: 'http://dewwwald.com/assets/img/click-to-drive.jpg',
+          url: 'https://dewwwald.com/assets/img/click-to-drive.jpg',
           alt: 'dewwwald web development - Click to drive website screenshot'
         },
         title: 'Click To Drive',
