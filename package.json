@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "start": "ng serve",
-    "build": "ng build",
-    "build:github-pages": "ng build --configuration production --base-href / && node scripts/create-spa-fallback.mjs",
-    "lint": "ng lint"
+    "build": "npx -y node@22.13.1 ./node_modules/.bin/ng build",
+    "build:github-pages": "npx -y node@22.13.1 ./node_modules/.bin/ng build --configuration production --base-href / && npx -y node@22.13.1 scripts/create-spa-fallback.mjs",
+    "deploy": "node scripts/deploy-github-pages.mjs",
+    "lint": "npx -y node@22.13.1 ./node_modules/.bin/ng lint"
   },
   "dependencies": {
     "@angular/animations": "^20.3.0",
@@ -16,6 +17,8 @@
     "@angular/forms": "^20.3.0",
     "@angular/platform-browser": "^20.3.0",
     "@angular/router": "^20.3.0",
+    "marked": "^18.0.4",
+    "mermaid": "^11.16.1",
     "rxjs": "^7.8.0",
     "tslib": "^2.8.0",
     "zone.js": "^0.15.0"
@@ -26,12 +29,13 @@
     "@angular-eslint/eslint-plugin-template": "^20.0.0",
     "@angular-eslint/schematics": "^20.0.0",
     "@angular-eslint/template-parser": "^20.0.0",
-    "angular-eslint": "^20.0.0",
     "@angular/build": "^20.3.0",
     "@angular/cli": "^20.3.0",
     "@angular/compiler-cli": "^20.3.0",
     "@types/node": "^22.13.0",
+    "angular-eslint": "^20.0.0",
     "eslint": "^9.20.0",
+    "type-fest": "^5.8.0",
     "typescript": "~5.9.0"
   },
   "engines": {
