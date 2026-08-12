@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, inject } from '@angular/core';
 
 import { AspectsDirective } from '../directives/aspects.directive';
 import { FullPageDirective } from '../directives/full-page.directive';
@@ -24,9 +24,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private readonly faceElements = new Map<FaceElementName, Element>();
   private stopped = false;
   private activeTimeout: number | undefined;
+  protected logoPinned = false;
 
   ngAfterViewInit(): void {
     window.requestAnimationFrame(() => {
+      this.updateLogoPin();
       this.collectFaceElements();
       void this.initAnimation();
     });
@@ -37,6 +39,17 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     if (this.activeTimeout !== undefined) {
       window.clearTimeout(this.activeTimeout);
     }
+  }
+
+  @HostListener('window:scroll')
+  @HostListener('window:resize')
+  protected updateLogoPin(): void {
+    const pinPoint = window.innerHeight - this.logoBottomOffset() - 72;
+    this.logoPinned = window.scrollY >= pinPoint;
+  }
+
+  private logoBottomOffset(): number {
+    return Math.min(Math.max(window.innerHeight * 0.05, 24), 54);
   }
 
   private collectFaceElements(): void {
