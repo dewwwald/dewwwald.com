@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, HostListener } from '@angular/core';
 
-import { ArticlesComponent } from './articles.component';
 import { HomeComponent } from './home.component';
 import { WhyComponent } from './why.component';
 import { WhenWhereComponent } from './when-where.component';
@@ -13,40 +12,43 @@ interface ScrollSection {
 @Component({
   selector: 'dewwwald-profile-page',
   standalone: true,
-  imports: [ArticlesComponent, HomeComponent, WhyComponent, WhenWhereComponent],
+  imports: [HomeComponent, WhyComponent, WhenWhereComponent],
   template: `
-    <section id="who" data-path="/who">
+    <section id="about" data-path="/about">
       <dewwwald-home />
     </section>
-    <section id="what" data-path="/what">
-      <dewwwald-articles />
-    </section>
-    <section id="why" data-path="/why">
+    <section id="experience" data-path="/experience">
       <dewwwald-why />
     </section>
-    <section id="when-where" data-path="/when-where">
+    <section id="contact" data-path="/contact">
       <dewwwald-when-where />
     </section>
   `,
 })
 export class ProfilePageComponent implements AfterViewInit {
   private readonly sections: readonly ScrollSection[] = [
-    { id: 'who', path: '/who' },
-    { id: 'what', path: '/what' },
-    { id: 'why', path: '/why' },
-    { id: 'when-where', path: '/when-where' },
+    { id: 'about', path: '/about' },
+    { id: 'experience', path: '/experience' },
+    { id: 'contact', path: '/contact' },
   ];
-  private currentPath = '';
+  private currentNavKey = '';
+  private routeScrollSettled = false;
 
   ngAfterViewInit(): void {
     window.requestAnimationFrame(() => {
       this.scrollToCurrentRoute();
-      this.updatePathForScroll();
+      window.setTimeout(() => {
+        this.routeScrollSettled = true;
+      }, 120);
     });
   }
 
   @HostListener('window:scroll')
   protected updatePathForScroll(): void {
+    if (!this.routeScrollSettled) {
+      return;
+    }
+
     const current = this.sections
       .map((section) => ({
         ...section,
@@ -55,18 +57,43 @@ export class ProfilePageComponent implements AfterViewInit {
       .filter((section) => window.scrollY + 140 >= section.top)
       .at(-1);
 
-    if (current && current.path !== this.currentPath) {
-      this.currentPath = current.path;
-      window.history.replaceState(window.history.state, '', current.path);
+    if (current) {
+      this.setCurrentSection(current);
     }
   }
 
   private scrollToCurrentRoute(): void {
-    const section = this.sections.find((item) => item.path === window.location.pathname) ?? this.sections[0];
     const fragment = window.location.hash.replace('#', '');
-    const target = fragment ? document.getElementById(fragment) : document.getElementById(section.id);
-    target?.scrollIntoView({ block: 'start' });
-    this.currentPath = section.path;
-    window.history.replaceState(window.history.state, '', `${section.path}${window.location.hash}`);
+    const section =
+      this.sections.find((item) => item.id === fragment) ??
+      this.sections.find((item) => item.path === window.location.pathname) ??
+      this.sections[0];
+    const target = document.getElementById(section.id);
+
+    if (target) {
+      window.scrollTo({ top: target.offsetTop, left: 0, behavior: 'auto' });
+    }
+
+    this.setCurrentSection(section);
+  }
+
+  private setCurrentSection(section: ScrollSection): void {
+    const navKey = this.navKeyFor(section);
+
+    if (navKey === this.currentNavKey) {
+      return;
+    }
+
+    this.currentNavKey = navKey;
+    window.history.replaceState(window.history.state, '', navKey);
+    window.dispatchEvent(
+      new CustomEvent('dewwwald-section-change', {
+        detail: { id: section.id, path: section.path, navKey },
+      }),
+    );
+  }
+
+  private navKeyFor(section: ScrollSection): string {
+    return section.path;
   }
 }
