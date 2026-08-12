@@ -6,7 +6,7 @@ LinkedIn: linkedin.com/in/dewaldlaubscher | Portfolio/GitHub: https://github.com
 
 ## Professional Summary
 
-Software engineering leader with 10+ years of experience across startup, acquisition, and enterprise environments, including Senior Software Engineer experience at Intuit Mailchimp and founding engineering leadership at BigTeam. Experienced leading small engineering teams, hiring and managing contractors, mentoring engineers, modernizing platform systems, and delivering scalable data infrastructure. Strong blend of hands-on technical depth, technical tradeoff management, and people-centered leadership, with a focus on developer productivity, pragmatic architecture, and business impact.
+Software engineering leader with 12+ years of experience across startup, acquisition, and enterprise environments, including Senior Software Engineer experience at Intuit Mailchimp and founding engineering leadership at BigTeam. Experienced leading small engineering teams, hiring and managing contractors, mentoring engineers, modernizing platform systems, and delivering scalable data infrastructure. Strong blend of hands-on technical depth, technical tradeoff management, and people-centered leadership, with a focus on developer productivity, pragmatic architecture, and business impact.
 
 ## Leadership & Platform Highlights
 
@@ -57,7 +57,7 @@ Johannesburg, South Africa
 
 ### Earlier Experience
 
-**Developer | Sep 2014 – Sep 2019**
+**Developer | Feb 2014 – Sep 2019**
 
 - Delivered 80+ websites and full-stack web projects across agency, product, and client environments, building strong foundations in front-end, back-end, deployment, client communication, and production support.
 

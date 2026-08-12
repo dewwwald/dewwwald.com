@@ -24,15 +24,15 @@ Senior software engineer and technical leader with experience across platform mo
 
 ### Manager / Platform Engineering Manager Summary
 
-Software engineering leader with 10+ years of experience across startup, acquisition, and enterprise environments, including Senior Software Engineer experience at Intuit Mailchimp and founding engineering leadership at BigTeam. Experienced leading small engineering teams, hiring and managing contractors, mentoring engineers, modernizing platform systems, and delivering scalable data infrastructure. Strong blend of hands-on technical depth, technical tradeoff management, and people-centered leadership, with a focus on developer productivity, pragmatic architecture, and business impact.
+Software engineering leader with 12+ years of experience across startup, acquisition, and enterprise environments, including Senior Software Engineer experience at Intuit Mailchimp and founding engineering leadership at BigTeam. Experienced leading small engineering teams, hiring and managing contractors, mentoring engineers, modernizing platform systems, and delivering scalable data infrastructure. Strong blend of hands-on technical depth, technical tradeoff management, and people-centered leadership, with a focus on developer productivity, pragmatic architecture, and business impact.
 
 ### Technical Leadership / Senior Engineer Summary
 
-Senior software engineer and technical leader with 10+ years of experience building full-stack, platform, and data-intensive systems across startup, acquisition, and enterprise environments. Recent experience at Intuit Mailchimp focused on platform infrastructure, legacy modernization, large-scale data processing, microservice migrations, developer productivity, and AI-assisted engineering workflows. Strong background in pragmatic architecture, distributed systems, DDD, dependency injection, modular design, and engineering mentorship.
+Senior software engineer and technical leader with 12+ years of experience building full-stack, platform, and data-intensive systems across startup, acquisition, and enterprise environments. Recent experience at Intuit Mailchimp focused on platform infrastructure, legacy modernization, large-scale data processing, microservice migrations, developer productivity, and AI-assisted engineering workflows. Strong background in pragmatic architecture, distributed systems, DDD, dependency injection, modular design, and engineering mentorship.
 
 ### Staff / Platform Engineer Summary
 
-Platform-focused software engineer with 10+ years of experience across startup, acquisition, and enterprise environments. Experienced modernizing legacy systems, building scalable data infrastructure, improving microservice migration performance, and navigating complex technical tradeoffs across large-scale systems. Strong technical depth across Kafka, Redshift, Debezium, microservices, Strangler Fig migrations, DDD, dependency injection, modular architecture, and AI-assisted developer-productivity workflows.
+Platform-focused software engineer with 12+ years of experience across startup, acquisition, and enterprise environments. Experienced modernizing legacy systems, building scalable data infrastructure, improving microservice migration performance, and navigating complex technical tradeoffs across large-scale systems. Strong technical depth across Kafka, Redshift, Debezium, microservices, Strangler Fig migrations, DDD, dependency injection, modular architecture, and AI-assisted developer-productivity workflows.
 
 ---
 
@@ -321,13 +321,13 @@ Johannesburg, South Africa
 
 ### Compact One-Line Version
 
-**Developer / Full-stack Web Developer | Sep 2014 – Sep 2019**
+**Developer / Full-stack Web Developer | Feb 2014 – Sep 2019**
 
 - Delivered 80+ websites and full-stack web projects across agency, product, and client environments, building strong foundations in front-end, back-end, deployment, client communication, and production support.
 
 ### Slightly Expanded Version
 
-**Developer / Full-stack Web Developer | Sep 2014 – Sep 2019**
+**Developer / Full-stack Web Developer | Feb 2014 – Sep 2019**
 
 - Delivered 80+ websites and full-stack web projects across agency, product, and client environments, balancing speed, maintainability, design quality, and production reliability.
 - Built strong foundations across front-end, back-end, deployment, client communication, user experience, and production support.
@@ -634,7 +634,7 @@ Role themes:
 
 Resume alignment:
 
-- 10+ years software engineering experience
+- 12+ years software engineering experience
 - Intuit Mailchimp context
 - Platform infrastructure
 - Large-scale data processing
@@ -706,7 +706,7 @@ LinkedIn: linkedin.com/in/dewaldlaubscher | Portfolio/GitHub: https://github.com
 
 ## Professional Summary
 
-Software engineering leader with 10+ years of experience across startup, acquisition, and enterprise environments, including Senior Software Engineer experience at Intuit Mailchimp and founding engineering leadership at BigTeam. Experienced leading small engineering teams, hiring and managing contractors, mentoring engineers, modernizing platform systems, and delivering scalable data infrastructure. Strong blend of hands-on technical depth, technical tradeoff management, and people-centered leadership, with a focus on developer productivity, pragmatic architecture, and business impact.
+Software engineering leader with 12+ years of experience across startup, acquisition, and enterprise environments, including Senior Software Engineer experience at Intuit Mailchimp and founding engineering leadership at BigTeam. Experienced leading small engineering teams, hiring and managing contractors, mentoring engineers, modernizing platform systems, and delivering scalable data infrastructure. Strong blend of hands-on technical depth, technical tradeoff management, and people-centered leadership, with a focus on developer productivity, pragmatic architecture, and business impact.
 
 ## Leadership & Platform Highlights
 
@@ -757,7 +757,7 @@ Johannesburg, South Africa
 
 ### Earlier Experience
 
-**Developer | Sep 2014 – Sep 2019**
+**Developer | Feb 2014 – Sep 2019**
 
 - Delivered 80+ websites and full-stack web projects across agency, product, and client environments, building strong foundations in front-end, back-end, deployment, client communication, and production support.
 
@@ -805,7 +805,7 @@ Potential technical resume headline:
 
 Potential technical summary:
 
-Senior software engineer with 10+ years of experience building full-stack, platform, and data-intensive systems across startup, acquisition, and enterprise environments. Recent Intuit Mailchimp experience focused on platform infrastructure, legacy modernization, large-scale data processing, microservice migrations, and developer productivity. Strong technical depth across Kafka, Redshift, Debezium, microservices, DDD, dependency injection, modular design, AI-assisted workflows, and pragmatic architecture.
+Senior software engineer with 12+ years of experience building full-stack, platform, and data-intensive systems across startup, acquisition, and enterprise environments. Recent Intuit Mailchimp experience focused on platform infrastructure, legacy modernization, large-scale data processing, microservice migrations, and developer productivity. Strong technical depth across Kafka, Redshift, Debezium, microservices, DDD, dependency injection, modular design, AI-assisted workflows, and pragmatic architecture.
 
 Potential technical highlights:
 
