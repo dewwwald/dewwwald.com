@@ -64,7 +64,7 @@ export class SinceDirective
   constructor (el: ElementRef)
   {
     this.el = el.nativeElement;
-    this.since = new Date('Sun Jan 31 2014 08:30:00 GMT+0200 (SAST)');
+    this.since = new Date('Sat Feb 01 2014 08:30:00 GMT+0200 (SAST)');
     this.current = new Date();
   }
 }
