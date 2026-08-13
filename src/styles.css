@@ -488,6 +488,26 @@ dewwwald-article-post-page {
   text-decoration: none;
 }
 
+/* Darker of the two teals in the palette (#acded5 light / #2f5f59 dark, the
+   same pairing as the article-list dot) - for a link sitting on a light
+   section background, where the light teal doesn't read with enough contrast. */
+.link--teal-dark {
+  color: #2f5f59;
+}
+
+.writing-teaser {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.writing-teaser a {
+  font-size: 14px;
+}
+
 .article-item__dot {
   background: transparent;
   border: 2px solid #2f5f59;
@@ -516,42 +536,145 @@ dewwwald-article-post-page {
 }
 
 .article-post-page {
-  background: #4d4d4d;
+  background: #404040;
   color: #e6e6e6;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  min-height: 100vh;
-  padding: clamp(44px, 7vw, 84px) var(--section-inline-end) clamp(72px, 10vw, 140px) var(--section-inline-start);
 }
 
-.article-post-page__nav {
-  margin-bottom: 28px;
-  max-width: 780px;
-}
-
-.article-post-page__nav a {
-  color: #acded5;
-  text-decoration: none;
-}
-
-.article-post-page__nav a:hover,
-.article-post-page__nav a:focus-visible {
-  text-decoration: underline;
-}
-
-.article-post-document {
+/* One shared window - a single title bar (with the only set of traffic-light
+   dots) and, below it, the article and the floating screenshot as two panes
+   inside that same frame, rather than two separate stacked windows. Full-bleed
+   to the page edges, so no border-radius/shadow (nothing to float above).
+   No fixed height and no scroll container of its own - the page's native
+   scrollbar is the only one that exists here. The cd header and the image
+   pane are `position: sticky` instead, so they hold their place in the
+   viewport as the page scrolls past them. */
+.terminal-window {
   background: #404040;
-  border-radius: 8px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
   max-width: 780px;
-  overflow: hidden;
+  width: 100%;
 }
 
-.article-post-document__chrome {
+@media (min-width: 1150px) {
+  .terminal-window {
+    max-width: none;
+  }
+}
+
+.terminal-window__head {
+  background: #404040;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  flex: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.terminal-window__chrome {
   align-items: center;
   background: #333333;
   display: flex;
   gap: 8px;
   padding: 12px 16px;
+}
+
+.terminal-nav__body {
+  color: #d0d0d0;
+  display: block;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.terminal-nav__body:hover,
+.terminal-nav__body:focus-visible {
+  color: #ffffff;
+}
+
+.terminal-nav__prompt {
+  color: #acded5;
+  margin-right: 8px;
+}
+
+.terminal-nav__comment {
+  color: #8a8a8a;
+  margin-left: 8px;
+}
+
+.terminal-window__panes {
+  align-items: flex-start;
+  display: flex;
+}
+
+.terminal-window__pane {
+  min-width: 0;
+}
+
+.terminal-window__pane--article {
+  background: #404040;
+  flex: 0 0 auto;
+  max-width: 780px;
+  width: 100%;
+}
+
+/* Only shown once there's real room beside the (unchanged-width) article,
+   so it never squeezes the reading column on smaller viewports. Darker and
+   inset from the article pane so the two clearly read as separate panes
+   sharing one window, not one continuous surface. `position: sticky` (not a
+   scroll container of its own) so it holds its place in the viewport, right
+   below the sticky cd header, as the page's native scrollbar moves the
+   article past it. 87px = .terminal-window__head's own rendered height (a
+   single fixed-padding monospace line, so it doesn't vary) - keep both in
+   sync if that header's padding/font-size ever changes. */
+.terminal-window__pane--image {
+  display: none;
+}
+
+@media (min-width: 1150px) {
+  .terminal-window__pane--image {
+    align-items: flex-start;
+    background: #2b2b2b;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: inset 4px 0 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex: 1 1 auto;
+    height: calc(100vh - 87px);
+    overflow: hidden;
+    padding: 20px;
+    position: sticky;
+    top: 87px;
+  }
+}
+
+/* Positioned parent for panel images (screenshots and diagrams alike):
+   matches the pane's content box exactly (own inset instead of relying on
+   the pane's padding box) so the offset an image gets pinned to lines up
+   with the heading it tracks. */
+.anchored-diagram-layer {
+  inset: 20px;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Every image placed in the layer - direct top: <px> positioning, no
+   transition/animation. An image's top is either following its heading 1:1
+   as you scroll, or floored at a fixed value; either way it's a plain
+   assignment each frame, not an animated one. */
+.anchored-diagram-layer > * {
+  position: absolute;
+  width: 100%;
+}
+
+.anchored-diagram-layer .mermaid-diagram svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.floating-screenshot {
+  display: block;
 }
 
 .chrome-dot {
@@ -581,7 +704,7 @@ dewwwald-article-post-page {
 }
 
 .article-post-document__body {
-  padding: clamp(28px, 5vw, 56px);
+  padding: clamp(36px, 6.5vw, 72px);
 }
 
 .article-post-document__body h1,
@@ -657,6 +780,19 @@ dewwwald-article-post-page {
 .article-post-document__body .mermaid-diagram svg {
   display: block;
   margin: 0 auto;
+  max-width: 100%;
+}
+
+/* A panel screenshot/gif that's fallen back to the article's own flow
+   (below the 1150px breakpoint, where there's no pane to feature it in)
+   needs its own sizing - in the pane it's sized by its absolute-positioned
+   parent, but here it's just a normal inline image. */
+.article-post-document__body .floating-screenshot {
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: block;
+  height: auto;
+  margin: 24px auto;
   max-width: 100%;
 }
 

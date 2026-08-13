@@ -121,8 +121,6 @@ Wired into the request body, this closed off an entire category of failure for f
 
 By this point I'd also wrapped the whole pipeline in a small web UI — a chat pane next to a live diagram of Browser / Zig Server / LM Studio, with the request animated as it moves through each stage:
 
-![Chat pane and animated architecture diagram showing a request travel from browser to Zig server to LM Studio](/assets/img/directed-decoding-demo.gif)
-
 While playing around with this interface I found that the decoding was literal. What I needed was contextualized english looking for the correct nearest neighbor without hallucinating.
 
 ## Where meta data matters

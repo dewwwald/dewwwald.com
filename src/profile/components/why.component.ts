@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
+import { articles } from '../data/articles';
 import { SinceDirective } from '../directives/since.directive';
 
 interface ProofPoint {
@@ -11,7 +13,7 @@ interface ProofPoint {
 @Component({
   selector: 'dewwwald-why',
   standalone: true,
-  imports: [NgFor, SinceDirective],
+  imports: [NgFor, RouterLink, SinceDirective],
   template: `
     <main>
       <section class="section--padding bgc--secondary">
@@ -29,6 +31,20 @@ interface ProofPoint {
           decoration.
         </p>
       </section>
+      <section class="section--padding bgc--tertiary">
+        <h1>
+          Writing <small>what I'm actually thinking about</small>
+        </h1>
+        <p>
+          Want to know more about how I think through problems? I write about the ones that stuck with me -
+          <a class="link--teal-dark" routerLink="/articles">read my articles</a>.
+        </p>
+        <ul class="writing-teaser flush--bottom" aria-label="Recent articles">
+          <li *ngFor="let article of recentArticles">
+            <a class="link--teal-dark" [routerLink]="['/articles', article.slug]">{{ article.title }}</a>
+          </li>
+        </ul>
+      </section>
       <section class="section--padding">
         <h1>Evidence
           <small>the work behind the positioning</small>
@@ -45,6 +61,8 @@ interface ProofPoint {
   `,
 })
 export class WhyComponent {
+  protected readonly recentArticles = articles.slice(0, 2);
+
   protected readonly proofPoints: readonly ProofPoint[] = [
     {
       label: 'Mailchimp platform systems',
