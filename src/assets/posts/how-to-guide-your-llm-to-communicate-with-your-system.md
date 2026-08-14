@@ -4,7 +4,7 @@ Yes, LLM's are super great at chatting up a storm and like your favourite uncle 
 
 I typed "give me all items that have name gadget and price 50" into a chat box wired up to a local model, and it came back with a clean, correctly-shaped JSON query. I ran it against the database. It worked. That took about an hour, and it felt like the whole problem — natural language in, structured query out, demo over and I just built a directed decoding prototype... No!
 
-That hour got me maybe halfway. The rest of the project ([source on GitHub](https://github.com/dewwwald/article-artifact-directed-llm-output)) was spent on the half that doesn't show up in a demo: making sure the model's output isn't just *plausible* (something an inference statistical model is good at); Instea something a system can actually be trusted to run like an AST.
+That hour got me maybe halfway. The rest of the project ([source on GitHub](https://github.com/dewwwald/article-artifact-directed-llm-output)) was spent on the half that doesn't show up in a demo: making sure the model's output isn't just *plausible* (something an inference statistical model is good at); instead, something a system can actually be trusted to run like an AST.
 
 ## The first draft
 
@@ -25,7 +25,7 @@ flowchart TD
 
 When you chat with an LLM, you are the validator. If it says something slightly wrong, you notice, because you're a human reading human language and you have context it doesn't. That's general inference, and "pretty good most of the time". It gives you a statistically correct greeting when you ask it for one, or a statistically correct response to a job rejection email (oh I have seen a few ha). No emotion no understanding just correct statistics. This outcome is often an acceptable one, because a person is standing between the model and anything that matters is accounted for.
 
-That's not what can happen when an autonomouse system is interacting with a platform. That is what I was building at Mailchimp with our LLM segmentation experiment. I was building a query engine: natural language in, a structured filter out, and that filter gets executed against a database with nobody reading it first. In this scenario a person sounding off "looks about right" is no longer an option an LLM's output is consumed by code and run as if it is the gospel itself.
+That's not what can happen when an autonomous system is interacting with a platform. That is what I was building at Mailchimp with our LLM segmentation experiment. I was building a query engine: natural language in, a structured filter out, and that filter gets executed against a database with nobody reading it first. In this scenario a person sounding off "looks about right" is no longer an option an LLM's output is consumed by code and run as if it is the gospel itself.
 
 I actually cared about the end result: an enterprise system, where the data behind the query is something like PII. Now a wrong answer doesn't look like a bad chatbot reply. It looks like a filter that silently returns — or silently omits — records it shouldn't, because the model invented a field, or nested a condition wrong, or mapped "cost" onto a field that doesn't exist. Nobody reads the query before it runs, remember! The failure is systemic, not conversational.
 
@@ -46,7 +46,7 @@ Node {
 }
 ```
 
-An array of these nodes—just a rudementary prototype. Each optionally nesting a `then` array of child nodes applied per-element when a path ends in a wildcard. Small enough to hold in my head, small enough to validate exhaustively, expressive enough to answer real questions against a real SQLite-backed dataset. I built the matcher and the persistence layer first, with no model anywhere near it, specifically so the grammar the LLM would eventually target was solid before I asked anything to generate it.
+An array of these nodes—just a rudimentary prototype. Each optionally nesting a `then` array of child nodes applied per-element when a path ends in a wildcard. Small enough to hold in my head, small enough to validate exhaustively, expressive enough to answer real questions against a real SQLite-backed dataset. I built the matcher and the persistence layer first, with no model anywhere near it, specifically so the grammar the LLM would eventually target was solid before I asked anything to generate it.
 
 ## Attempt one: hope disguised as validation
 
@@ -69,7 +69,7 @@ Each Node object has exactly these keys:
     "path" ends in "[]"
 ```
 
-Send the prompt, get a response, run it through `json.parseFromSlice`, and hope. When it worked, it looked exactly like real guided decoding — the output matched the grammar. When it didn't, the process crashed on a malformed field or just produced nonsense that happened to parse. You could at this point pass your context along with the errors from the LLM output and iterate until it succeeds. But there you are just adding that network IO latency per error and this is NOT guided decoding—but this is what I though it was when I first learned about it. This was post-hoc validation. 
+Send the prompt, get a response, run it through `json.parseFromSlice`, and hope. When it worked, it looked exactly like real guided decoding — the output matched the grammar. When it didn't, the process crashed on a malformed field or just produced nonsense that happened to parse. You could at this point pass your context along with the errors from the LLM output and iterate until it succeeds. But there you are just adding that network IO latency per error and this is NOT guided decoding—but this is what I thought it was when I first learned about it. This was post-hoc validation. 
 
 ## Attempt two: actually constraining the model
 
@@ -127,7 +127,7 @@ While playing around with this interface I found that the decoding was literal. 
 
 While live testing a query that failed: "items that cost 50." Schema-valid JSON with every prompt. It was also useless — the model had nowhere to put "cost," because neither the AST's grammar doc nor the JSON Schema said one word about what the underlying *database* schema that the LLM was targeting. Both only describe the AST's own shape: operand, action, path, value, then. Nothing in either document says "and by the way, the field for amount of money is called `price`."
 
-From a context engineering standpoint that mattered most in this whole project: **a schema constrains shape, not intent.** `additionalProperties: false` stops the model from inventing a key that isn't one of the five defined ones; the `enum` on `operand` separately stops it from writing a value outside `"AND"`/`"OR"` once that key exists. Two different mechanisms, both enforcing closed, checkable sets — and neither one can stop the model from confidently mapping "cost" onto a field that doesn't exist, because "cost means price" isn't a shape problem, it's a meaning problem—a nearest neighbor search problem. Put another way meaning isn't something a JSON Schema can validate.
+From a context engineering standpoint that mattered most in this whole project: as far as an LLM is concerned, **a schema constrains shape, not intent.** Inference does not guard against real data labels, it gives the most likely. `additionalProperties: false` stops the model from inventing a key that isn't one of the five defined ones; the `enum` on `operand` separately stops it from writing a value outside `"AND"`/`"OR"` once that key exists. Two different mechanisms, both enforcing closed, checkable sets — and neither one can stop the model from confidently mapping "cost" onto a field that doesn't exist, because "cost means price" isn't a shape problem, it's a meaning problem—a nearest neighbor search problem. Put another way meaning isn't something a JSON Schema can validate.
 
 The fix was a hint describing the real data model, generated by reflecting over the actual `Item` struct so it can never quietly drift out of sync with the code:
 

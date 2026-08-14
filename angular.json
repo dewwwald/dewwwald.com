@@ -26,7 +26,8 @@
               {
                 "glob": "**/*",
                 "input": "src/assets",
-                "output": "assets"
+                "output": "assets",
+                "ignore": ["draft-posts/**"]
               },
               {
                 "glob": "**/*",
@@ -63,7 +64,29 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src/assets",
+                  "output": "assets"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "src/meta",
+                  "output": "."
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src",
+                  "output": "."
+                },
+                {
+                  "glob": "**/*",
+                  "input": "resume-full",
+                  "output": "resume-full"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

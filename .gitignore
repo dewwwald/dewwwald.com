@@ -4,3 +4,7 @@ node_modules/
 dist
 .angular/
 coverage/
+
+# Generated at build/serve time by scripts/generate-post-meta.mjs (see
+# package.json's pre* hooks) - never hand-maintained, always regenerated.
+src/generated/

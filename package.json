@@ -3,8 +3,10 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
+    "prestart": "node scripts/generate-post-meta.mjs",
     "start": "ng serve",
     "build": "npx -y node@22.13.1 ./node_modules/.bin/ng build",
+    "prebuild:github-pages": "node scripts/generate-post-meta.mjs",
     "build:github-pages": "npx -y node@22.13.1 ./node_modules/.bin/ng build --configuration production --base-href / && npx -y node@22.13.1 scripts/create-spa-fallback.mjs",
     "deploy": "node scripts/deploy-github-pages.mjs",
     "lint": "npx -y node@22.13.1 ./node_modules/.bin/ng lint"

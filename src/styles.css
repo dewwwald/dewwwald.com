@@ -469,25 +469,6 @@ dewwwald-article-post-page {
   margin-top: 8px;
 }
 
-.articles-intro {
-  background-color: #acded5;
-  color: #404040;
-}
-
-.articles-list {
-  display: grid;
-  gap: 4px;
-}
-
-.article-item__link {
-  align-items: flex-start;
-  color: inherit;
-  display: flex;
-  gap: 16px;
-  padding: 18px 0;
-  text-decoration: none;
-}
-
 /* Darker of the two teals in the palette (#acded5 light / #2f5f59 dark, the
    same pairing as the article-list dot) - for a link sitting on a light
    section background, where the light teal doesn't read with enough contrast. */
@@ -508,35 +489,8 @@ dewwwald-article-post-page {
   font-size: 14px;
 }
 
-.article-item__dot {
-  background: transparent;
-  border: 2px solid #2f5f59;
-  border-radius: 50%;
-  flex-shrink: 0;
-  height: 14px;
-  margin-top: 8px;
-  transition: background-color 160ms ease;
-  width: 14px;
-}
-
-.article-item__link:hover .article-item__dot,
-.article-item__link:focus-visible .article-item__dot {
-  background-color: #2f5f59;
-}
-
-.article-item__text h2 {
-  font-size: clamp(24px, 3vw, 32px);
-  line-height: 1.15;
-  margin: 0 0 8px;
-}
-
-.article-item__text p {
-  color: #404040;
-  margin: 0;
-}
-
 .article-post-page {
-  background: #404040;
+  background: #0a1000;
   color: #e6e6e6;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
@@ -550,7 +504,7 @@ dewwwald-article-post-page {
    pane are `position: sticky` instead, so they hold their place in the
    viewport as the page scrolls past them. */
 .terminal-window {
-  background: #404040;
+  background: #0a1000;
   display: flex;
   flex-direction: column;
   max-width: 780px;
@@ -564,21 +518,13 @@ dewwwald-article-post-page {
 }
 
 .terminal-window__head {
-  background: #404040;
+  background: #0a1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   flex: none;
   position: sticky;
   top: 0;
   z-index: 10;
-}
-
-.terminal-window__chrome {
-  align-items: center;
-  background: #333333;
-  display: flex;
-  gap: 8px;
-  padding: 12px 16px;
 }
 
 .terminal-nav__body {
@@ -591,6 +537,47 @@ dewwwald-article-post-page {
 .terminal-nav__body:hover,
 .terminal-nav__body:focus-visible {
   color: #ffffff;
+}
+
+/* The blinking block cursor a terminal shows at the typing position - shown
+   only on hover/focus, right after the command text itself (not the
+   trailing # comment), as the hint that this line is actually clickable.
+   Default treatment for this kind of nav link on any terminal-styled page
+   (see .terminal-nav__command's other uses). */
+.terminal-nav__command::after {
+  background: #e6e6e6;
+  content: "";
+  display: inline-block;
+  height: 1em;
+  margin-left: 2px;
+  opacity: 0;
+  vertical-align: text-bottom;
+  width: 0.55em;
+}
+
+.terminal-nav__body:hover .terminal-nav__command::after,
+.terminal-nav__body:focus-visible .terminal-nav__command::after {
+  animation: terminal-cursor-blink 1s step-end infinite;
+}
+
+@keyframes terminal-cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-nav__body:hover .terminal-nav__command::after,
+  .terminal-nav__body:focus-visible .terminal-nav__command::after {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 .terminal-nav__prompt {
@@ -613,7 +600,7 @@ dewwwald-article-post-page {
 }
 
 .terminal-window__pane--article {
-  background: #404040;
+  background: #0a1000;
   flex: 0 0 auto;
   max-width: 780px;
   width: 100%;
@@ -625,7 +612,7 @@ dewwwald-article-post-page {
    sharing one window, not one continuous surface. `position: sticky` (not a
    scroll container of its own) so it holds its place in the viewport, right
    below the sticky cd header, as the page's native scrollbar moves the
-   article past it. 87px = .terminal-window__head's own rendered height (a
+   article past it. 53px = .terminal-window__head's own rendered height (a
    single fixed-padding monospace line, so it doesn't vary) - keep both in
    sync if that header's padding/font-size ever changes. */
 .terminal-window__pane--image {
@@ -640,11 +627,11 @@ dewwwald-article-post-page {
     box-shadow: inset 4px 0 12px rgba(0, 0, 0, 0.3);
     display: flex;
     flex: 1 1 auto;
-    height: calc(100vh - 87px);
+    height: calc(100vh - 53px);
     overflow: hidden;
     padding: 20px;
     position: sticky;
-    top: 87px;
+    top: 53px;
   }
 }
 
@@ -677,34 +664,13 @@ dewwwald-article-post-page {
   display: block;
 }
 
-.chrome-dot {
-  border-radius: 50%;
-  display: block;
-  height: 12px;
-  width: 12px;
-}
-
-.chrome-dot--close {
-  background: #ff5f56;
-  cursor: pointer;
-  transition: filter 120ms ease;
-}
-
-.chrome-dot--close:hover,
-.chrome-dot--close:focus-visible {
-  filter: brightness(1.2);
-}
-
-.chrome-dot--minimize {
-  background: #ffbd2e;
-}
-
-.chrome-dot--zoom {
-  background: #27c93f;
-}
-
 .article-post-document__body {
-  padding: clamp(36px, 6.5vw, 72px);
+  /* Shared with .article-post-cat/.article-post-meta below, so their own
+     "$"-prompt lines can offset back out to the same 20px inset the
+     terminal-window__head's "cd" line uses, instead of sitting at this
+     wider reading-column padding. */
+  --body-padding: clamp(36px, 6.5vw, 72px);
+  padding: var(--body-padding);
 }
 
 .article-post-document__body h1,
@@ -794,6 +760,65 @@ dewwwald-article-post-page {
   height: auto;
   margin: 24px auto;
   max-width: 100%;
+}
+
+/* Shared by both contexts a quote panel image can end up in: pulled into
+   the pane on desktop (positioned the same as any other panel image, via
+   .anchored-diagram-layer > *), or - below the breakpoint - inline right
+   before the paragraph it's quoted from. */
+.pull-quote {
+  border-left: 3px solid #acded5;
+  color: #ffffff;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-style: italic;
+  line-height: 1.35;
+  margin: 0;
+  padding: 4px 0 4px 22px;
+  quotes: "\201C" "\201D";
+}
+
+.pull-quote::before {
+  content: open-quote;
+}
+
+.pull-quote::after {
+  content: close-quote;
+}
+
+.article-post-document__body .pull-quote {
+  margin: 32px 0;
+}
+
+/* A `cat`-style line at the top of the article, echoing the terminal
+   window's own "cd" line above it - same font-size (the browser default,
+   like the rest of the article's body copy) and the same 20px inset from
+   the pane edge, so the two read as one continuous terminal session rather
+   than two different type scales. */
+.article-post-cat {
+  color: #8a8a8a;
+  font-size: 16px;
+  margin: 0 0 32px calc(20px - var(--body-padding));
+}
+
+/* A `stat`-style footer at the bottom of the article, showing when it went
+   live and when it was last substantively edited. Same alignment/size fix
+   as .article-post-cat above. */
+.article-post-meta {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: #8a8a8a;
+  font-size: 16px;
+  margin-left: calc(20px - var(--body-padding));
+  margin-top: 48px;
+  padding-top: 20px;
+}
+
+.article-post-meta__row {
+  margin-top: 6px;
+  padding-left: 20px;
+}
+
+.article-post-meta__cmd {
+  margin-top: 20px;
 }
 
 @media (max-width: 640px) {
