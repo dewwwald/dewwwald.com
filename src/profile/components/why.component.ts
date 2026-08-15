@@ -31,17 +31,17 @@ interface ProofPoint {
           decoration.
         </p>
       </section>
-      <section class="section--padding bgc--tertiary">
+      <section class="section--padding writing-section">
         <h1>
           Writing <small>what I'm actually thinking about</small>
         </h1>
         <p>
           Want to know more about how I think through problems? I write about the ones that stuck with me -
-          <a class="link--teal-dark" routerLink="/articles">read my articles</a>.
+          <a routerLink="/articles">read my articles</a>.
         </p>
         <ul class="writing-teaser flush--bottom" aria-label="Recent articles">
           <li *ngFor="let article of recentArticles">
-            <a class="link--teal-dark" [routerLink]="['/articles', article.slug]">{{ article.title }}</a>
+            <a [routerLink]="['/articles', article.slug]">{{ article.title }}</a>
           </li>
         </ul>
       </section>

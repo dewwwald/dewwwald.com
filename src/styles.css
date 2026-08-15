@@ -476,6 +476,24 @@ dewwwald-article-post-page {
   color: #2f5f59;
 }
 
+/* Same #404040 grey as the site footer - a deliberate visual echo, not a
+   coincidence. Scoped to this one section (not the shared .bgc--tertiary
+   utility, which the contact section's intro still uses on its own
+   light-orange background). */
+.writing-section {
+  background: #404040;
+  color: #ffffff;
+}
+
+.writing-section a {
+  color: #acded5;
+}
+
+.writing-section a:hover,
+.writing-section a:focus {
+  color: #d0ede7;
+}
+
 .writing-teaser {
   display: flex;
   flex-direction: column;
@@ -819,6 +837,54 @@ dewwwald-article-post-page {
 
 .article-post-meta__cmd {
   margin-top: 20px;
+}
+
+/* The /articles listing: an arrow-key-navigable single-select list, styled
+   after the interactive picker prompts CLI tools (npm init, etc.) draw in a
+   terminal - a filled dot on the current row, hollow dots elsewhere, and an
+   "enter to read" hint at the foot standing in for their "(use arrow keys)"
+   line. */
+.article-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article-list__item {
+  border-radius: 6px;
+  margin: 0 -12px;
+  padding: 0 12px;
+  transition: background-color 0.15s ease;
+}
+
+.article-list__item--selected {
+  background: rgba(172, 222, 213, 0.07);
+}
+
+.article-list__dot {
+  color: #4a4a4a;
+  display: inline-block;
+  margin-right: 10px;
+  width: 0.7em;
+}
+
+.article-list__item--selected .article-list__dot {
+  color: #acded5;
+}
+
+.article-list__hint {
+  align-items: center;
+  color: #8a8a8a;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  gap: 4px;
+  margin-left: calc(20px - var(--body-padding));
+  margin-top: 40px;
+}
+
+.article-list__hint .terminal-nav__comment {
+  margin-right: 20px;
 }
 
 @media (max-width: 640px) {
