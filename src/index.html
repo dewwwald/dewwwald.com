@@ -15,7 +15,13 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-QBQK5BJ9JB');
+      // This is a client-side-routed SPA - every in-app navigation (which
+      // is all of them) would otherwise be invisible to GA, since gtag.js's
+      // own automatic pageview only fires once, here, on the initial hard
+      // load. send_page_view is off so AppComponent's own page_view event
+      // (fired on every route change, see app.component.ts) is the only
+      // source of pageviews - nothing is double-counted.
+      gtag('config', 'G-QBQK5BJ9JB', { send_page_view: false });
     </script>
   </head>
   <body>

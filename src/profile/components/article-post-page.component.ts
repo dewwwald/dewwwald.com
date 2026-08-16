@@ -1,17 +1,8 @@
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  Signal,
-  ViewChild,
-  afterRenderEffect,
-  inject,
-  isDevMode,
-} from '@angular/core';
+import { Component, ElementRef, OnDestroy, Signal, ViewChild, afterRenderEffect, effect, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { marked } from 'marked';
@@ -21,81 +12,12 @@ import mermaid from 'mermaid';
 // scripts/generate-post-meta.mjs and package.json's pre* hooks) - never
 // hand-maintained, so it can't go stale.
 import postDates from '../../generated/post-dates.json';
+import { ArticleMeta, PanelImageConfig, articleBySlug } from '../data/articles';
+import { AnalyticsService } from '../services/analytics.service';
 
-interface PanelImageConfig {
-  readonly kind: 'screenshot' | 'diagram' | 'quote';
-  /** Required for 'screenshot'/'diagram': exact text of the h1/h2/h3 this
-   * image tracks. For a 'diagram', the first ```mermaid block after that
-   * heading (and before the next one) is pulled out of the article and
-   * placed here instead of rendering inline. For a 'screenshot', `src` is
-   * shown - nothing is moved out of the article. */
-  readonly headingText?: string;
-  readonly src?: string;
-  /** Required for 'quote': a substring that identifies the paragraph to
-   * pull the quote from - it tracks that paragraph on desktop, and on
-   * mobile the quote is inserted inline right before it. */
-  readonly anchorText?: string;
-  /** Required for 'quote': the pull-quote text itself. */
-  readonly text?: string;
-}
-
-interface ArticlePostConfig {
-  readonly title: string;
-  readonly path: string;
-  /** Images (and pull-quotes) shown one at a time in the pane next to the
-   * article, in the order they should hand off (earliest section first).
-   * Only the active one tracks its anchor as you scroll; it freezes the
-   * instant it would reach the next one, then exits once scrolling carries
-   * the next one's own anchor to the top of the pane - see
-   * `applyPanelImageLayout`. Nothing here moves on a timer. */
-  readonly panelImages?: readonly PanelImageConfig[];
-}
-
-const posts: Record<string, ArticlePostConfig> = {
-  'prompt-injection-fake-hacker-site': {
-    title: 'Hiding an Attack Inside a Webpage, Then Asking My AI to Read It',
-    path: 'assets/posts/prompt-injection-fake-hacker-site.md',
-  },
-  'how-to-guide-your-llm-to-communicate-with-your-system': {
-    title: 'How to guide your LLM to communicate with your system',
-    path: 'assets/posts/how-to-guide-your-llm-to-communicate-with-your-system.md',
-    panelImages: [
-      {
-        kind: 'screenshot',
-        headingText: 'How to guide your LLM to communicate with your system',
-        src: 'assets/img/directed-decoding-demo-screenshot-1.png',
-      },
-      { kind: 'diagram', headingText: 'The first draft' },
-      {
-        kind: 'screenshot',
-        headingText: 'Attempt two: actually constraining the model',
-        src: 'assets/img/directed-decoding-demo.gif',
-      },
-      {
-        kind: 'quote',
-        anchorText: 'a schema constrains shape, not intent',
-        text: 'As far as an LLM is concerned, a schema constrains shape, not intent. Inference does not guard against real data labels, it gives the most likely.',
-      },
-    ],
-  },
-};
-
-/** Drafts: real files, kept in version control, pointed at
- * assets/draft-posts - a folder the production build excludes entirely
- * (see angular.json's `ignore` on that asset glob), so the markdown itself
- * never ships. `isDevMode()` below keeps the route table's title/metadata
- * out of the production bundle too. Only reachable locally, by URL - not
- * listed on the /articles page. */
-const draftPosts: Record<string, ArticlePostConfig> = {
-  'vector-database-the-need-to-know-guide': {
-    title: 'Vector Database: The Need-to-Know Guide',
-    path: 'assets/draft-posts/vector-database-the-need-to-know-guide.md',
-  },
-};
-
-if (isDevMode()) {
-  Object.assign(posts, draftPosts);
-}
+/** Reading-time engagement is reported at these cumulative scroll depths -
+ * mirrors the milestones GA's own reports expect (25/50/75/100). */
+const SCROLL_DEPTH_THRESHOLDS = [25, 50, 75, 100];
 
 interface PanelImage {
   /** The element this image's position tracks - a heading for a screenshot
@@ -197,6 +119,8 @@ export class ArticlePostPageComponent implements OnDestroy {
   private readonly http = inject(HttpClient);
   private readonly route = inject(ActivatedRoute);
   private readonly sanitizer = inject(DomSanitizer);
+  private readonly titleService = inject(Title);
+  private readonly analytics = inject(AnalyticsService);
 
   @ViewChild('articleBody') private articleBody?: ElementRef<HTMLElement>;
   @ViewChild('panelLayer') private panelLayer?: ElementRef<HTMLElement>;
@@ -204,6 +128,16 @@ export class ArticlePostPageComponent implements OnDestroy {
   protected readonly postHtml: Signal<SafeHtml | undefined>;
   protected readonly postMeta: Signal<{ slug: string; createdAt: string; updatedAt?: string } | undefined>;
   protected readonly hasPanelImages: Signal<boolean>;
+  private readonly article: Signal<ArticleMeta | undefined>;
+
+  // Reading-time engagement tracking (see AnalyticsService.trackArticleReadingTime).
+  // Plain fields, not signals: this is bookkeeping for a side effect, not
+  // state the template reads.
+  private trackedSlug: string | undefined;
+  private currentArticle: ArticleMeta | undefined;
+  private articleViewStartedAt = 0;
+  private articleMaxScrollPercent = 0;
+  private articleScrollThresholdsSent = new Set<number>();
 
   private readonly panelImageConfigs: Signal<readonly PanelImageConfig[]>;
   private panelImages: PanelImage[] = [];
@@ -215,7 +149,8 @@ export class ArticlePostPageComponent implements OnDestroy {
    * continuously (the cd header and the image pane are both `position:
    * sticky` rather than separate scroll containers now), and each relayout
    * does getBoundingClientRect reads, so this keeps it to one recalculation
-   * per frame instead of one per scroll event. */
+   * per frame instead of one per scroll event. Scroll-depth tracking rides
+   * along on the same throttle rather than adding a second rAF loop. */
   private readonly relayoutPanelImages = () => {
     if (this.relayoutScheduled) {
       return;
@@ -224,8 +159,60 @@ export class ArticlePostPageComponent implements OnDestroy {
     requestAnimationFrame(() => {
       this.relayoutScheduled = false;
       this.applyPanelImageLayout();
+      this.trackArticleScrollDepth();
     });
   };
+
+  /** Reports 25/50/75/100% scroll-depth milestones, at most once each, for
+   * whichever article is currently tracked. */
+  private trackArticleScrollDepth(): void {
+    if (!this.currentArticle || typeof document === 'undefined') {
+      return;
+    }
+    const doc = document.documentElement;
+    const scrollable = doc.scrollHeight - doc.clientHeight;
+    const percent = scrollable > 0 ? Math.min(100, Math.round((window.scrollY / scrollable) * 100)) : 100;
+    this.articleMaxScrollPercent = Math.max(this.articleMaxScrollPercent, percent);
+
+    for (const threshold of SCROLL_DEPTH_THRESHOLDS) {
+      if (percent >= threshold && !this.articleScrollThresholdsSent.has(threshold)) {
+        this.articleScrollThresholdsSent.add(threshold);
+        this.analytics.trackArticleScrollDepth(this.currentArticle, threshold);
+      }
+    }
+  }
+
+  /** Reports how long the current article was actually on screen for.
+   * Called when the reader navigates to a different slug, away from the
+   * article page entirely, or hides/closes the tab - see the constructor's
+   * effect, ngOnDestroy, and the visibilitychange/pagehide listeners below.
+   * Idempotent: articleViewStartedAt is zeroed after reporting, so a second
+   * call (e.g. both visibilitychange and ngOnDestroy firing) is a no-op. */
+  private finalizeArticleReadingTime(): void {
+    if (!this.currentArticle || !this.articleViewStartedAt) {
+      return;
+    }
+    const seconds = (Date.now() - this.articleViewStartedAt) / 1000;
+    this.articleViewStartedAt = 0;
+    // Skips near-instant bounces (e.g. a route change that immediately
+    // redirects) rather than logging noise as a "read".
+    if (seconds >= 1) {
+      this.analytics.trackArticleReadingTime(this.currentArticle, seconds, this.articleMaxScrollPercent);
+    }
+  }
+
+  /** Tab backgrounded/closed: finalize on hide (see above), and resume the
+   * timer on return rather than starting a fresh view - a reader who tabs
+   * away and back is still reading the same article. */
+  private readonly handleVisibilityChange = () => {
+    if (document.visibilityState === 'hidden') {
+      this.finalizeArticleReadingTime();
+    } else if (this.currentArticle && !this.articleViewStartedAt) {
+      this.articleViewStartedAt = Date.now();
+    }
+  };
+
+  private readonly handlePageHide = () => this.finalizeArticleReadingTime();
 
   constructor() {
     marked.use({
@@ -243,7 +230,7 @@ export class ArticlePostPageComponent implements OnDestroy {
 
     this.postHtml = toSignal(
       this.route.paramMap.pipe(
-        map((params) => posts[params.get('slug') ?? '']),
+        map((params) => articleBySlug[params.get('slug') ?? '']),
         switchMap((post) => {
           if (!post) {
             return of(this.sanitizer.bypassSecurityTrustHtml('<h1>Not found</h1><p>This post does not exist.</p>'));
@@ -263,7 +250,7 @@ export class ArticlePostPageComponent implements OnDestroy {
       this.route.paramMap.pipe(
         map((params) => {
           const slug = params.get('slug') ?? '';
-          const post = posts[slug];
+          const post = articleBySlug[slug];
           const dates: { createdAt?: string; updatedAt?: string } = (postDates as Record<string, { createdAt?: string; updatedAt?: string }>)[slug] ?? {};
           return post && dates.createdAt ? { slug, createdAt: dates.createdAt, updatedAt: dates.updatedAt } : undefined;
         }),
@@ -271,14 +258,43 @@ export class ArticlePostPageComponent implements OnDestroy {
       { initialValue: undefined },
     );
 
+    this.article = toSignal(
+      this.route.paramMap.pipe(map((params) => articleBySlug[params.get('slug') ?? ''])),
+      { initialValue: undefined },
+    );
+
     this.panelImageConfigs = toSignal(
-      this.route.paramMap.pipe(map((params) => posts[params.get('slug') ?? '']?.panelImages ?? [])),
+      this.route.paramMap.pipe(map((params) => articleBySlug[params.get('slug') ?? '']?.panelImages ?? [])),
       { initialValue: [] },
     );
     this.hasPanelImages = toSignal(
-      this.route.paramMap.pipe(map((params) => (posts[params.get('slug') ?? '']?.panelImages?.length ?? 0) > 0)),
+      this.route.paramMap.pipe(map((params) => (articleBySlug[params.get('slug') ?? '']?.panelImages?.length ?? 0) > 0)),
       { initialValue: false },
     );
+
+    // Sets the tab title per-article (the route table only has a generic
+    // fallback - see app.routes.ts) and reports view/reading-time analytics
+    // as the reader arrives at, and leaves, each article. Runs again on a
+    // slug change even though this component instance is reused across
+    // /articles/:slug navigations, so each article's title and events stay
+    // correct without a full component teardown.
+    effect(() => {
+      const meta = this.article();
+      this.titleService.setTitle(meta ? `${meta.title} | dewwwald` : 'Article not found | dewwwald');
+
+      if (meta?.slug === this.trackedSlug) {
+        return;
+      }
+      this.finalizeArticleReadingTime();
+      this.trackedSlug = meta?.slug;
+      this.currentArticle = meta;
+      if (meta) {
+        this.articleViewStartedAt = Date.now();
+        this.articleMaxScrollPercent = 0;
+        this.articleScrollThresholdsSent = new Set();
+        this.analytics.trackArticleView(meta);
+      }
+    });
 
     afterRenderEffect(() => {
       if (this.postHtml()) {
@@ -293,14 +309,19 @@ export class ArticlePostPageComponent implements OnDestroy {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', this.relayoutPanelImages, { passive: true });
       window.addEventListener('resize', this.relayoutPanelImages);
+      window.addEventListener('pagehide', this.handlePageHide);
+      document.addEventListener('visibilitychange', this.handleVisibilityChange);
       this.panelMediaQuery?.addEventListener('change', this.relayoutPanelImages);
     }
   }
 
   ngOnDestroy(): void {
+    this.finalizeArticleReadingTime();
     if (typeof window !== 'undefined') {
       window.removeEventListener('scroll', this.relayoutPanelImages);
       window.removeEventListener('resize', this.relayoutPanelImages);
+      window.removeEventListener('pagehide', this.handlePageHide);
+      document.removeEventListener('visibilitychange', this.handleVisibilityChange);
       this.panelMediaQuery?.removeEventListener('change', this.relayoutPanelImages);
     }
   }
